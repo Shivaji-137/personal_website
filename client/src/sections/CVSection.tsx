@@ -570,7 +570,7 @@ const CVSection = () => {
             <p className="text-gray-300 mb-6">
               Want to discuss potential collaborations or have questions about my experience?
             </p>
-            <Button variant="link" className="bg-[#5D3E7C] text-white hover:bg-[#FF65A3] px-8" onclick={()=> navigate('/contact')}>
+            <Button variant="link" className="bg-[#5D3E7C] text-white hover:bg-[#FF65A3] px-8" onClick={()=> navigate('/contact')}>
               Contact Me
             </Button>
           </motion.div>
