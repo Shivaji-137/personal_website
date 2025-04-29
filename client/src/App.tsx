@@ -2,6 +2,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "@/pages/HomePage";
 import ProjectsPage from "@/pages/ProjectsPage";
@@ -11,7 +12,6 @@ import BlogPostPage from "@/blogpost/BlogPostPage";
 import CVPage from "@/pages/CVPage";
 import ContactPage from "@/pages/ContactPage";
 import NotFound from "@/pages/not-found";
-import { ThemeProvider } from "@/components/ui/theme-provider";
 
 function AppRoutes() {
   return (
