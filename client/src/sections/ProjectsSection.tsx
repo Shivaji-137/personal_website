@@ -117,7 +117,7 @@ const ProjectsSection = () => {
                       <br></br>
                       {project.title.startsWith("Relational") && (
                         <Button>
-                          <a href='/personal_website/my_learning_certificate/freecodecamp_Relationdatabase_certificate.png'><i className="ri-external-link-line mr-2 px-1"></i> Show certificate</a>
+                          <a href='/personal_website/certificates/freecodecamp_Relationdatabase_certificate.png'><i className="ri-external-link-line mr-2 px-1"></i> Show certificate</a>
                         </Button>
                       )}
 
