@@ -112,7 +112,7 @@ const ResearchSection = () => {
                          
                       </p>
                       <Button variant="link" className="text-[#FF65A3] p-0 h-auto">
-                        <a href = "/src/assets/research_file/finalfourthyearproject_shivaji.pdf">Read paper <i className="ri-external-link-line ml-1"></i></a>
+                        <a href = "/personal_website/research_file/finalfourthyearproject_shivaji.pdf">Read paper <i className="ri-external-link-line ml-1"></i></a>
                       </Button>
                     </CardContent>
                   </Card>
