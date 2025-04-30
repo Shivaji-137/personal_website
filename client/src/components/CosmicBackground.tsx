@@ -1,6 +1,17 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  return isMobile;
+};
+
 const Ripple = ({ x, y }: { x: number; y: number }) => (
   <motion.div
     className="absolute rounded-full pointer-events-none"
@@ -21,12 +32,36 @@ const Ripple = ({ x, y }: { x: number; y: number }) => (
   />
 );
 
-const AccretionDisk = () => (
+const MobilePulse = () => (
   <motion.div
     className="absolute rounded-full"
     style={{
-      width: 300,
-      height: 300,
+      width: 180,
+      height: 180,
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)',
+      zIndex: 3,
+    }}
+    animate={{
+      scale: [1, 1.8],
+      opacity: [0.2, 0],
+    }}
+    transition={{
+      duration: 3,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    }}
+  />
+);
+
+const AccretionDisk = ({ size }: { size: number }) => (
+  <motion.div
+    className="absolute rounded-full"
+    style={{
+      width: size,
+      height: size,
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
@@ -42,30 +77,30 @@ const AccretionDisk = () => (
   />
 );
 
-const GravitationalLensing = () => (
+const GravitationalLensing = ({ size }: { size: number }) => (
   <div
     className="absolute rounded-full"
     style={{
-      width: 350,
-      height: 350,
+      width: size,
+      height: size,
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
       border: '2px solid rgba(255, 255, 255, 0.05)',
-      borderRadius: '50%',
       boxShadow: '0 0 100px 20px rgba(255, 255, 255, 0.08)',
+      borderRadius: '50%',
       zIndex: 0,
       pointerEvents: 'none',
     }}
   />
 );
 
-const BlackHoleCore = () => (
+const BlackHoleCore = ({ size }: { size: number }) => (
   <div
     className="absolute rounded-full bg-black"
     style={{
-      width: 80,
-      height: 80,
+      width: size,
+      height: size,
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
@@ -76,12 +111,12 @@ const BlackHoleCore = () => (
 );
 
 const CosmicBackground = () => {
+  const isMobile = useIsMobile();
   const [isVisible, setIsVisible] = useState(false);
   const [ripples, setRipples] = useState<{ x: number; y: number; id: number }[]>([]);
   const rippleId = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Watch if #home or #about section is in viewport
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -104,6 +139,8 @@ const CosmicBackground = () => {
   }, []);
 
   useEffect(() => {
+    if (isMobile) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current || !isVisible) return;
       const rect = containerRef.current.getBoundingClientRect();
@@ -127,9 +164,11 @@ const CosmicBackground = () => {
 
     document.addEventListener('mousemove', handleMouseMove);
     return () => document.removeEventListener('mousemove', handleMouseMove);
-  }, [isVisible]);
+  }, [isVisible, isMobile]);
 
   if (!isVisible) return null;
+
+  const baseSize = isMobile ? 180 : 300;
 
   return (
     <div
@@ -137,17 +176,21 @@ const CosmicBackground = () => {
       className="fixed top-0 left-0 w-full h-full z-0 overflow-hidden bg-black"
       aria-hidden="true"
     >
-      <AccretionDisk />
-      <GravitationalLensing />
-      <BlackHoleCore />
-      <AnimatePresence>
-        {ripples.map(({ x, y, id }) => (
-          <Ripple key={id} x={x} y={y} />
-        ))}
-      </AnimatePresence>
+      <AccretionDisk size={baseSize} />
+      <GravitationalLensing size={baseSize + 50} />
+      <BlackHoleCore size={isMobile ? 50 : 80} />
+
+      {isMobile ? (
+        <MobilePulse />
+      ) : (
+        <AnimatePresence>
+          {ripples.map(({ x, y, id }) => (
+            <Ripple key={id} x={x} y={y} />
+          ))}
+        </AnimatePresence>
+      )}
     </div>
   );
 };
 
 export default CosmicBackground;
-
