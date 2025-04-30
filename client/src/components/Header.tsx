@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollSpy } from '@/hooks/use-scroll-spy';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation, useRoute } from 'wouter';
 
 type NavLink = {
   text: string;
@@ -20,8 +20,7 @@ const links: NavLink[] = [
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [location, setLocation] = useLocation();
   const activeSection = useScrollSpy(
     ['home', 'about'],
     { rootMargin: "-100px 0px 0px 0px" }
@@ -37,6 +36,7 @@ const Header = () => {
   }, []);
 
   const smoothScrollTo = (id: string) => {
+    setMobileMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
       const yOffset = -80;
@@ -45,33 +45,21 @@ const Header = () => {
     }
   };
 
-  const handleNavClick = (href: string) => {
-    setMobileMenuOpen(false);
-    if (href.startsWith('#')) {
-      if (location.pathname === '/' || location.pathname === '/#') {
-        smoothScrollTo(href.substring(1));
-      } else {
-        navigate('/');
-        setTimeout(() => smoothScrollTo(href.substring(1)), 100);
-      }
-    } else {
-      navigate(href);
-    }
-  };
-
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-[#0B1026] bg-opacity-90 backdrop-blur-lg border-b border-[#5D3E7C] border-opacity-30' 
-        : 'bg-transparent'
-    }`}>
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-[#0B1026] bg-opacity-90 backdrop-blur-lg border-b border-[#5D3E7C] border-opacity-30' 
+          : 'bg-transparent'
+      }`}
+    >
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
           <a 
             href="/" 
             onClick={(e) => {
               e.preventDefault();
-              handleNavClick('#home');
+              smoothScrollTo('home');
             }}
             className="text-[#FFD15C] font-space font-bold text-2xl tracking-wider"
           >
@@ -81,12 +69,26 @@ const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {links.map((link, index) => (
-              <button
+              <a
                 key={index}
-                onClick={() => handleNavClick(link.href)}
+                href={link.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (link.href.startsWith('#') && location === '/') {
+                    // Handle internal scrolling only on homepage
+                    smoothScrollTo(link.href.substring(1));
+                  } else if (link.href.startsWith('#')) {
+                    // Navigate to homepage first, then scroll
+                    setLocation('/');
+                    setTimeout(() => smoothScrollTo(link.href.substring(1)), 100);
+                  } else {
+                    // Handle page navigation
+                    setLocation(link.href);
+                  }
+                }}
                 className={`nav-link font-space text-white hover:text-[#FF65A3] transition-colors relative ${
                   (link.href.startsWith('#') && activeSection === link.href.substring(1)) || 
-                  (location.pathname === link.href) ? 'text-[#FF65A3]' : ''
+                  (location === link.href) ? 'text-[#FF65A3]' : ''
                 }`}
               >
                 {link.text}
@@ -99,10 +101,11 @@ const Header = () => {
                     transition={{ duration: 0.3 }}
                   />
                 )}
-              </button>
+              </a>
             ))}
-          </div>
 
+          </div>
+          
           {/* Mobile Navigation Toggle */}
           <button 
             className="md:hidden text-white focus:outline-none"
@@ -134,16 +137,27 @@ const Header = () => {
               </button>
               <div className="flex flex-col space-y-6 mt-12">
                 {links.map((link, index) => (
-                  <button
+                  <a
                     key={index}
-                    onClick={() => handleNavClick(link.href)}
-                    className={`nav-link font-space text-left text-white hover:text-[#FF65A3] transition-colors ${
+                    href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (link.href.startsWith('#')) {
+                        // Handle internal scrolling
+                        smoothScrollTo(link.href.substring(1));
+                      } else {
+                        // Handle page navigation
+                        setLocation(link.href);
+                        setMobileMenuOpen(false);
+                      }
+                    }}
+                    className={`nav-link font-space text-white hover:text-[#FF65A3] transition-colors ${
                       (link.href.startsWith('#') && activeSection === link.href.substring(1)) || 
-                      (location.pathname === link.href) ? 'text-[#FF65A3]' : ''
+                      (location === link.href) ? 'text-[#FF65A3]' : ''
                     }`}
                   >
                     {link.text}
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>

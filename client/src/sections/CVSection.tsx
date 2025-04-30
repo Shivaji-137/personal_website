@@ -3,11 +3,11 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { fadeIn, staggerContainer } from '@/lib/animations';
-import { useNavigate } from 'react-router-dom';
+import { Separator } from "@/components/ui/separator";
 
 // Import the CV PDF - we need to set this up properly in the project
 // import cvPdf from "@assets/shivajiCV.pdf";
-const navigate = useNavigate();
+
 const education = [
   {
     degree: "Undergraduate in Physics",
@@ -156,7 +156,7 @@ const CVSection = () => {
                 className="space-y-8"
               >
                 {education.map((edu, index) => (
-                  <Card key={index} className="bg-[#080a0a] border-[#5D3E7C] border p-6">
+                  <Card key={index} className="bg-[#080a0a] border-[#d4db9c] border p-6">
                     <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
                       <div>
                         <h3 className="text-xl font-bold text-white">{edu.degree}</h3>
@@ -194,7 +194,7 @@ const CVSection = () => {
                 className="space-y-8"
               >
                 {experiences.map((exp, index) => (
-                  <Card key={index} className="bg-[#080a0a] border-[#5D3E7C] border p-6">
+                  <Card key={index} className="bg-[#080a0a] border-[#d4db9c] border p-6">
                     <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
                       <div>
                         <h3 className="text-xl font-bold text-white">{exp.title}</h3>
@@ -277,7 +277,7 @@ const CVSection = () => {
                     <p className="text-gray-300">{cert.issuer}</p>
                     <p className="text-gray-400 text-sm mt-2">{cert.date}</p>
                     <a 
-                    href="/personal_website/certificates/Quantum_computing_certificate.png"
+                    href="/src/assets/certificates/Quantum_computing_certificate.png"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#FF65A3] hover:text-[#5D3E7C] text-sm mt-2 inline-flex items-center"
@@ -301,7 +301,7 @@ const CVSection = () => {
                   <p className="text-gray-300">Coursera</p>
                   <p className="text-gray-400 text-sm mt-2">Feb 28 2024</p>
                   <a 
-                    href="/personal_website/certificates/machineLearningwithPython_certificate.pdf"
+                    href="/src/assets/certificates/machineLearningwithPython_certificate.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#FF65A3] hover:text-[#5D3E7C] text-sm mt-2 inline-flex items-center"
@@ -315,7 +315,7 @@ const CVSection = () => {
                   <p className="text-gray-300">Linkedin Learning</p>
                   <p className="text-gray-400 text-sm mt-2">Feb 05 2025</p>
                   <a 
-                    href="/personal_website/certificates/CertificateOfCompletion_Complete Your First Project in SQL.pdf"
+                    href="/src/assets/certificates/CertificateOfCompletion_Complete Your First Project in SQL.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#FF65A3] hover:text-[#5D3E7C] text-sm mt-2 inline-flex items-center"
@@ -329,7 +329,7 @@ const CVSection = () => {
                   <p className="text-gray-300">Coursera</p>
                   <p className="text-gray-400 text-sm mt-2">March 2 2024</p>
                   <a 
-                    href="/personal_website/certificates/dataAnalysisWithPythonCoursera_certificate.pdf"
+                    href="/src/assets/certificates/dataAnalysisWithPythonCoursera_certificate.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#FF65A3] hover:text-[#5D3E7C] text-sm mt-2 inline-flex items-center"
@@ -342,7 +342,7 @@ const CVSection = () => {
                   <p className="text-gray-300">Coursera</p>
                   <p className="text-gray-400 text-sm mt-2">March 15 2024</p>
                   <a 
-                    href="/personal_website/certificates/introduction_to_deepLearning_withKeras_certificate.pdf"
+                    href="/src/assets/certificates/introduction_to_deepLearning_withKeras_certificate.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#FF65A3] hover:text-[#5D3E7C] text-sm mt-2 inline-flex items-center"
@@ -355,7 +355,7 @@ const CVSection = () => {
                   <p className="text-gray-300">Great Learning Academy</p>
                   <p className="text-gray-400 text-sm mt-2">March 2024</p>
                   <a 
-                    href="/personal_website/certificates/great_learning_IntroductiontoR_certificate.jpg"
+                    href="/src/assets/certificates/great_learning_IntroductiontoR_certificate.jpg"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#FF65A3] hover:text-[#5D3E7C] text-sm mt-2 inline-flex items-center"
@@ -368,7 +368,7 @@ const CVSection = () => {
                   <p className="text-gray-300">Great Learning Academy</p>
                   <p className="text-gray-400 text-sm mt-2">March 2024</p>
                   <a 
-                    href="/personal_website/certificates/great_learning_certificateData_visualization_with_R.jpg"
+                    href="/src/assets/certificates/great_learning_certificateData_visualization_with_R.jpg"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#FF65A3] hover:text-[#5D3E7C] text-sm mt-2 inline-flex items-center"
@@ -381,7 +381,7 @@ const CVSection = () => {
                   <p className="text-gray-300">Coursera</p>
                   <p className="text-gray-400 text-sm mt-2">July 28 2024</p>
                   <a 
-                    href="/personal_website/certificates/CourseraAdvancedLearningALgorithm.pdf"
+                    href="/src/assets/certificates/CourseraAdvancedLearningALgorithm.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#FF65A3] hover:text-[#5D3E7C] text-sm mt-2 inline-flex items-center"
@@ -394,7 +394,7 @@ const CVSection = () => {
                   <p className="text-gray-300">OpenCV University</p>
                   <p className="text-gray-400 text-sm mt-2">August 7 2024</p>
                   <a 
-                    href="/personal_website/certificates/OpenCV Free OpenCV Bootcamp Certificate _ OpenCV.pdf"
+                    href="/src/assets/certificates/OpenCV Free OpenCV Bootcamp Certificate _ OpenCV.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#FF65A3] hover:text-[#5D3E7C] text-sm mt-2 inline-flex items-center"
@@ -407,7 +407,7 @@ const CVSection = () => {
                   <p className="text-gray-300">MathWorks Training Services</p>
                   <p className="text-gray-400 text-sm mt-2">November 1 2024</p>
                   <a 
-                    href="/personal_website/certificates/matlabbasictrainingcourse_certificate.pdf"
+                    href="/src/assets/certificates/matlabbasictrainingcourse_certificate.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#FF65A3] hover:text-[#5D3E7C] text-sm mt-2 inline-flex items-center"
@@ -421,7 +421,7 @@ const CVSection = () => {
                   <p className="text-gray-300">Linkedin Learning</p>
                   <p className="text-gray-400 text-sm mt-2">Jan 28, 2025</p>
                   <a 
-                    href="/personal_website/certificates/CertificateOfCompletion_Building Computer Vision Applications with Python.pdf"
+                    href="/src/assets/certificates/CertificateOfCompletion_Building Computer Vision Applications with Python.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#FF65A3] hover:text-[#5D3E7C] text-sm mt-2 inline-flex items-center"
@@ -454,7 +454,7 @@ const CVSection = () => {
                   <p className="text-gray-300">SBMAC, Brazil</p>
                   <p className="text-gray-400 text-sm mt-2">Oct 20, 2023 (Online)</p>
                   <a 
-                    href="/personal_website/certificates/wavelet_brazil_certificate"
+                    href="/src/assets/certificates/wavelet_brazil_certificate"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#FF65A3] hover:text-[#5D3E7C] text-sm mt-2 inline-flex items-center"
@@ -499,7 +499,7 @@ const CVSection = () => {
                 variants={fadeIn('up')}
                 className="grid grid-cols-1 md:grid-cols-3 gap-6"
               >
-                <Card className="bg-[#080a0a] border-[#d4db9c] border p-6">
+                <Card className="bg-[#080a0a] border-[#5D3E7C] border p-6">
                   <h3 className="text-lg font-semibold text-white mb-2">Summer School on Gravitational-Wave Astronomy <br></br> <a 
                     href="https://www.icts.res.in/program/gws2024"
                     target="_blank"
@@ -514,7 +514,7 @@ const CVSection = () => {
                     href="https://www.icts.res.in/event/page/28801"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#FF65A3] hover:text-[#5D3E7C] text-sm mt-2 inline-flex items-center"
+                    className="text-[#080a0a] hover:text-[#5D3E7C] text-sm mt-2 inline-flex items-center"
                   >
                     <i className="ri-award-line mr-1"></i> Verify my participant
                   </a>
@@ -527,7 +527,7 @@ const CVSection = () => {
                   </ul>
                 </Card>
 
-                <Card className="bg-[#080a0a] border-[#d4db9c] border p-6">
+                <Card className="bg-[#080a0a] border-[#5D3E7C] border p-6">
                   <h3 className="text-lg font-semibold text-white mb-2">AI Winter Workshop 2025 <br></br> <a 
                     href="https://indico.physics.brown.edu/event/34/"
                     target="_blank"
@@ -569,8 +569,8 @@ const CVSection = () => {
             <p className="text-gray-300 mb-6">
               Want to discuss potential collaborations or have questions about my experience?
             </p>
-            <Button variant="link" className="bg-[#5D3E7C] text-white hover:bg-[#FF65A3] px-8" onClick={()=> navigate('/contact')}>
-              Contact Me
+            <Button variant="link" className="bg-[#5D3E7C] text-white hover:bg-[#FF65A3] px-8">
+              <a href='\contact'>Contact Me</a>
             </Button>
           </motion.div>
         </motion.div>

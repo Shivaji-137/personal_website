@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useState } from 'react';
+
 import CosmicBackground from '@/components/CosmicBackground';
 import { InView } from 'react-intersection-observer';
 import Header from '@/components/Header';
