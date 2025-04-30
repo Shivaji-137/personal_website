@@ -12,47 +12,27 @@ const useIsMobile = () => {
   return isMobile;
 };
 
+// Ripple with crest/trough wave look
 const Ripple = ({ x, y }: { x: number; y: number }) => (
   <motion.div
     className="absolute rounded-full pointer-events-none"
     style={{
-      left: x - 150,
-      top: y - 150,
-      width: 300,
-      height: 300,
-      background: `radial-gradient(circle at center, rgba(255,255,255,0.12) 0%, transparent 70%)`,
-      boxShadow: '0 0 40px 10px rgba(255,255,255,0.05)',
-      backdropFilter: 'blur(2px)',
-      WebkitBackdropFilter: 'blur(2px)',
+      left: x - 100,
+      top: y - 100,
+      width: 200,
+      height: 200,
+      background: 'transparent',
+      border: '2px solid rgba(255, 255, 255, 0.2)',
+      boxShadow: `
+        0 0 0 0 rgba(255, 255, 255, 0.2),
+        0 0 0 10px rgba(255, 255, 255, 0.1),
+        0 0 0 20px rgba(255, 255, 255, 0.05)
+      `,
       zIndex: 5,
     }}
-    initial={{ scale: 0.5, opacity: 0.6 }}
+    initial={{ scale: 0.5, opacity: 0.8 }}
     animate={{ scale: 2.5, opacity: 0 }}
-    transition={{ duration: 1.6, ease: 'easeOut' }}
-  />
-);
-
-const MobilePulse = () => (
-  <motion.div
-    className="absolute rounded-full"
-    style={{
-      width: 180,
-      height: 180,
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%)',
-      zIndex: 3,
-    }}
-    animate={{
-      scale: [1, 1.8],
-      opacity: [0.8, 0],
-    }}
-    transition={{
-      duration: 4,
-      repeat: Infinity,
-      ease: 'easeInOut',
-    }}
+    transition={{ duration: 1.8, ease: 'easeOut' }}
   />
 );
 
@@ -66,7 +46,6 @@ const AccretionDisk = ({ size }: { size: number }) => (
       left: '50%',
       transform: 'translate(-50%, -50%)',
       background: `conic-gradient(from 0deg, #ffcc80, #ff4081, #7c4dff, #ffcc80)`,
-      borderRadius: '50%',
       filter: 'blur(30px) contrast(150%)',
       opacity: 0.5,
       zIndex: 1,
@@ -88,7 +67,6 @@ const GravitationalLensing = ({ size }: { size: number }) => (
       transform: 'translate(-50%, -50%)',
       border: '2px solid rgba(255, 255, 255, 0.05)',
       boxShadow: '0 0 100px 20px rgba(255, 255, 255, 0.08)',
-      borderRadius: '50%',
       zIndex: 0,
       pointerEvents: 'none',
     }}
@@ -138,37 +116,52 @@ const CosmicBackground = () => {
     };
   }, []);
 
+  // Mouse + Touch Support
   useEffect(() => {
-    if (isMobile) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleEvent = (e: MouseEvent | TouchEvent) => {
       if (!containerRef.current || !isVisible) return;
+
+      let clientX: number, clientY: number;
+      if ('touches' in e && e.touches.length > 0) {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+      } else if ('clientX' in e) {
+        clientX = e.clientX;
+        clientY = e.clientY;
+      } else {
+        return;
+      }
+
       const rect = containerRef.current.getBoundingClientRect();
       if (
-        e.clientX >= rect.left &&
-        e.clientX <= rect.right &&
-        e.clientY >= rect.top &&
-        e.clientY <= rect.bottom
+        clientX >= rect.left &&
+        clientX <= rect.right &&
+        clientY >= rect.top &&
+        clientY <= rect.bottom
       ) {
         const newRipple = {
-          x: e.clientX,
-          y: e.clientY,
+          x: clientX,
+          y: clientY,
           id: rippleId.current++,
         };
         setRipples((prev) => [...prev, newRipple]);
         setTimeout(() => {
           setRipples((prev) => prev.filter((r) => r.id !== newRipple.id));
-        }, 1600);
+        }, 1800);
       }
     };
 
-    document.addEventListener('mousemove', handleMouseMove);
-    return () => document.removeEventListener('mousemove', handleMouseMove);
-  }, [isVisible, isMobile]);
+    document.addEventListener('mousemove', handleEvent);
+    document.addEventListener('touchstart', handleEvent);
+    return () => {
+      document.removeEventListener('mousemove', handleEvent);
+      document.removeEventListener('touchstart', handleEvent);
+    };
+  }, [isVisible]);
 
   if (!isVisible) return null;
 
-  const baseSize = isMobile ? 180 : 300;
+  const baseSize = isMobile ? 200 : 300;
 
   return (
     <div
@@ -180,15 +173,11 @@ const CosmicBackground = () => {
       <GravitationalLensing size={baseSize + 50} />
       <BlackHoleCore size={isMobile ? 50 : 80} />
 
-      {isMobile ? (
-        <MobilePulse />
-      ) : (
-        <AnimatePresence>
-          {ripples.map(({ x, y, id }) => (
-            <Ripple key={id} x={x} y={y} />
-          ))}
-        </AnimatePresence>
-      )}
+      <AnimatePresence>
+        {ripples.map(({ x, y, id }) => (
+          <Ripple key={id} x={x} y={y} />
+        ))}
+      </AnimatePresence>
     </div>
   );
 };
