@@ -3,7 +3,6 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { fadeIn, staggerContainer } from '@/lib/animations';
-import { Separator } from "@/components/ui/separator";
 import { useNavigate } from 'react-router-dom';
 
 // Import the CV PDF - we need to set this up properly in the project
