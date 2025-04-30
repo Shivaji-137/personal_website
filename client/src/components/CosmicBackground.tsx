@@ -46,10 +46,10 @@ const MobilePulse = () => (
     }}
     animate={{
       scale: [1, 1.8],
-      opacity: [0.2, 0],
+      opacity: [0.8, 0],
     }}
     transition={{
-      duration: 3,
+      duration: 4,
       repeat: Infinity,
       ease: 'easeInOut',
     }}
