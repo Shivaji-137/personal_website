@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
@@ -9,7 +9,7 @@ import HomePage from "@/pages/HomePage";
 import ProjectsPage from "@/pages/ProjectsPage";
 import ResearchPage from "@/pages/ResearchPage";
 import BlogPage from "@/pages/BlogPage";
-import BlogPostPage from "@/blogpost/BlogPostPage"; // 👈 Add this
+import BlogPostPage from "@/blogpost/BlogPostPage";
 import CVPage from "@/pages/CVPage";
 import ContactPage from "@/pages/ContactPage";
 import NotFound from "@/pages/not-found";
@@ -26,10 +26,10 @@ function App() {
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/research" element={<ResearchPage />} />
               <Route path="/blog" element={<BlogPage />} />
-              <Route path="/blogpost/:id" element={<BlogPostPage />} /> {/* ✅ */}
+              <Route path="/blogpost/:id" element={<BlogPostPage />} />
               <Route path="/cv" element={<CVPage />} />
               <Route path="/contact" element={<ContactPage />} />
-              <Route path="*" element={<NotFound />} /> {/* 404 fallback */}
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Router>
         </TooltipProvider>
