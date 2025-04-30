@@ -12,20 +12,28 @@ import ScrollToTop from '@/components/ScrollToTop';
 const BlogPostPage = () => {
   const { id } = useParams<{ id: string }>();
   const post = blogPosts.find((p) => p.id.toString() === id);
-  const [markdown, setMarkdown] = useState<string>("");
+
+  const [markdown, setMarkdown] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const loadMarkdown = async () => {
-      if (post) {
+      if (post?.markdownPath) {
         document.title = `${post.title} | Shivaji`;
+        setLoading(true);
         try {
           const res = await fetch(post.markdownPath);
           const text = await res.text();
-          console.log(text);
           setMarkdown(text);
         } catch (error) {
+          console.error("Error loading markdown:", error);
           setMarkdown("Error loading content.");
+        } finally {
+          setLoading(false);
         }
+      } else {
+        setMarkdown("This post has no content yet.");
+        setLoading(false);
       }
     };
 
@@ -48,7 +56,7 @@ const BlogPostPage = () => {
       <main className="pt-20 px-4 max-w-4xl mx-auto">
         {/* Top Back to Blog Link */}
         <div className="mb-6">
-          <Link to="/blog" className="text-[#FF65A3] hover:underline text-sm">
+          <Link to="/blog" aria-label="Back to Blog Posts" className="text-[#FF65A3] hover:underline text-sm">
             ← Back to Blog
           </Link>
         </div>
@@ -70,14 +78,18 @@ const BlogPostPage = () => {
 
         {/* Markdown Content */}
         <article className="prose prose-invert max-w-none mb-12">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>
-            {markdown}
-          </ReactMarkdown>
+          {loading ? (
+            <p className="text-gray-400">Loading...</p>
+          ) : (
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {markdown}
+            </ReactMarkdown>
+          )}
         </article>
 
         {/* Bottom Back to Blog Button */}
         <div className="text-center">
-          <Link to="/blog">
+          <Link to="/blog" aria-label="Return to Blog Overview">
             <button className="bg-[#5D3E7C] hover:bg-[#FF65A3] text-white px-6 py-2 rounded-full transition">
               ← Back to Blog
             </button>
@@ -92,4 +104,3 @@ const BlogPostPage = () => {
 };
 
 export default BlogPostPage;
-
