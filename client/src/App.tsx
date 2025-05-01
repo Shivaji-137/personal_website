@@ -9,7 +9,7 @@ import HomePage from "@/pages/HomePage";
 import ProjectsPage from "@/pages/ProjectsPage";
 import ResearchPage from "@/pages/ResearchPage";
 import BlogPage from "@/pages/BlogPage";
-import BlogPostPage from "@/blogpost/BlogPostPage";
+import BlogPostPage from "@/pages/BlogPostPage";
 import CVPage from "@/pages/CVPage";
 import ContactPage from "@/pages/ContactPage";
 import NotFound from "@/pages/not-found";
