@@ -64,7 +64,7 @@ const CosmicBackground = () => {
         rippleRadius = 0;
         rippleOpacity = 1;
         setShowText(true);
-        setTimeout(() => setShowText(false), 3000);
+        setTimeout(() => setShowText(false), 1000);
       }
 
       // Apply zoom effect
