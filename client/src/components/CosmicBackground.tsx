@@ -1,184 +1,176 @@
-import { useRef, useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-
-const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-  return isMobile;
-};
-
-// Ripple with crest/trough wave look
-const Ripple = ({ x, y }: { x: number; y: number }) => (
-  <motion.div
-    className="absolute rounded-full pointer-events-none"
-    style={{
-      left: x - 100,
-      top: y - 100,
-      width: 200,
-      height: 200,
-      background: 'transparent',
-      border: '2px solid rgba(255, 255, 255, 0.2)',
-      boxShadow: `
-        0 0 0 0 rgba(255, 255, 255, 0.2),
-        0 0 0 10px rgba(255, 255, 255, 0.1),
-        0 0 0 20px rgba(255, 255, 255, 0.05)
-      `,
-      zIndex: 5,
-    }}
-    initial={{ scale: 0.5, opacity: 0.8 }}
-    animate={{ scale: 2.5, opacity: 0 }}
-    transition={{ duration: 1.8, ease: 'easeOut' }}
-  />
-);
-
-const AccretionDisk = ({ size }: { size: number }) => (
-  <motion.div
-    className="absolute rounded-full"
-    style={{
-      width: size,
-      height: size,
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      background: `conic-gradient(from 0deg, #ffcc80, #ff4081, #7c4dff, #ffcc80)`,
-      filter: 'blur(30px) contrast(150%)',
-      opacity: 0.5,
-      zIndex: 1,
-      mixBlendMode: 'screen',
-    }}
-    animate={{ rotate: 360 }}
-    transition={{ repeat: Infinity, duration: 60, ease: 'linear' }}
-  />
-);
-
-const GravitationalLensing = ({ size }: { size: number }) => (
-  <div
-    className="absolute rounded-full"
-    style={{
-      width: size,
-      height: size,
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      border: '2px solid rgba(255, 255, 255, 0.05)',
-      boxShadow: '0 0 100px 20px rgba(255, 255, 255, 0.08)',
-      zIndex: 0,
-      pointerEvents: 'none',
-    }}
-  />
-);
-
-const BlackHoleCore = ({ size }: { size: number }) => (
-  <div
-    className="absolute rounded-full bg-black"
-    style={{
-      width: size,
-      height: size,
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      boxShadow: '0 0 60px 15px rgba(0, 0, 0, 0.9)',
-      zIndex: 13,
-    }}
-  />
-);
+import { useEffect, useRef, useState } from 'react';
 
 const CosmicBackground = () => {
-  const isMobile = useIsMobile();
-  const [isVisible, setIsVisible] = useState(false);
-  const [ripples, setRipples] = useState<{ x: number; y: number; id: number }[]>([]);
-  const rippleId = useRef(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animationRef = useRef<number>();
+  const starsRef = useRef<{ x: number; y: number; size: number }[]>([]);
+  const [showText, setShowText] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.some(entry => entry.isIntersecting);
-        setIsVisible(visible);
-      },
-      { threshold: 0.1 }
-    );
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const home = document.getElementById('home');
-    const about = document.getElementById('about');
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-    if (home) observer.observe(home);
-    if (about) observer.observe(about);
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    const resize = () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', resize);
+
+    if (starsRef.current.length === 0) {
+      starsRef.current = Array.from({ length: 300 }).map(() => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * 1.5 + 0.5,
+      }));
+    }
+
+    const blackHoles = [
+      { x: width * 0.4, y: height * 0.5, radius: 60 },
+      { x: width * 0.6, y: height * 0.5, radius: 60 },
+    ];
+
+    const particles = Array.from({ length: 200 }).map((_, i) => {
+      const bhIndex = i % 2;
+      const angle = Math.random() * Math.PI * 2;
+      const radius = 80 + Math.random() * 120;
+      return {
+        bh: bhIndex,
+        angle,
+        radius,
+        colorOffset: Math.random(),
+        shrunk: false,
+      };
+    });
+
+    let t = 0;
+    let rippleEmitted = false;
+    let rippleRadius = 0;
+    let rippleOpacity = 1;
+    let zoom = 1;
+
+    const draw = () => {
+      const merging = t > 500;
+      const centerX = width / 2;
+      const centerY = height / 2;
+
+      if (merging && !rippleEmitted) {
+        rippleEmitted = true;
+        rippleRadius = 0;
+        rippleOpacity = 1;
+        setShowText(true);
+        setTimeout(() => setShowText(false), 3000);
+      }
+
+      // Apply zoom effect
+      if (merging && zoom < 1.15) zoom += 0.0008;
+
+      ctx.save();
+      ctx.setTransform(zoom, 0, 0, zoom, width / 2 * (1 - zoom), height / 2 * (1 - zoom));
+
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.fillStyle = 'white';
+      starsRef.current.forEach((star) => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      if (!merging) {
+        blackHoles[0].x = centerX + Math.cos(t / 100) * (200 - t * 0.3);
+        blackHoles[0].y = centerY + Math.sin(t / 100) * (200 - t * 0.3);
+        blackHoles[1].x = centerX + Math.cos(t / 100 + Math.PI) * (200 - t * 0.3);
+        blackHoles[1].y = centerY + Math.sin(t / 100 + Math.PI) * (200 - t * 0.3);
+      }
+
+      if (rippleEmitted && rippleOpacity > 0) {
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, rippleRadius, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(255, 255, 255, ${rippleOpacity})`;
+        ctx.lineWidth = Math.max(0.5, 4 * rippleOpacity);
+        ctx.stroke();
+        rippleRadius += 6;
+        rippleOpacity -= 0.007;
+      }
+
+      if (!merging) {
+        blackHoles.forEach((bh) => {
+          ctx.beginPath();
+          ctx.arc(bh.x, bh.y, bh.radius, 0, Math.PI * 2);
+          ctx.fillStyle = '#000';
+          ctx.shadowColor = '#ff6600';
+          ctx.shadowBlur = 30;
+          ctx.fill();
+        });
+      } else {
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, 90, 0, Math.PI * 2);
+        ctx.fillStyle = '#000';
+        ctx.shadowColor = '#ff6600';
+        ctx.shadowBlur = 40;
+        ctx.fill();
+
+        // Lensing ring
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, 130, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+        ctx.lineWidth = 10;
+        ctx.stroke();
+      }
+
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+
+      ctx.globalCompositeOperation = 'lighter';
+      particles.forEach((p) => {
+        const bh = merging ? { x: centerX, y: centerY } : blackHoles[p.bh];
+        p.angle += 0.015;
+        if (merging && !p.shrunk) {
+          p.radius *= 0.9;
+          p.shrunk = true;
+        }
+
+        const px = bh.x + Math.cos(p.angle) * p.radius;
+        const py = bh.y + Math.sin(p.angle) * p.radius;
+
+        ctx.beginPath();
+        ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+        const red = Math.floor(200 + 55 * Math.sin(p.angle + p.colorOffset));
+        const green = Math.floor(100 + 100 * Math.cos(p.angle + p.colorOffset));
+        ctx.fillStyle = `rgba(${red}, ${green}, 60, 0.5)`;
+        ctx.fill();
+      });
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.restore();
+
+      t++;
+      animationRef.current = requestAnimationFrame(draw);
+    };
+
+    draw();
 
     return () => {
-      if (home) observer.unobserve(home);
-      if (about) observer.unobserve(about);
+      cancelAnimationFrame(animationRef.current!);
+      window.removeEventListener('resize', resize);
     };
   }, []);
 
-  // Mouse + Touch Support
-  useEffect(() => {
-    const handleEvent = (e: MouseEvent | TouchEvent) => {
-      if (!containerRef.current || !isVisible) return;
-
-      let clientX: number, clientY: number;
-      if ('touches' in e && e.touches.length > 0) {
-        clientX = e.touches[0].clientX;
-        clientY = e.touches[0].clientY;
-      } else if ('clientX' in e) {
-        clientX = e.clientX;
-        clientY = e.clientY;
-      } else {
-        return;
-      }
-
-      const rect = containerRef.current.getBoundingClientRect();
-      if (
-        clientX >= rect.left &&
-        clientX <= rect.right &&
-        clientY >= rect.top &&
-        clientY <= rect.bottom
-      ) {
-        const newRipple = {
-          x: clientX,
-          y: clientY,
-          id: rippleId.current++,
-        };
-        setRipples((prev) => [...prev, newRipple]);
-        setTimeout(() => {
-          setRipples((prev) => prev.filter((r) => r.id !== newRipple.id));
-        }, 1800);
-      }
-    };
-
-    document.addEventListener('mousemove', handleEvent);
-    document.addEventListener('touchstart', handleEvent);
-    return () => {
-      document.removeEventListener('mousemove', handleEvent);
-      document.removeEventListener('touchstart', handleEvent);
-    };
-  }, [isVisible]);
-
-  if (!isVisible) return null;
-
-  const baseSize = isMobile ? 200 : 300;
-
   return (
-    <div
-      ref={containerRef}
-      className="fixed top-0 left-0 w-full h-full z-0 overflow-hidden bg-black"
-      aria-hidden="true"
-    >
-      <AccretionDisk size={baseSize} />
-      <GravitationalLensing size={baseSize + 50} />
-      <BlackHoleCore size={isMobile ? 50 : 80} />
+    <>
+      <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full z-0" />
+      {showText && (
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-4xl md:text-6xl font-bold drop-shadow-lg z-10">
 
-      <AnimatePresence>
-        {ripples.map(({ x, y, id }) => (
-          <Ripple key={id} x={x} y={y} />
-        ))}
-      </AnimatePresence>
-    </div>
+        </div>
+      )}
+    </>
   );
 };
 
