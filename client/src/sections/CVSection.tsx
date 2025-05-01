@@ -164,6 +164,7 @@ const CVSection = () => {
                         <p className="text-xs text-gray-300">{exp.organization}</p>
                         <p className="text-xs text-gray-400">{exp.location}</p>
                         <p className="text-xs text-[#FF65A3] mt-1 font-medium">{exp.period}</p>
+                        {exp.certificate && (
                         <p><a
                               href={exp.certificate}
                               target="_blank"
@@ -172,6 +173,7 @@ const CVSection = () => {
                             >
                               <i className="ri-award-line mr-1"></i> Show certificate
                         </a></p>
+                        )}
 
                         {/* Toggle button */}
                         {exp.responsibilities && exp.responsibilities.length > 0 && (
