@@ -6,7 +6,7 @@ const blogPosts = [
     readTime: "8 min read",
     category: "Programming",
     tags: ["Python", "NumPy", "SciPy", "Physics Simulations"],
-    markdownPath: "/personal_website/public/markdown/1.md", // ✅ relative to public folder
+    markdownPath: "/markdown/1.md", // ✅ relative to public folder
   },
 ];
 
