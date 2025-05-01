@@ -39,7 +39,7 @@ const CVSection = () => {
               My academic and professional journey in physics and computation
             </p>
             <div className="flex justify-center">
-              <a href="/personal_website/shivajiCV.pdf" download>
+              <a href="src/assets/shivajiCV.pdf" download>
                 <Button className="bg-[#5D3E7C] text-white hover:bg-[#FF65A3] px-8 mr-4">
                   <i className="ri-download-line mr-2"></i> Download CV
                 </Button>
@@ -76,48 +76,61 @@ const CVSection = () => {
             <TabsContent value="education" className="mt-0">
               <motion.div 
                 variants={fadeIn('up')}
-                className="space-y-4"
+                className="relative flex flex-col items-center"
               >
-                {education.map((edu, index) => (
-                  <Card className="bg-[#080a0a] border-[#d4db9c] border p-4 transition-all duration-300 transform hover:scale-[1.02] hover:border-[#d4db9c] hover:shadow-[0_0_5px_#d4db9c]">
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-                    <div>
-                      <h3 className="text-lg font-bold text-white">{edu.degree}</h3>
-                      <p className="text-sm text-gray-300">{edu.institution}</p>
-                      <p className="text-gray-400">{edu.location}</p>
-                    </div>
-                    <p className="text-[#FF65A3] font-semibold mt-2 md:mt-0">{edu.year}</p>
-                  </div>
-            
-                  <button
-                    onClick={() => setExpanded(!expanded)}
-                    className="text-[#FF65A3] hover:text-white text-sm focus:outline-none transition-colors"
-                  >
-                    {expanded ? 'Hide Details ▲' : 'Show Details ▼'}
-                  </button>
-            
-                  {expanded && (
-                    <ul className="list-none pl-0 mt-4 space-y-2 text-gray-300 transition-all duration-300 ease-in-out">
-                      {edu.details.map((detail, i) =>
-                        detail.startsWith('Key coursework') ? (
-                          detail.split(':', 2)[1].split(',').map((course, j) => (
-                            <span key={j} className="bg-[#465163] text-white px-2 py-1 rounded-md text-xs inline-block mr-2 mb-1">
-                              {course.trim()}
-                            </span>
-                          ))
-                        ) : (
-                          <li key={i} className="flex items-center text-lg">
-                            <span className="mr-2">•</span>
-                            {detail}
-                          </li>
-                        )
-                      )}
-                    </ul>
-                  )}
-                </Card>
-                ))}
+                {/* Vertical line */}
+                <div className="absolute w-1 bg-[#d4db9c] h-full left-1/2 transform -translate-x-1/2 z-0"></div>
+
+                {education.map((exp, index) => {
+                  const isRight = index % 2 === 0;
+                  const [expanded, setExpanded] = useState(false); // ← local to each item doesn't persist across renders
+
+                  return (
+                    <motion.div 
+                      key={index}
+                      initial={{ opacity: 0, x: isRight ? 100 : -100 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6 }}
+                      className={`relative w-full md:w-1/2 px-4 py-6 z-10 ${isRight ? 'self-start md:pl-10' : 'self-end md:pr-10'}`}
+                    >
+                      {/* Physics-style dot badge */}
+                      <div
+                        className={`absolute top-16 w-3.5 h-3.5 rounded-full bg-[#d4db9c] border-2 border-[#d4db9c] z-12
+                          ${isRight ? 'right-[-7px]' : 'left-[-7px]'}
+                          shadow-[0_0_1px_#d4db9c,0_0_1px_#d4db9c]`}
+                      ></div>
+                      <div className="bg-[#080a0a] border-[#d4db9c] border p-2 md:p-6 rounded-xl shadow-md hover:scale-[1.02] transition-all duration-300 hover:border-[#d4db9c] hover:shadow-[0_0_5px_#d4db9c]">
+                        <h3 className="text-lg font-bold text-white mb-1">{exp.degree}</h3>
+                        <p className="text-xs text-gray-300">{exp.institution}</p>
+                        <p className="text-xs text-gray-400">{exp.location}</p>
+                        <p className="text-xs text-[#FF65A3] mt-1 font-medium">{exp.year}</p>
+
+                        {/* Toggle button */}
+                        {exp.details && exp.details.length > 0 && (
+                          <>
+                            <button
+                              onClick={() => setExpanded(!expanded)}
+                              className="text-[#d4db9c] hover:text-white text-sm mt-3 focus:outline-none transition-colors"
+                            >
+                              {expanded ? 'Hide details ▲' : 'Show details ▼'}
+                            </button>
+
+                            {expanded && (
+                              <ul className="list-disc pl-5 mt-4 space-y-2 text-gray-300 text-sm transition-all duration-300 ease-in-out">
+                                {exp.details.map((content, i) => (
+                                  <li key={i}>{content}</li>
+                                ))}
+                              </ul>
+                            )}
+                          </>
+                        )}
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </motion.div>
             </TabsContent>
+            
             
             {/* Experience */}
             <TabsContent value="experience" className="mt-0">
