@@ -134,7 +134,7 @@ const ResearchSection = () => {
                 <motion.div
                   key={index}
                   variants={fadeIn('up', index * 0.1)}
-                  className="bg-[#141B34] border-[#5D3E7C] border rounded-lg p-6 hover:border-[#FF65A3] transition-colors"
+                  className="bg-[#080a0a] border-[#5D3E7C] border rounded-lg p-6 hover:border-[#FF65A3] transition-colors"
                 >
                   <h4 className="text-xl font-semibold text-white mb-2">
                     {pub.title}
