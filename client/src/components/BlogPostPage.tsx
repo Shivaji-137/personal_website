@@ -6,7 +6,7 @@ import blogPosts from '@/data/blogPosts';
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import CosmicBackground from '@/components/CosmicBackground';
+import StarBackground from '@/components/StarBackground';
 import ScrollToTop from '@/components/ScrollToTop';
 
 const BlogPostPage = () => {
@@ -50,7 +50,7 @@ const BlogPostPage = () => {
 
   return (
     <div className="min-h-screen bg-[#08080a] text-white overflow-x-hidden">
-      <CosmicBackground />
+      <StarBackground />
       <Header />
 
       <main className="pt-20 px-4 max-w-4xl mx-auto">
