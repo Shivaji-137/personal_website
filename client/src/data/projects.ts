@@ -7,7 +7,7 @@ export interface Project {
     link: string;
     github: string;
     certificate:string;
-    information:string[];
+    information: { [key: string]: string }[];
   }
 export const projects: Project[] = [
   {
