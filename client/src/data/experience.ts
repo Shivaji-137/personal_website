@@ -5,6 +5,7 @@ export interface Experience {
     location: string;
     period: string;
     responsibilities: string[];
+    certificate: string;
   }
   
   export const experiences: Experience[] = [
@@ -18,6 +19,7 @@ export interface Experience {
         "Taught class 10 Science and Math",
         "Taught class 11-12 Physics and Math.",
       ],
+      certificate:""
     },
     {
       title: "2024 Aspire Leaders Program",
@@ -27,6 +29,7 @@ export interface Experience {
       responsibilities: [
         "Emerged with increased self confidence, sharpened crticial thinking skills, refined communication skills, and a desire to create a social impact among a global community ",
       ],
+      certificate: "/personal_website/certificates/shivaji_chaulagain_alp_2024_certificate_of_completion.pdf"
     },
     {
       title: "The President",
@@ -37,6 +40,7 @@ export interface Experience {
         "Established Mini library in three public places (Bhiman Hospital, Bhiman Police Area and Ward Municpality office) as 1 year plan but was extended later for another year.",
         "Conducted a cybersecurity awareness program in presence of field expertise as an event speaker, and class 9, 10 students of all school in Bhiman area as a target audience.",
       ],
+      certificate:""
     },
     {
       title: "Teacher",
@@ -46,6 +50,7 @@ export interface Experience {
       responsibilities: [
         "Taught math and science to lower secondary and secondary level students.",
       ],
+      certificate:""
     },
   ];
   
