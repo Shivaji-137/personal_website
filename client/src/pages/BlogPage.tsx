@@ -12,7 +12,7 @@ const BlogPage = () => {
 
   return (
     <div className="min-h-screen bg-[#08080a] text-white overflow-x-hidden">
-      <StarBackground />
+      {/* <StarBackground /> */}
       <Header />
       
       <main className="pt-20">
