@@ -1,64 +1,36 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { fadeIn, staggerContainer } from '@/lib/animations';
+import { projects } from '@/data/projects';
 
-const categories = ["All", "General Physics", "Data Science"];
-
-const projects = [
-  {
-    title: "Demonstration of Astronomical Software Tools Project",
-    description: "A comprehensive list of software tools and libraries that are essential for astronomical research and data analysis",
-    image: "gwave.jpg",
-    tags: ["Python", "Software", "Astronomy", "Physics"],
-    category: "General Physics",
-    link: "#",
-    github: "https://github.com/Shivaji-137/Astronomical-Software",
-    information:[]
-  },
-  {
-    title: "Google Scholar and arXiv Scraper for personal use only",
-    description: "This command line script (works in windows, linux) allows you to search for authors and titles on Google Scholar, open URLs in a browser, download available PDFs, and clear the console screen.",
-    image: "cmb.jpg",
-    tags: ["Python", "Web scraping", "Beautifulsoup", "Google Scholars", "ArXiv", "Pandas", "Command terminal"],
-    link: "#",
-    github: "https://github.com/Shivaji-137/Google-Scholars-Scraper",
-    information:[]
-  },
-  {
-    title: "Relational Database Project - Provided by freeCodeCamp",
-    description: "This project is provided by freeCodeCamp to help master relational databases, bash shell scripting and git.",
-    image: "quantum.jpg",
-    tags: ["SQL", "PostgreSQL", "Bash shell", "Linux","Git"],
-    category:"Data Science",
-    link: "#",
-    github: "https://github.com/Shivaji-137/Project_database_with_bashScript",
-    information:[
-      {"Build a Periodic Table Database":"https://github.com/Shivaji-137/Project_database_with_bashScript/tree/main/Build%20a%20Periodic%20Table%20Database"},
-      {"Build a Salon Appointment Scheduler":"https://github.com/Shivaji-137/Project_database_with_bashScript/tree/main/Build%20a%20Salon%20Appointment%20Scheduler"},
-      {"Celestial_bodies_database_project":"https://github.com/Shivaji-137/Project_database_with_bashScript/tree/main/Celestial_bodies_database_project"},
-      {"Worldcup_database_project":"https://github.com/Shivaji-137/Project_database_with_bashScript/tree/main/Worldcup_database_project"}
-    ]
-  },
-  {
-    title: "File sharing Network Over Same wifi - Scripts",
-    description: "A server_run.py is for accessing, downloading the files of your pc from another pc or mobile phones and uploading the files to the pc via wifi (no pendrive, additional secondary storage device needed), connected in same network (in same wifi/router)",
-    image: "cmb.jpg",
-    tags: ["Python", "Flask", "File Sharing", "Wifi", "Command terminal"],
-    link: "#",
-    github: "https://github.com/Shivaji-137/filesharingLANetworkOver_wifi",
-    information:[]
-  }
-];
+const categories = ['All', 'General Physics', 'Data Science'];
 
 const ProjectsSection = () => {
   const [activeCategory, setActiveCategory] = useState('All');
+  const [expandedIndexes, setExpandedIndexes] = useState<number[]>([]);
 
-  const filteredProjects = projects.filter(project => 
-    activeCategory === 'All' || project.category === activeCategory
+  const toggleExpand = (index: number) => {
+    setExpandedIndexes((prev) =>
+      prev.includes(index)
+        ? prev.filter((i) => i !== index)
+        : [...prev, index]
+    );
+  };
+
+  const filteredProjects = projects.filter(
+    (project) =>
+      activeCategory === 'All' || project.category === activeCategory
   );
 
   return (
@@ -70,29 +42,33 @@ const ProjectsSection = () => {
           animate="show"
           className="space-y-16"
         >
-          <motion.div 
+          {/* Header */}
+          <motion.div
             variants={fadeIn('up')}
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
-              Physics & Software Projects
+              Projects
             </h2>
             <p className="text-lg text-gray-300">
-              Exploring the universe through computational physics and software development. Here are some of my key projects combining physics and programming.
+              Exploring the universe through computational physics and software
+              development. Here are some of my key projects combining physics
+              and programming.
             </p>
           </motion.div>
 
+          {/* Tabs */}
           <motion.div variants={fadeIn('up')} className="mb-8">
-            <Tabs 
-              defaultValue="All" 
+            <Tabs
+              defaultValue="All"
               value={activeCategory}
               onValueChange={setActiveCategory}
               className="w-full"
             >
               <TabsList className="bg-[#141B34] border border-[#5D3E7C] p-1 w-full flex justify-center overflow-x-auto">
                 {categories.map((category) => (
-                  <TabsTrigger 
-                    key={category} 
+                  <TabsTrigger
+                    key={category}
                     value={category}
                     className="data-[state=active]:bg-[#5D3E7C] data-[state=active]:text-white px-4"
                   >
@@ -102,68 +78,140 @@ const ProjectsSection = () => {
               </TabsList>
             </Tabs>
           </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={index}
-                variants={fadeIn('up', index * 0.1)}
-                className="h-full"
-              >
-                <Card className="bg-[#141B34] border-[#5D3E7C] border h-full flex flex-col hover:border-[#FF65A3] transition-colors">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-xl md:text-2xl text-white">
-                      {project.title}
-                      <br></br>
-                      {project.title.startsWith("Relational") && (
-                        <Button>
-                          <a href='/personal_website/certificates/freecodecamp_Relationdatabase_certificate.png'><i className="ri-external-link-line mr-2 px-1"></i> Show certificate</a>
-                        </Button>
-                      )}
 
-                    </CardTitle>
-                    
-                    
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {project.tags.map((tag, i) => (
-                        <Badge key={i} variant="secondary" className="bg-[#5D3E7C] text-white hover:bg-[#7B52A4]">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardHeader>
-                  <CardContent className="flex-grow">
-                    <CardDescription className="text-gray-300 text-base">
-                      {project.description}
-                    </CardDescription>
-                  </CardContent>
-                  <CardFooter className="flex justify-between pt-2">
-                    <ul className="list-disc pl-5 space-y-2 text-gray-300">
-                        {project.information.map((content, i) => (
-                          <a href={Object.entries(content)[0][1]}><li className="text-white hover:bg-[#FF65A3] px-1" key={i}>{Object.entries(content)[0][0]}</li></a>
-                        ))}
-                    </ul>
-                    <Button variant="outline" className="border-[#5D3E7C] text-[#FF65A3] hover:bg-[#5D3E7C] hover:text-white">
-                      <i className="ri-github-line mr-2"></i><a href={project.github}>Code</a> 
-                    </Button>
-
-    
-                    
-                  </CardFooter>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-          
-          <motion.div 
+          {/* Timeline */}
+          <motion.div
             variants={fadeIn('up')}
-            className="text-center"
+            className="relative flex flex-col items-center"
           >
+            <div className="absolute w-1 bg-[#d4db9c] h-full left-1/2 transform -translate-x-1/2 z-0"></div>
+
+            {filteredProjects.map((project, index) => {
+              const isRight = index % 2 === 0;
+              const isExpanded = expandedIndexes.includes(index);
+              const hasInformation = project.information.length > 0;
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: isRight ? 100 : -100 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className={`relative w-full md:w-1/2 px-4 py-3 z-10 ${
+                    isRight ? 'self-start md:pl-10' : 'self-end md:pr-10'
+                  }`}
+                >
+                  <div
+                    className={`absolute top-6 w-3.5 h-3.5 rounded-full bg-[#d4db9c] border-2 border-[#d4db9c] z-12 ${
+                      isRight ? 'right-[-7px]' : 'left-[-7px]'
+                    } shadow-[0_0_1px_#d4db9c,0_0_1px_#d4db9c]`}
+                  ></div>
+
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                  >
+                    <Card className="bg-[#080a0a] border-[#d4db9c] border transition-all duration-300 overflow-hidden">
+                      <CardHeader className="pb-1 pt-4">
+                        <CardTitle className="text-xl md:text-2xl text-white">
+                          {project.title}
+                          {project.title.startsWith('Relational') && (
+                            <Button className="ml-2">
+                              <a
+                                href={project.certificate}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <i className="ri-external-link-line mr-2 px-1"></i>
+                                Show certificate
+                              </a>
+                            </Button>
+                          )}
+                        </CardTitle>
+                        <div className="flex flex-wrap gap-2 mt-2">
+                          {project.tags.map((tag, i) => (
+                            <Badge
+                              key={i}
+                              variant="secondary"
+                              className="bg-[#5D3E7C] text-white hover:bg-[#7B52A4]"
+                            >
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                      </CardHeader>
+
+                      <CardContent className="pt-0 pb-2">
+                        {isExpanded && (
+                          <>
+                            <CardDescription className="text-gray-300 text-base mb-3">
+                              {project.description}
+                            </CardDescription>
+                            {hasInformation && (
+                              <ul className="list-disc pl-5 space-y-2 text-gray-300">
+                                {project.information.map((content, i) => (
+                                  <a
+                                    key={i}
+                                    href={Object.entries(content)[0][1]}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    <li className="text-white hover:bg-[#FF65A3] px-1">
+                                      {Object.entries(content)[0][0]}
+                                    </li>
+                                  </a>
+                                ))}
+                              </ul>
+                            )}
+                          </>
+                        )}
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => toggleExpand(index)}
+                          className="text-[#FF65A3] mt-2 hover:bg-transparent hover:underline"
+                        >
+                          {isExpanded ? 'Hide Details' : 'Show Details'}
+                        </Button>
+                      </CardContent>
+
+                      <CardFooter className="flex justify-between pt-1 pb-4">
+                        <div></div>
+                        <Button
+                          variant="outline"
+                          className="border-[#5D3E7C] text-[#FF65A3] hover:bg-[#5D3E7C] hover:text-white"
+                        >
+                          <i className="ri-github-line mr-2"></i>
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Code
+                          </a>
+                        </Button>
+                      </CardFooter>
+                    </Card>
+                  </motion.div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+          {/* CTA */}
+          <motion.div variants={fadeIn('up')} className="text-center">
             <p className="text-gray-300 mb-6">
-              I'm always working on new projects combining physics and software. Check my GitHub for the latest updates!
+              I'm always working on new projects combining physics and software.
+              Check my GitHub for the latest updates!
             </p>
             <Button className="bg-[#5D3E7C] text-white hover:bg-[#FF65A3] px-8">
-              <a href="https://github.com/Shivaji-137"><i className="ri-github-line mr-2"></i> View All Projects</a>
+              <a
+                href="https://github.com/Shivaji-137"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="ri-github-line mr-2"></i> View All Projects
+              </a>
             </Button>
           </motion.div>
         </motion.div>
@@ -173,3 +221,4 @@ const ProjectsSection = () => {
 };
 
 export default ProjectsSection;
+
