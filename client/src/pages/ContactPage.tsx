@@ -1,6 +1,6 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import CosmicBackground from '@/components/CosmicBackground';
+import StarBackground from '@/components/StarBackground';
 import ContactSection from '@/sections/ContactSection';
 import ScrollToTop from '@/components/ScrollToTop';
 import { useEffect } from 'react';
@@ -12,7 +12,7 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-[#08080a] text-white overflow-x-hidden">
-      <CosmicBackground />
+      <StarBackground />
       <Header />
       
       <main className="pt-20">
