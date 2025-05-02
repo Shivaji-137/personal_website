@@ -87,7 +87,7 @@ const BlogSection = () => {
                   variants={fadeIn('up', index * 0.1)}
                   className="h-full"
                 >
-                  <Card className="bg-[#141B34] border-[#5D3E7C] border h-full flex flex-col hover:border-[#FF65A3] transition-colors">
+                  <Card className="bg-[#080a0a] border-[#d4db9c] border h-full flex flex-col hover:border-[#FF65A3] transition-colors">
                     {post.image && (
                       <img
                         src={post.image}
