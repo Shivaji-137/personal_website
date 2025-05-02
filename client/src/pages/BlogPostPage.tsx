@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import { blogPosts } from '@/data/blogPosts';
 
 import Header from '@/components/Header';
@@ -81,7 +81,7 @@ const BlogPostPage = () => {
           {loading ? (
             <p className="text-gray-400">Loading...</p>
           ) : (
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            <ReactMarkdown rehypePlugins={[rehypeRaw]}>
               {markdown}
             </ReactMarkdown>
           )}
