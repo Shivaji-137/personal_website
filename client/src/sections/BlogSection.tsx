@@ -7,29 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { fadeIn, staggerContainer } from '@/lib/animations';
 import { useState } from 'react';
-
-type BlogPost = {
-  id: number;
-  title: string;
-  excerpt: string;
-  date: string;
-  readTime: string;
-  category: string;
-  tags: string[];
-  image?: string;
-};
-
-const blogPosts: BlogPost[] = [
-  {
-    id: 1,
-    title: "The Python Libraries Every Physics Student Should Know",
-    excerpt: "Essential Python libraries for physics simulations, data analysis, and visualization that every student should master.",
-    date: "April 28, 2025",
-    readTime: "8 min read",
-    category: "Programming",
-    tags: ["Python", "NumPy", "SciPy", "Physics Simulations"]
-  },
-];
+import { blogPosts } from '@/data/blogPosts';
 
 const categories = ["All", "Physics", "Quantum Physics", "Mathematics", "Programming"];
 

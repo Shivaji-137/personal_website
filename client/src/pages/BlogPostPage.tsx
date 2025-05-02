@@ -2,7 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import blogPosts from '@/data/blogPosts';
+import { blogPosts } from '@/data/blogPosts';
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
