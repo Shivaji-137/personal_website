@@ -88,6 +88,13 @@ const BlogSection = () => {
                   className="h-full"
                 >
                   <Card className="bg-[#141B34] border-[#5D3E7C] border h-full flex flex-col hover:border-[#FF65A3] transition-colors">
+                    {post.image && (
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-48 object-cover"
+                      />
+                  ) }
                     <CardHeader className="pb-2">
                       <div className="flex justify-between items-start mb-2">
                         <Badge className="bg-[#5D3E7C] text-white hover:bg-[#7B52A4]">
