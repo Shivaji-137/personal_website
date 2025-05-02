@@ -20,7 +20,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "8 min read",
     category: "Programming",
     tags: ["Python", "NumPy", "SciPy", "Physics Simulations"],
-    markdownPath: "/markdown/1.md", // ✅ relative to public folder
+    markdownPath: "/personal_website/markdown/1.md", // ✅ relative to public folder
     image: "/personal_website/blog_images/python_library.png"
   },
 ];
