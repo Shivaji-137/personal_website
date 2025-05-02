@@ -25,7 +25,7 @@ export const blogPosts: BlogPost[] = [
 
   },
   {
-    id: 1,
+    id: 3,
     title: "The Python Libraries Every Physics Student Should Know",
     excerpt: "",
     date: "April 28, 2025",
