@@ -21,7 +21,7 @@ export const blogPosts: BlogPost[] = [
     category: "Programming",
     tags: ["Python", "Astropy", "DS9", "Lightkurve"],
     markdownPath: "/personal_website/markdown/2.md", // ✅ relative to public folder
-    image: "/personal_website/assets/jwst_pillar_ofcreation.jpg"
+    image: "/personal_website/blog_images/jwst_pillar_ofcreation.jpg"
 
   },
   {
