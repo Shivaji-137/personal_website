@@ -124,7 +124,7 @@ const ResearchSection = () => {
           <Separator className="bg-[#5D3E7C]" />
           
           {/* Publications */}
-          <motion.div variants={fadeIn('up')}>
+          {/* <motion.div variants={fadeIn('up')}>
             <h3 className="text-2xl md:text-3xl font-bold mb-8 text-white">
               Publications
             </h3>
@@ -148,11 +148,11 @@ const ResearchSection = () => {
                   <Button variant="link" className="text-[#FF65A3] p-0 h-auto">
                     {/* Read paper  */}
                     {/* <i className="ri-external-link-line ml-1"></i> */}
-                  </Button>
+                  {/* </Button>
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+          </motion.div> */} 
           
           <motion.div 
             variants={fadeIn('up')}
