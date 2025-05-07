@@ -13,6 +13,7 @@ import ProjectsSection from '@/sections/ProjectsSection';
 import ResearchSection from '@/sections/ResearchSection';
 import BlogSection from '@/sections/BlogSection';
 import CVSection from '@/sections/CVSection';
+import MyOdyssey from '@/sections/MyOdyssey';
 import ContactSection from '@/sections/ContactSection';
 
 const fadeInVariant = {
@@ -46,7 +47,7 @@ const HomePage = () => {
           <AboutSection />
         </InView>
 
-        {[ProjectsSection, ResearchSection, BlogSection, CVSection, ContactSection].map((Section, i) => (
+        {[ProjectsSection, ResearchSection, BlogSection, CVSection, MyOdyssey, ContactSection].map((Section, i) => (
           <InView key={i} triggerOnce>
             {({ inView, ref }) => (
               <motion.div

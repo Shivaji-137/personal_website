@@ -14,6 +14,7 @@ const links: NavLink[] = [
   { text: 'Research', href: '/research' },
   { text: 'Blog', href: '/blog' },
   { text: 'CV', href: '/cv' },
+  { text: 'My odyssey', href: '/Myodyssey' },
   { text: 'Contact', href: '/contact' },
 ];
 
