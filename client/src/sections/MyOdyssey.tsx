@@ -74,7 +74,7 @@ const MyOdyssey = () => {
             </TabsList>
           </Tabs>
         </motion.div>
-        <p>Comming soon ......</p>
+        <p>Updating soon ......</p>
 
         {/*
          <Tabs defaultValue="photos">

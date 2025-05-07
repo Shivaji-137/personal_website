@@ -21,7 +21,7 @@ const BlogSection = () => {
       post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
 
-    const matchesCategory = activeCategory === 'All' || post.category === activeCategory;
+    const matchesCategory = activeCategory === 'All' || post.category.includes(activeCategory);
 
     return matchesSearch && matchesCategory;
   });
@@ -37,7 +37,7 @@ const BlogSection = () => {
         >
           <motion.div variants={fadeIn('up')} className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
-              Physics Blog
+              Blog
             </h2>
             <p className="text-lg text-gray-300">
               Exploring the fascinating world of physics through accessible explanations and insights.
@@ -97,8 +97,11 @@ const BlogSection = () => {
                   ) }
                     <CardHeader className="pb-2">
                       <div className="flex justify-between items-start mb-2">
+                      <Badge className="bg-[#5D3E7C] text-white hover:bg-[#7B52A4]">
+                          {post.category[0]} 
+                        </Badge>
                         <Badge className="bg-[#5D3E7C] text-white hover:bg-[#7B52A4]">
-                          {post.category}
+                          {post.category[1]}
                         </Badge>
                         <div className="text-sm text-gray-400">
                           {post.date} • {post.readTime}
