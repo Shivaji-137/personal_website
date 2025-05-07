@@ -67,7 +67,7 @@ const ResearchSection = () => {
               Research
             </h2>
             <p className="text-lg text-gray-300">
-              My physics research focuses on gravitational waves, cosmology, and the intersection of quantum theory with general relativity.
+              My research focuses on gravitational waves, cosmology, and incorporating machine learning & deep learning into physics.
             </p>
           </motion.div>
           

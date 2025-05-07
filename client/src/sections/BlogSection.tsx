@@ -175,9 +175,9 @@ const BlogSection = () => {
             <p className="text-gray-300 mb-6">
               Want to stay updated with my latest physics articles and research? Subscribe to my newsletter!
             </p>
-            <Button className="bg-[#5D3E7C] text-white hover:bg-[#FF65A3] px-8">
+            {/* <Button className="bg-[#5D3E7C] text-white hover:bg-[#FF65A3] px-8">
               Subscribe <i className="ri-mail-line ml-2"></i>
-            </Button>
+            </Button> */}
           </motion.div>
         </motion.div>
       </div>
