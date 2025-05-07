@@ -20,8 +20,8 @@ export const blogPosts: BlogPost[] = [
     readTime: "8 min read",
     category: "Programming",
     tags: ["Python", "Astropy", "DS9", "Lightkurve"],
-    markdownPath: "/personal_website/markdown/2.md", // ✅ relative to public folder
-    image: "/personal_website/blog_images/assets/img/jwst_pillar_ofcreation.jpg"
+    markdownPath: "/markdown/2.md", // ✅ relative to public folder
+    image: "/blog_images/assets/img/jwst_pillar_ofcreation.jpg"
 
   },
   {
@@ -32,8 +32,8 @@ export const blogPosts: BlogPost[] = [
     readTime: "8 min read",
     category: "Programming",
     tags: ["Python", "NumPy", "SciPy", "Physics Simulations"],
-    markdownPath: "/personal_website/markdown/3.md", // ✅ relative to public folder
-    image: "/personal_website/blog_images/python_library.png"
+    markdownPath: "/markdown/3.md", // ✅ relative to public folder
+    image: "/blog_images/python_library.png"
   },
 ];
 
