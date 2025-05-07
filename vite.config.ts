@@ -16,7 +16,7 @@ export default defineConfig(async () => {
   }
 
   return {
-    base: "/personal_website/",
+    base: "/",
     plugins,
     resolve: {
       alias: {
