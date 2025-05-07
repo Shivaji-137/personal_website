@@ -39,7 +39,7 @@ const CVSection = () => {
               My academic and professional journey in physics and computation
             </p>
             <div className="flex justify-center">
-              <a href="/personal_website/shivajiCV.pdf" download>
+              <a href="/shivajiCV.pdf" download>
                 <Button className="bg-[#5D3E7C] text-white hover:bg-[#FF65A3] px-8 mr-4">
                   <i className="ri-download-line mr-2"></i> Download CV
                 </Button>

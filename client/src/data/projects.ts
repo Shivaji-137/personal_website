@@ -40,7 +40,7 @@ export const projects: Project[] = [
     category:"Data Science",
     link: "#",
     github: "https://github.com/Shivaji-137/Project_database_with_bashScript",
-    certificate:"/src/assets/my_learning_certificate/freecodecamp_Relationdatabase_certificate.png",
+    certificate:"/certificates/freecodecamp_Relationdatabase_certificate.png",
     information:[
       {"Build a Periodic Table Database":"https://github.com/Shivaji-137/Project_database_with_bashScript/tree/main/Build%20a%20Periodic%20Table%20Database"},
       {"Build a Salon Appointment Scheduler":"https://github.com/Shivaji-137/Project_database_with_bashScript/tree/main/Build%20a%20Salon%20Appointment%20Scheduler"},
