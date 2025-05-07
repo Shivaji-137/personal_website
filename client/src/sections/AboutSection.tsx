@@ -142,10 +142,10 @@ const AboutSection = () => {
               variants={itemVariants}
             >
               <button
-                onClick={() => navigate('/research')}
+                onClick={() => navigate('/projects')}
                 className="bg-[#5D3E7C] hover:bg-[#FF65A3] text-white font-medium px-6 py-2 rounded-md transition-colors font-space inline-flex items-center"
               >
-                <i className="ri-article-line mr-2"></i> Research Papers
+                <i className="ri-article-line mr-2"></i> View Projects
               </button>
               <button
                 onClick={() => navigate('/cv')}
