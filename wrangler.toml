@@ -1,8 +1,11 @@
 name = "personal-website"
-type = "module"
+type = "typescript"
 account_id = "b035b443ecf17d99c8b4118143569766"
 workers_dev = true
 compatibility_date = "2024-05-09"
+
+main = "src/worker.js"
+
 
 [[d1_databases]]
 binding = "contactform"
