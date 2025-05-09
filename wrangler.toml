@@ -1,4 +1,10 @@
 name = "personal-website"
-type = "javascript"
+type = "module"
 account_id = "b035b443ecf17d99c8b4118143569766"
-workers_dev = true 
+workers_dev = true
+compatibility_date = "2024-05-09"
+
+[[d1_databases]]
+binding = "contactform"
+database_name = "contactform"
+database_id = "b3c7137f-fca0-483f-9f7d-abcdfec7a26a"
