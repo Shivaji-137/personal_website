@@ -46,7 +46,7 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('https://shivajichaulagain.workers.dev', {
+      const response = await fetch('https://personal-website.shivajichaulagain.workers.dev', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
