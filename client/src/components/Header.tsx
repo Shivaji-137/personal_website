@@ -11,7 +11,7 @@ type NavLink = {
 const links: NavLink[] = [
   { text: 'About', href: '#about' },
   { text: 'Projects', href: '/projects' },
-  // { text: 'Research', href: '/research' },
+  { text: 'Research', href: '/research' },
   { text: 'Blog', href: '/blog' },
   { text: 'CV', href: '/cv' },
   { text: 'My odyssey', href: '/Myodyssey' },
