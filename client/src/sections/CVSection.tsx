@@ -55,9 +55,9 @@ const CVSection = () => {
               <TabsTrigger value="experience" className="data-[state=active]:bg-[#5D3E7C] data-[state=active]:text-white px-4">
                 Experience
               </TabsTrigger>
-              <TabsTrigger value="experience" className="data-[state=active]:bg-[#5D3E7C] data-[state=active]:text-white px-4">
-                Research Experience
-              </TabsTrigger>
+              {/* <TabsTrigger value="experience" className="data-[state=active]:bg-[#5D3E7C] data-[state=active]:text-white px-4">
+                Research
+              </TabsTrigger> */}
               <TabsTrigger value="skills" className="data-[state=active]:bg-[#5D3E7C] data-[state=active]:text-white px-4">
                 Skills
               </TabsTrigger>
