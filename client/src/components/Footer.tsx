@@ -11,8 +11,8 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#08080a] py-10 border-t border-[#1E2A45]">
-      <div className="container mx-auto px-4">
+    <footer className="bg-[#08080a] z-50 py-10 border-t border-[#1E2A45]">
+      <div className="container mx-auto px-1">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <a 
@@ -26,33 +26,26 @@ const Footer = () => {
               SHIVAJI<span className="text-[#FF65A3]">.</span>
             </a>
             <div className="flex gap-4 mt-2">
-              <a 
-                href="https://github.com/Shivaji-137" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#FF65A3] transition-colors"
-              >
-                <i className="ri-github-fill text-xl"></i>
-              </a>
-              <a 
-                href="https://www.linkedin.com/in/shivaji-chaulagain" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#FF65A3] transition-colors"
-              >
-                <i className="ri-linkedin-fill text-xl"></i>
-              </a>
-              <a 
-                href="mailto:shivajichaulagain@gmail.com"
-                className="text-gray-400 hover:text-[#FF65A3] transition-colors"
-              >
-                <i className="ri-mail-fill text-xl"></i>
-              </a>
+              {[
+                { href: "https://github.com/Shivaji-137", icon: "ri-github-fill" },
+                { href: "https://www.linkedin.com/in/shivaji-chaulagain", icon: "ri-linkedin-fill" },
+                { href: "mailto:shivajichaulagain@gmail.com", icon: "ri-mail-fill" },
+              ].map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-[#FF65A3] transition-colors text-3xl"
+                >
+                  <i className={item.icon}></i>
+                </a>
+              ))}
             </div>
           </div>
           
           <div className="flex flex-wrap justify-center gap-6">
-            {['about', 'projects', 'research', 'blog', 'cv', 'contact'].map((section) => (
+            {['about', 'projects', 'research', 'blog', 'cv', 'contact'].map((section, index) => (
               <a 
                 key={section}
                 href={`#${section}`}
@@ -60,7 +53,7 @@ const Footer = () => {
                   e.preventDefault();
                   smoothScrollTo(section);
                 }}
-                className="text-gray-300 hover:text-[#FF65A3] transition-colors"
+                className="text-gray-300 hover:text-[#FF65A3] transition-all text-lg md:text-xl font-semibold hover:scale-105"
               >
                 {section.charAt(0).toUpperCase() + section.slice(1)}
               </a>

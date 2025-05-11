@@ -61,9 +61,10 @@ const HomePage = () => {
             )}
           </InView>
         ))}
+        <Footer />
       </main>
 
-      <Footer />
+      {/* <Footer /> */}
       <ScrollToTop />
     </div>
   );
