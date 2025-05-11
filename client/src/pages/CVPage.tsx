@@ -15,11 +15,11 @@ const CVPage = () => {
       <StarBackground />
       <Header />
       
-      <main className="pt-20">
+      <main className="pt-20 relative z-10">
         <CVSection />
+        <Footer />
       </main>
       
-      <Footer />
       <ScrollToTop />
     </div>
   );

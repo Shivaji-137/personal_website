@@ -61,13 +61,14 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-[#1E2A45] mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm mb-4 md:mb-0">&copy; {new Date().getFullYear()} Shivaji Chaulagain . All rights reserved.</p>
+        <div className="border-t border-[#1E2A45] mt-8 pt-8 flex flex-col items-center justify-center text-center">
+          <p className="text-gray-400 text-sm mb-4">&copy; {new Date().getFullYear()} Shivaji Chaulagain. All rights reserved.</p>
           <div className="flex gap-4">
-            <a href="#" className="text-gray-400 hover:text-[#FF65A3] transition-colors text-sm">Privacy Policy</a>
-            <a href="#" className="text-gray-400 hover:text-[#FF65A3] transition-colors text-sm">Terms of Service</a>
+            {/* <a href="#" className="text-gray-400 hover:text-[#FF65A3] transition-colors text-sm">Privacy Policy</a>
+            <a href="#" className="text-gray-400 hover:text-[#FF65A3] transition-colors text-sm">Terms of Service</a> */}
           </div>
         </div>
+
       </div>
     </footer>
   );

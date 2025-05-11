@@ -15,11 +15,12 @@ const ResearchPage = () => {
       <StarBackground />
       <Header />
       
-      <main className="pt-20">
+      <main className="pt-20 relative z-10">
         <ResearchSection />
+        <Footer />
+
       </main>
       
-      <Footer />
       <ScrollToTop />
     </div>
   );
