@@ -9,7 +9,7 @@ import { fadeIn, staggerContainer } from '@/lib/animations';
 import { useState } from 'react';
 import { blogPosts } from '@/data/blogPosts';
 
-const categories = ["All", "Physics", "Quantum Physics", "Mathematics", "Programming"];
+const categories = ["All", "Physics", "Mathematics", "Programming"];
 
 const BlogSection = () => {
   const [searchQuery, setSearchQuery] = useState('');
