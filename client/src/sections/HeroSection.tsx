@@ -5,7 +5,7 @@ import { useState } from 'react';
 const NoticeBanner = () => {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const messages = [
-    '🚀 New Project is coming soon. Stay tuned!'
+    '🚀 New Project!!: Convolutional Neural Networks (CNNs) - Educational App'
   ];
 
   const bannerRef = useRef<HTMLDivElement>(null);
@@ -106,7 +106,7 @@ const NoticeBanner = () => {
         {messages.map((message, index) => (
           <span key={index} className="mr-8">
             🚀{' '}
-            <a className="hover:text-pink-400 no-underline">
+            <a href='https://shivaji-interactiveguide-to-cnn.streamlit.app/' className="hover:text-pink-400 no-underline">
               {message}
             </a>
           </span>
