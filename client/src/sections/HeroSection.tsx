@@ -106,7 +106,7 @@ const NoticeBanner = () => {
         {messages.map((message, index) => (
           <span key={index} className="mr-8">
             🚀{' '}
-            <a href='https://shivaji-interactiveguide-to-cnn.streamlit.app/' className="hover:text-pink-400 no-underline">
+            <a href='https://shivaji-interactiveguide-to-cnn.streamlit.app/' target="_blank" className="hover:text-pink-400 no-underline">
               {message}
             </a>
           </span>
