@@ -5,7 +5,7 @@ import { useState } from 'react';
 const NoticeBanner = () => {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const messages = [
-    '🚀 New Project!!: Convolutional Neural Networks (CNNs) - Educational App'
+    '🚀 New Project!!: Convolutional Neural Networks (CNNs) - Educational App', 'New Visualization Project coming soon!'
   ];
 
   const bannerRef = useRef<HTMLDivElement>(null);
