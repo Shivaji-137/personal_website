@@ -12,6 +12,18 @@ export interface BlogPost {
 
 
 export const blogPosts: BlogPost[] = [
+{
+    id: 1,
+    title: "From Fear to Focus: My Transformative Journey at the Future Front Educators Leadership Lab",
+    excerpt: "",
+    date: "Jun 6, 2025",
+    readTime: "5 min read",
+    category: ["Personal Development"],
+    tags: ["Leadership", "Effective communication", "Teaching Training", "Educators"],
+    markdownPath: "/markdown/1.md", // ✅ relative to public folder
+    image: "/blog_images/training.jpg"
+
+  },
   {
     id: 2,
     title: "A comprehensive list of astronomical software tools and libraries",

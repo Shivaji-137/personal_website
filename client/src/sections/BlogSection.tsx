@@ -9,7 +9,7 @@ import { fadeIn, staggerContainer } from '@/lib/animations';
 import { useState } from 'react';
 import { blogPosts } from '@/data/blogPosts';
 
-const categories = ["All", "Physics", "Mathematics", "Programming"];
+const categories = ["All", "Physics", "Mathematics", "Programming", "Personal Development"];
 
 const BlogSection = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -40,7 +40,7 @@ const BlogSection = () => {
               Blog
             </h2>
             <p className="text-lg text-gray-300">
-              Exploring the fascinating world of physics through accessible explanations and insights.
+              Exploring the fascinating world of me and physics through accessible explanations and insights.
             </p>
           </motion.div>
 
