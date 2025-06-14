@@ -28,7 +28,7 @@ const Footer = () => {
             <div className="flex gap-4 mt-2">
               {[
                 { href: "https://github.com/Shivaji-137", icon: "ri-github-fill" },
-                { href: "https://www.linkedin.com/in/shivaji-chaulagain", icon: "ri-linkedin-fill" },
+                { href: "https://www.linkedin.com/in/shivaji137/", icon: "ri-linkedin-fill" },
                 { href: "mailto:shivajichaulagain@gmail.com", icon: "ri-mail-fill" },
               ].map((item) => (
                 <a
