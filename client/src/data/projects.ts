@@ -11,6 +11,17 @@ export interface Project {
   }
 export const projects: Project[] = [
   {
+    title: "Nepal Foreign Trade Analytics Dashboard",
+    description: "This dashboard shows Nepal’s foreign trade from fiscal year 2071/72 to first 11 month of 2081/82 (Bikram Sambat). It explains how much Nepal imported and exported each year, the difference between them (trade balance), and changes in major products. The charts and summaries help understand how Nepal’s trade has changed over time.",
+    image: "gwave.jpg",
+    tags: ["Python", "Nepal Trade", "Dashboard", "Streamlit", "Data Visualization"],
+    category: "",
+    link: "https://nepal-foreign-trade-dashboard.streamlit.app/",
+    github: "https://github.com/Shivaji-137/nepal-foreign-trade-dashboard",
+    certificate: "",
+    information:[]
+  },
+  {
     title: "Demonstration of Astronomical Software Tools Project",
     description: "A comprehensive list of software tools and libraries that are essential for astronomical research and data analysis",
     image: "gwave.jpg",
