@@ -5,7 +5,7 @@ import { useState } from 'react';
 const NoticeBanner = () => {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const messages = [
-    '🚀 New Project!!: Nepal Foreign Trade Dashboard'
+    '🚀 New Updated Project!!: Nepal Foreign Trade Dashboard - React Based Web apps'
   ];
 
   const bannerRef = useRef<HTMLDivElement>(null);
@@ -106,7 +106,7 @@ const NoticeBanner = () => {
         {messages.map((message, index) => (
           <span key={index} className="mr-8">
             🚀{' '}
-            <a href='https://nepal-foreign-trade-dashboard.streamlit.app/' target="_blank" className="hover:text-pink-400 no-underline">
+            <a href='https://nepaltradedata.netlify.app/' target="_blank" className="hover:text-pink-400 no-underline">
               {message}
             </a>
           </span>
