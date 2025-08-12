@@ -11,6 +11,7 @@ import ResearchPage from "@/pages/ResearchPage";
 import BlogPage from "@/pages/BlogPage";
 import BlogPostPage from "@/pages/BlogPostPage";
 import CVPage from "@/pages/CVPage";
+import NotesPage from "@/pages/NotesPage"; 
 import MyOdysseyPage from "@/pages/MyOdysseyPage"; 
 import ContactPage from "@/pages/ContactPage";
 import NotFound from "@/pages/not-found";
@@ -28,6 +29,7 @@ function App() {
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blogpost/:id" element={<BlogPostPage />} />
             <Route path="/cv" element={<CVPage />} />
+            <Route path="/notes" element={<NotesPage />} />
             <Route path="/Myodyssey" element={<MyOdysseyPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<NotFound />} />
