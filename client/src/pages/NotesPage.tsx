@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import StarBackground from '@/components/StarBackground';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface TopicRowProps {
   title: string;
@@ -13,6 +14,7 @@ interface TopicRowProps {
 
 const TopicRow: React.FC<TopicRowProps> = ({ title, notesLink, practiceLink, solutionLink }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const isMobile = useIsMobile();
 
   return (
     <div className="border border-gray-700 rounded-lg mb-2 overflow-hidden">
@@ -25,16 +27,34 @@ const TopicRow: React.FC<TopicRowProps> = ({ title, notesLink, practiceLink, sol
       </div>
       {isExpanded && (
         <div className="p-4 bg-gray-800 border-t border-gray-700 flex flex-col space-y-2">
-          <a href={notesLink} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+          <a
+            href={notesLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            {...(isMobile && { download: true })}
+            className="text-blue-400 hover:underline"
+          >
             View Notes
           </a>
           {practiceLink && (
-            <a href={practiceLink} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+            <a
+              href={practiceLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              {...(isMobile && { download: true })}
+              className="text-blue-400 hover:underline"
+            >
               Practice Questions
             </a>
           )}
           {solutionLink && (
-            <a href={solutionLink} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">
+            <a
+              href={solutionLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              {...(isMobile && { download: true })}
+              className="text-blue-400 hover:underline"
+            >
               Solution
             </a>
           )}
