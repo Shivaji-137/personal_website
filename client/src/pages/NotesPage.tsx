@@ -99,7 +99,8 @@ const NotesPage: React.FC = () => {
 
         <div className="bg-gray-800 border border-gray-700 rounded-lg p-6">
           <h2 className="text-3xl font-bold mb-4">Statistics and Probability</h2>
-          <TopicRow title="Correlation Part" notesLink="/class12_math_notes/correlation_regression/classXII_Correlation_notes.pdf" />
+          <TopicRow title="Correlation Part" notesLink="/class12_math_notes/correlation_regression/classXII_Correlation_notes.pdf" practiceLink="/class12_math_notes/correlation_regression/correlation_exercise.pdf" />
+          <TopicRow title="Regression Part" notesLink="/class12_math_notes/correlation_regression/regression_notes.pdf" />
         </div>
       </div>
       <Footer />
