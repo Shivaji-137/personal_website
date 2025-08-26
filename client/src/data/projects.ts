@@ -10,9 +10,20 @@ export interface Project {
     information: { [key: string]: string }[];
   }
 export const projects: Project[] = [
+{
+    title: "CNN Visualization Educational App",
+    description: "This project is an interactive educational application for understanding Convolutional Neural Networks (CNNs). It provides visualizations, comparisons, and hands-on demonstrations of CNNs implemented from scratch and using popular deep learning libraries like TensorFlow and PyTorch.",
+    image: "gwave.jpg",
+    tags: ["Python", "CNN", "Pytorch", "Streamlit", "Data Visualization", "Tensorflow", "Neural Network"],
+    category: "",
+    link: "https://shivaji-interactiveguide-to-cnn.streamlit.app/",
+    github: "https://github.com/Shivaji-137/CNN-Visual-Learning-",
+    certificate: "",
+    information:[]
+  },
   {
     title: "Nepal Foreign Trade Analytics Dashboard",
-    description: "This dashboard shows Nepal’s foreign trade from fiscal year 2071/72 to first 11 month of 2081/82 (Bikram Sambat). It explains how much Nepal imported and exported each year, the difference between them (trade balance), and changes in major products. The charts and summaries help understand how Nepal’s trade has changed over time.",
+    description: "This dashboard shows Nepal’s foreign trade from fiscal year 2071/72 to 2081/82 (Bikram Sambat). It explains how much Nepal imported and exported each year, the difference between them (trade balance), and changes in major products. The charts and summaries help understand how Nepal’s trade has changed over time.",
     image: "gwave.jpg",
     tags: ["Python", "Nepal Trade", "Dashboard", "Streamlit", "Data Visualization"],
     category: "",
