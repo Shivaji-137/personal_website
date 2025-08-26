@@ -79,13 +79,13 @@ const AboutSection = () => {
               className="text-lg mb-6 text-gray-300"
               variants={itemVariants}
             >
-              I'm an undergraduate physics student passionate about gravitational wave analysis and data visualization. With a growing background in physics and programming, I enjoy exploring the intersection of scientific analysis and computational methods.
+              I'm an undergraduate physics student driven by curiosity and a passion for understanding the universe through data. I combine physics, programming, and visualization to explore phenomena, from Anderson localization in quasi-periodic 1D crystals and numerical simulations of physics equations to developing a CNN-based visualization learning app and a Nepal foreign trade analytics dashboard.
             </motion.p>
             <motion.p 
               className="text-lg mb-4 text-gray-300"
               variants={itemVariants}
             >
-              My undergraduate thesis focuses on gravitational wave signals from binary star coalescences, while my development work aims to create accessible tools that help visualize and understand complex astronomical data. I believe that making physics concepts accessible through visualization is key to inspiring more students to pursue scientific research.
+              My undergraduate thesis focuses on gravitational wave signals from binary star coalescences. With interests spanning astronomy, quantum mechanics, and computational modeling, I aim to create intuitive tools that make complex physics accessible and inspire deeper engagement with science.
             </motion.p>
 
             <motion.div 
