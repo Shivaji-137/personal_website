@@ -43,6 +43,13 @@ const ProjectsSection = () => {
       activeCategory === 'All' || project.category === activeCategory
   );
 
+  const isValidLink = (url?: string) => {
+    if (!url) return false;
+    const trimmed = url.trim();
+    if (trimmed === '' || trimmed === '#') return false;
+    return true;
+  };
+
   return (
     <section id="projects" className="py-20 relative z-10">
       <div className="container mx-auto px-4">
@@ -138,6 +145,24 @@ const ProjectsSection = () => {
                     }}
                   >
                     <Card className="bg-[#080a0a] border-[#d4db9c] border transition-all duration-300 overflow-hidden">
+                      {project.image && project.image.trim().length > 0 && (
+                        <div className="w-full h-44 md:h-52 overflow-hidden bg-[#030303] group relative">
+                          <img
+                            src={project.image.startsWith('http') ? project.image : project.image.startsWith('/') ? project.image : `/${project.image}`}
+                            alt={project.title}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                          {/* Hover overlay */}
+                          <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity flex items-center justify-center">
+                            <div className="text-white text-sm bg-[#00000080] px-3 py-1 rounded flex items-center gap-2">
+                              <i className="ri-eye-line"></i>
+                              <span>Open details</span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                       <CardHeader className="pb-1 pt-4">
                         <CardTitle className="text-xl md:text-2xl text-white">
                           {project.title}
@@ -201,21 +226,34 @@ const ProjectsSection = () => {
                         </Button>
                       </CardContent>
 
-                      <CardFooter className="flex justify-between pt-1 pb-4">
-                        <div></div>
-                        <Button
-                          variant="outline"
-                          className="border-[#5D3E7C] text-[#FF65A3] hover:bg-[#5D3E7C] hover:text-white"
-                        >
-                          <i className="ri-github-line mr-2"></i>
-                          <a
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Code
-                          </a>
-                        </Button>
+                      <CardFooter className="flex justify-between items-center pt-1 pb-4">
+                        <div>
+                          {isValidLink(project.link) && (
+                            <a
+                              href={project.link!.startsWith('http') ? project.link : `https://${project.link}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center px-3 py-1.5 bg-[#5D3E7C] text-white rounded hover:bg-[#FF65A3] transition"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <i className="ri-link-m" style={{marginRight:8}}></i>
+                              Visit Website
+                            </a>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          {project.github && (
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="inline-flex items-center px-4 py-2 border border-[#5D3E7C] text-[#FF65A3] hover:bg-[#5D3E7C] hover:text-white rounded"
+                            >
+                              <i className="ri-github-line mr-2"></i> Code
+                            </a>
+                          )}
+                        </div>
                       </CardFooter>
                     </Card>
                   </motion.div>
@@ -244,6 +282,18 @@ const ProjectsSection = () => {
                       >
                         <i className="ri-close-line text-2xl"></i>
                       </button>
+
+                      {project.image && project.image.trim().length > 0 && (
+                        <div className="w-full h-56 md:h-72 overflow-hidden rounded mb-4 bg-[#020202]">
+                          <img
+                            src={project.image.startsWith('http') ? project.image : project.image.startsWith('/') ? project.image : `/${project.image}`}
+                            alt={project.title}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                      )}
 
                       <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">{project.title}</h3>
 
@@ -306,6 +356,17 @@ const ProjectsSection = () => {
                       )}
 
                       <div className="flex gap-3 mt-4">
+                        {isValidLink(project.link) && (
+                          <a
+                            href={project.link!.startsWith('http') ? project.link : `https://${project.link}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center px-4 py-2 bg-[#5D3E7C] text-white hover:bg-[#FF65A3] rounded"
+                          >
+                            <i className="ri-link-m mr-2"></i> Visit Website
+                          </a>
+                        )}
+
                         {project.github && (
                           <a
                             href={project.github}

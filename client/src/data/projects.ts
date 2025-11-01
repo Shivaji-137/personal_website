@@ -16,7 +16,7 @@ export const projects: Project[] = [
     description: "This project is an interactive educational application for understanding Convolutional Neural Networks (CNNs). It provides visualizations, comparisons, and hands-on demonstrations of CNNs implemented from scratch and using popular deep learning libraries like TensorFlow and PyTorch.",
     image: "gwave.jpg",
     tags: ["Python", "CNN", "Pytorch", "Streamlit", "Data Visualization", "Tensorflow", "Neural Network"],
-    category: "",
+    category: "Data Science",
     link: "https://shivaji-interactiveguide-to-cnn.streamlit.app/",
     github: "https://github.com/Shivaji-137/CNN-Visual-Learning-",
     certificate: "",
@@ -44,14 +44,14 @@ export const projects: Project[] = [
     image: "gwave.jpg",
     tags: ["Python", "Nepal Trade", "Dashboard", "Streamlit", "Data Visualization"],
     category: "Data Science",
-    link: "https://nepal-foreign-trade-dashboard.streamlit.app/",
+    link: "https://nepaltradedata.netlify.app/",
     github: "https://github.com/Shivaji-137/nepal-foreign-trade-dashboard",
     certificate: "",
-    information:[]
+    information:[{"In python using streamlit":"https://nepal-foreign-trade-dashboard.streamlit.app/"}]
   },
   {
     title: "TargetScoreAI",
-    description: "An innovative educational technology platform that leverages AI to provide personalized IELTS preparation with adaptive learning, real-time feedback, and comprehensive progress tracking, in collaboration with Mahesh K. Neupane",
+    description: "An innovative educational technology platform that leverages AI to provide personalized IELTS preparation with adaptive learning, real-time feedback, and comprehensive progress tracking, in collaboration with Mahesh Kumar Neupane",
     image: "blog_images/targetscoreai.png",
     tags: ["AI/ML", "React", "TypeScript", "NLP", "Educational Tech"],
     category: "Data Science",
