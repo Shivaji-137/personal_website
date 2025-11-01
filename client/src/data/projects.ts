@@ -23,22 +23,6 @@ export const projects: Project[] = [
     information:[]
   },
   {
-    title: "Relational Database Project - Provided by freeCodeCamp",
-    description: "This project is provided by freeCodeCamp to help master relational databases, bash shell scripting and git.",
-    image: "project_image/rldbts.png",
-    tags: ["SQL", "PostgreSQL", "Bash shell", "Linux","Git"],
-    category:"Data Science",
-    link: "#",
-    github: "https://github.com/Shivaji-137/Project_database_with_bashScript",
-    certificate:"/certificates/freecodecamp_Relationdatabase_certificate.png",
-    information:[
-      {"Build a Periodic Table Database":"https://github.com/Shivaji-137/Project_database_with_bashScript/tree/main/Build%20a%20Periodic%20Table%20Database"},
-      {"Build a Salon Appointment Scheduler":"https://github.com/Shivaji-137/Project_database_with_bashScript/tree/main/Build%20a%20Salon%20Appointment%20Scheduler"},
-      {"Celestial_bodies_database_project":"https://github.com/Shivaji-137/Project_database_with_bashScript/tree/main/Celestial_bodies_database_project"},
-      {"Worldcup_database_project":"https://github.com/Shivaji-137/Project_database_with_bashScript/tree/main/Worldcup_database_project"}
-    ]
-  },
-  {
     title: "Nepal Foreign Trade Analytics Dashboard",
     description: "This dashboard shows Nepal’s foreign trade from fiscal year 2071/72 to 2081/82 (Bikram Sambat). It explains how much Nepal imported and exported each year, the difference between them (trade balance), and changes in major products. The charts and summaries help understand how Nepal’s trade has changed over time.",
     image: "project_image/nepalforeingtrade.png",
@@ -73,6 +57,24 @@ export const projects: Project[] = [
       }
     ]
   },
+  
+  {
+    title: "Relational Database Project - Provided by freeCodeCamp",
+    description: "This project is provided by freeCodeCamp to help master relational databases, bash shell scripting and git.",
+    image: "project_image/rldbts.png",
+    tags: ["SQL", "PostgreSQL", "Bash shell", "Linux","Git"],
+    category:"Data Science",
+    link: "#",
+    github: "https://github.com/Shivaji-137/Project_database_with_bashScript",
+    certificate:"/certificates/freecodecamp_Relationdatabase_certificate.png",
+    information:[
+      {"Build a Periodic Table Database":"https://github.com/Shivaji-137/Project_database_with_bashScript/tree/main/Build%20a%20Periodic%20Table%20Database"},
+      {"Build a Salon Appointment Scheduler":"https://github.com/Shivaji-137/Project_database_with_bashScript/tree/main/Build%20a%20Salon%20Appointment%20Scheduler"},
+      {"Celestial_bodies_database_project":"https://github.com/Shivaji-137/Project_database_with_bashScript/tree/main/Celestial_bodies_database_project"},
+      {"Worldcup_database_project":"https://github.com/Shivaji-137/Project_database_with_bashScript/tree/main/Worldcup_database_project"}
+    ]
+  },
+  
   {
     title: "Exoplanet Data Dashboard",
     description: "Explore various properties of exoplanets and their host stars using this interactive dashboard. Features include filtered datasets, distribution charts, scatter plots, and custom plotting options. Built with Astroquery and Streamlit using data from the NASA Exoplanet Archive.",
