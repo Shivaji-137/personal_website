@@ -27,6 +27,15 @@ const ProjectsSection = () => {
         : [...prev, index]
     );
   };
+  
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedProject(null);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+  
 
   const filteredProjects = projects.filter(
     (project) =>
@@ -196,6 +205,94 @@ const ProjectsSection = () => {
                 </motion.div>
               );
             })}
+          </motion.div>
+          
+          {/* Large modal view for a selected project */}
+            {selectedProject !== null && (
+              (() => {
+                const project = filteredProjects[selectedProject];
+                if (!project) return null;
+                return (
+                  <div className="fixed inset-0 z-50 flex items-center justify-center p-6">
+                    <div
+                      className="fixed inset-0 bg-black/70"
+                      onClick={() => setSelectedProject(null)}
+                      aria-hidden="true"
+                    ></div>
+
+                    <div className="relative z-60 max-w-4xl w-full bg-[#080a0a] border border-[#d4db9c] rounded-lg p-6 overflow-auto max-h-[90vh]">
+                      <button
+                        onClick={() => setSelectedProject(null)}
+                        className="absolute top-3 right-3 text-gray-300 hover:text-white bg-transparent p-2 rounded"
+                        aria-label="Close project details"
+                      >
+                        <i className="ri-close-line text-2xl"></i>
+                      </button>
+
+                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">{project.title}</h3>
+
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.tags.map((tag, i) => (
+                          <Badge
+                            key={i}
+                            variant="secondary"
+                            className="bg-[#5D3E7C] text-white"
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+
+                      <p className="text-gray-300 mb-4">{project.description}</p>
+
+                      {project.information && project.information.length > 0 && (
+                        <div className="mb-4">
+                          <h4 className="text-white mb-2">Resources</h4>
+                          <ul className="list-disc pl-5 space-y-2 text-gray-300">
+                            {project.information.map((content, i) => (
+                              <li key={i}>
+                                <a
+                                  href={Object.entries(content)[0][1]}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-white hover:underline"
+                                >
+                                  {Object.entries(content)[0][0]}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      <div className="flex gap-3 mt-4">
+                        {project.github && (
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center px-4 py-2 border border-[#5D3E7C] text-[#FF65A3] hover:bg-[#5D3E7C] hover:text-white rounded"
+                          >
+                            <i className="ri-github-line mr-2"></i> View Code
+                          </a>
+                        )}
+
+                        {project.certificate && (
+                          <a
+                            href={project.certificate}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center px-4 py-2 bg-[#5D3E7C] text-white hover:bg-[#FF65A3] rounded"
+                          >
+                            <i className="ri-external-link-line mr-2"></i> Certificate
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })()
+            )}
           </motion.div>
 
           {/* CTA */}
