@@ -141,7 +141,7 @@ const ProjectsSection = () => {
                       <CardHeader className="pb-1 pt-4">
                         <CardTitle className="text-xl md:text-2xl text-white">
                           {project.title}
-                          {project.title.startsWith('Relational') && (
+                          {project.certificate && project.certificate.length > 0 && (
                             <Button className="ml-2">
                               <a
                                 href={project.certificate}
@@ -260,6 +260,30 @@ const ProjectsSection = () => {
                       </div>
 
                       <p className="text-gray-300 mb-4">{project.description}</p>
+
+                      {project.achievements && project.achievements.length > 0 && (
+                        <div className="mb-4">
+                          <h4 className="text-white mb-3">Achievements</h4>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {project.achievements.map((ach, i) => (
+                              <div
+                                key={i}
+                                className="p-4 bg-gradient-to-r from-[#0b1220] to-[#081018] border border-[#2b2b3a] rounded-lg shadow-sm"
+                              >
+                                <div className="flex items-center justify-between">
+                                  <div className="text-lg font-semibold text-[#FF65A3]">{ach.title}</div>
+                                  <div className="text-sm text-gray-400">&nbsp;</div>
+                                </div>
+                                <ul className="mt-2 text-gray-300 list-none pl-0">
+                                  {ach.details.map((d, j) => (
+                                    <li key={j} className="text-sm text-gray-200/90">{d}</li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
 
                       {project.information && project.information.length > 0 && (
                         <div className="mb-4">
