@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Card,
   CardContent,
@@ -19,6 +19,7 @@ const categories = ['All', 'General Physics', 'Data Science'];
 const ProjectsSection = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [expandedIndexes, setExpandedIndexes] = useState<number[]>([]);
+  const [selectedProject, setSelectedProject] = useState<number | null>(null);
 
   const toggleExpand = (index: number) => {
     setExpandedIndexes((prev) =>
@@ -27,7 +28,8 @@ const ProjectsSection = () => {
         : [...prev, index]
     );
   };
-  
+
+  // close modal on Escape
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setSelectedProject(null);
@@ -35,7 +37,6 @@ const ProjectsSection = () => {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, []);
-  
 
   const filteredProjects = projects.filter(
     (project) =>
@@ -119,6 +120,22 @@ const ProjectsSection = () => {
                   <motion.div
                     whileHover={{ scale: 1.03 }}
                     transition={{ type: 'spring', stiffness: 300 }}
+                    // clicking the card opens a focused large view modal
+                    onClick={(e) => {
+                      // don't open modal when clicking links or buttons inside the card
+                      const target = e.target as HTMLElement;
+                      if (target.closest('a, button')) return;
+                      setSelectedProject(index);
+                    }}
+                    className="cursor-pointer"
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setSelectedProject(index);
+                      }
+                    }}
                   >
                     <Card className="bg-[#080a0a] border-[#d4db9c] border transition-all duration-300 overflow-hidden">
                       <CardHeader className="pb-1 pt-4">
@@ -205,9 +222,8 @@ const ProjectsSection = () => {
                 </motion.div>
               );
             })}
-          </motion.div>
-          
-          {/* Large modal view for a selected project */}
+
+            {/* Large modal view for a selected project */}
             {selectedProject !== null && (
               (() => {
                 const project = filteredProjects[selectedProject];
