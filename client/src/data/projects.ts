@@ -14,7 +14,7 @@ export const projects: Project[] = [
 {
     title: "CNN Visualization Educational App",
     description: "This project is an interactive educational application for understanding Convolutional Neural Networks (CNNs). It provides visualizations, comparisons, and hands-on demonstrations of CNNs implemented from scratch and using popular deep learning libraries like TensorFlow and PyTorch.",
-    image: "gwave.jpg",
+    image: "blob_images/cnn.png",
     tags: ["Python", "CNN", "Pytorch", "Streamlit", "Data Visualization", "Tensorflow", "Neural Network"],
     category: "Data Science",
     link: "https://shivaji-interactiveguide-to-cnn.streamlit.app/",
@@ -25,7 +25,7 @@ export const projects: Project[] = [
   {
     title: "Relational Database Project - Provided by freeCodeCamp",
     description: "This project is provided by freeCodeCamp to help master relational databases, bash shell scripting and git.",
-    image: "quantum.jpg",
+    image: "blob_images/rldbts.png",
     tags: ["SQL", "PostgreSQL", "Bash shell", "Linux","Git"],
     category:"Data Science",
     link: "#",
@@ -41,7 +41,7 @@ export const projects: Project[] = [
   {
     title: "Nepal Foreign Trade Analytics Dashboard",
     description: "This dashboard shows Nepal’s foreign trade from fiscal year 2071/72 to 2081/82 (Bikram Sambat). It explains how much Nepal imported and exported each year, the difference between them (trade balance), and changes in major products. The charts and summaries help understand how Nepal’s trade has changed over time.",
-    image: "gwave.jpg",
+    image: "blob_images/nepalforeingtrade.png",
     tags: ["Python", "Nepal Trade", "Dashboard", "Streamlit", "Data Visualization"],
     category: "Data Science",
     link: "https://nepaltradedata.netlify.app/",
@@ -76,7 +76,7 @@ export const projects: Project[] = [
   {
     title: "Demonstration of Astronomical Software Tools Project",
     description: "A comprehensive list of software tools and libraries that are essential for astronomical research and data analysis",
-    image: "gwave.jpg",
+    image: "",
     tags: ["Python", "Software", "Astronomy", "Physics"],
     category: "General Physics",
     link: "#",
@@ -87,7 +87,7 @@ export const projects: Project[] = [
   {
     title: "Google Scholar and arXiv Scraper for personal use only",
     description: "This command line script (works in windows, linux) allows you to search for authors and titles on Google Scholar, open URLs in a browser, download available PDFs, and clear the console screen.",
-    image: "cmb.jpg",
+    image: "",
     tags: ["Python", "Web scraping", "Beautifulsoup", "Google Scholars", "ArXiv", "Pandas", "Command terminal"],
     category: "",
     link: "#",
@@ -99,7 +99,7 @@ export const projects: Project[] = [
   {
     title: "File sharing Network Over Same wifi - Scripts",
     description: "A server_run.py is for accessing, downloading the files of your pc from another pc or mobile phones and uploading the files to the pc via wifi (no pendrive, additional secondary storage device needed), connected in same network (in same wifi/router)",
-    image: "cmb.jpg",
+    image: "",
     tags: ["Python", "Flask", "File Sharing", "Wifi", "Command terminal"],
     category: "",
     link: "#",
