@@ -14,7 +14,7 @@ export const projects: Project[] = [
 {
     title: "CNN Visualization Educational App",
     description: "This project is an interactive educational application for understanding Convolutional Neural Networks (CNNs). It provides visualizations, comparisons, and hands-on demonstrations of CNNs implemented from scratch and using popular deep learning libraries like TensorFlow and PyTorch.",
-    image: "blob_images/cnn.png",
+    image: "blog_images/cnn.png",
     tags: ["Python", "CNN", "Pytorch", "Streamlit", "Data Visualization", "Tensorflow", "Neural Network"],
     category: "Data Science",
     link: "https://shivaji-interactiveguide-to-cnn.streamlit.app/",
@@ -25,7 +25,7 @@ export const projects: Project[] = [
   {
     title: "Relational Database Project - Provided by freeCodeCamp",
     description: "This project is provided by freeCodeCamp to help master relational databases, bash shell scripting and git.",
-    image: "blob_images/rldbts.png",
+    image: "blog_images/rldbts.png",
     tags: ["SQL", "PostgreSQL", "Bash shell", "Linux","Git"],
     category:"Data Science",
     link: "#",
@@ -41,7 +41,7 @@ export const projects: Project[] = [
   {
     title: "Nepal Foreign Trade Analytics Dashboard",
     description: "This dashboard shows Nepal’s foreign trade from fiscal year 2071/72 to 2081/82 (Bikram Sambat). It explains how much Nepal imported and exported each year, the difference between them (trade balance), and changes in major products. The charts and summaries help understand how Nepal’s trade has changed over time.",
-    image: "blob_images/nepalforeingtrade.png",
+    image: "blog_images/nepalforeingtrade.png",
     tags: ["Python", "Nepal Trade", "Dashboard", "Streamlit", "Data Visualization"],
     category: "Data Science",
     link: "https://nepaltradedata.netlify.app/",
@@ -71,6 +71,21 @@ export const projects: Project[] = [
         title: "1st Global Position",
         details: ["Weekly Showcase Winner"]
       }
+    ]
+  },
+  {
+    title: "Exoplanet Data Dashboard",
+    description: "Explore various properties of exoplanets and their host stars using this interactive dashboard. Features include filtered datasets, distribution charts, scatter plots, and custom plotting options. Built with Astroquery and Streamlit using data from the NASA Exoplanet Archive.",
+    image: "blog_images/exoplanet_dashboard.png",
+    tags: ["Python", "Streamlit", "Astroquery", "Data Visualization", "Astronomy"],
+    category: "General Physics",
+    link: "https://shivaji-exoplanet-dashboard.streamlit.app/",
+    github: "",
+    certificate: "",
+    information:[
+      {"Data Source - NASA Exoplanet Archive":"https://exoplanetarchive.ipac.caltech.edu/"},
+      {"Astroquery":"https://astroquery.readthedocs.io/"},
+      {"Streamlit":"https://streamlit.io/"}
     ]
   },
   {
