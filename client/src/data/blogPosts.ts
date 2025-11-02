@@ -13,7 +13,7 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
 {
-    id: 4,
+    id: 1,
     title: "Nepal Trade Dashboard: Making Trade Data Easy to Understand",
     excerpt: "",
     date: "July 7, 2025",
@@ -24,7 +24,7 @@ export const blogPosts: BlogPost[] = [
     image: "/blog_images/trade_background.png"
   },
 {
-    id: 1,
+    id: 2,
     title: "From Fear to Focus: My Transformative Journey at the Future Front Educators Leadership Lab",
     excerpt: "",
     date: "Jun 6, 2025",
@@ -35,7 +35,7 @@ export const blogPosts: BlogPost[] = [
     image: "/blog_images/training.jpg"
   },
   {
-    id: 2,
+    id: 3,
     title: "A comprehensive list of astronomical software tools and libraries",
     excerpt: "",
     date: "April 28, 2025",
@@ -47,7 +47,7 @@ export const blogPosts: BlogPost[] = [
 
   },
   {
-    id: 3,
+    id: 4,
     title: "The Python Libraries Every Physics Student Should Know",
     excerpt: "",
     date: "April 28, 2025",
@@ -58,7 +58,7 @@ export const blogPosts: BlogPost[] = [
     image: "/blog_images/python_library.png"
   },
   {
-    id: 4,
+    id: 5,
     title: "Digital Resilience: Building Safe and Smart Online Presence",
     excerpt: "",
     date: "Jan 9, 2024",
