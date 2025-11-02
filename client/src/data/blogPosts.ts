@@ -57,6 +57,17 @@ export const blogPosts: BlogPost[] = [
     markdownPath: "/markdown/3.md", // ✅ relative to public folder
     image: "/blog_images/python_library.png"
   },
+  {
+    id: 4,
+    title: "Digital Resilience: Building Safe and Smart Online Presence",
+    excerpt: "",
+    date: "Jan 9, 2024",
+    readTime: "5 min read",
+    category: ["Social work", "Personal growth"],
+    tags: ["Cybersecurity", "awareness", "secure", "community"],
+    markdownPath: "/markdown/5.md", // ✅ relative to public folder
+    image: "/blog_images/475083042_576946158569996_4307589784819904570_n.jpg"
+  },
 ];
 
 
