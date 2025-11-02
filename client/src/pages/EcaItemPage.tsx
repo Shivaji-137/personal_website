@@ -1,7 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { ecaData } from '@/data/ecaData';
 
@@ -65,7 +64,7 @@ const EcaItemPage = () => {
             <img src={item.link} alt={item.title} className="w-full object-contain" />
           ) : (
             <article className="prose prose-invert max-w-none">
-              <ReactMarkdown rehypePlugins={[rehypeRaw, remarkGfm]}>{markdown}</ReactMarkdown>
+              <ReactMarkdown rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
             </article>
           )}
         </div>
