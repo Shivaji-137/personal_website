@@ -20,16 +20,19 @@ const researchProjects = [
 const publications = [
   {
     title: "Comparative Study of Soft and Hard Boundary Constraints in Physics-Informed Neural Networks",
-    authors:
-      "Anish Dhamala*, Sarthak Bhattarai, Basanta Gurung, Chhuldim Hyolmo, Mahesh Kumar Neupane, Rupak Raj Lamichhane, <strong>Shivaji Chaulagain</strong>, and Bijay Sijapati Magar",
+    authors: [
+      "Anish Dhamala*, Sarthak Bhattarai, Basanta Gurung, Chhuldim Hyolmo, Mahesh Kumar Neupane, Rupak Raj Lamichhane, ",
+      <span key="shivaji" className="font-semibold text-white">Shivaji Chaulagain</span>,
+      ", and Bijay Sijapati Magar"
+    ],
     journal: "Heliyon (Elsevier)",
-    year: "Submitted, September 2025",
+    year: "September 2025",
     status: "Submitted",
     description:
       "This paper introduces a comparative framework for solving the Schrödinger equation using Physics-Informed Neural Networks (PINNs) with both soft and hard boundary constraints. It investigates the role of embedded physical and mathematical constraints in unsupervised neural network training, assessing performance across harmonic oscillator, Coulomb, and screened Coulomb potentials. The results demonstrate that while soft-constrained models effectively capture excited states, hard-constrained models converge faster when guided by physically informed ansatz structures. Adaptive learning rate scheduling further enhances both computational efficiency and predictive accuracy.",
     contribution:
       "I contributed to the model design, numerical benchmarking, adaptive learning rate integration, and assisted in manuscript writing and result validation.",
-    link: "" // Add DOI or publication link when available
+    link: ""
   }
 ];
 
@@ -124,7 +127,12 @@ const ResearchSection = () => {
                           {pub.status}
                         </Badge>
                       </div>
-                      <div className="flex flex-wrap gap-2 text-sm text-gray-400">
+
+                      {/* Authors under title */}
+                      <p className="text-gray-300 text-sm mt-2">{pub.authors}</p>
+
+                      {/* Journal and year */}
+                      <div className="flex flex-wrap gap-2 text-sm text-gray-400 mt-2">
                         <span>{pub.journal}</span>
                         <span>•</span>
                         <span>{pub.year}</span>
@@ -132,11 +140,6 @@ const ResearchSection = () => {
                     </CardHeader>
 
                     <CardContent>
-                      {/* Render authors with bold name */}
-                      <p
-                        className="text-gray-300 mb-2"
-                        dangerouslySetInnerHTML={{ __html: pub.authors }}
-                      />
                       <CardDescription className="text-gray-300 text-base mb-4 leading-relaxed">
                         {pub.description}
                       </CardDescription>
