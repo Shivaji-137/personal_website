@@ -67,7 +67,7 @@ const ResearchSection = () => {
               Research
             </h2>
             <p className="text-lg text-gray-300">
-              My research focuses on gravitational waves, cosmology, and incorporating machine learning & deep learning into physics.
+              My research focuses on quantum mechanics, cosmology, and incorporating machine learning & deep learning into physics.
             </p>
           </motion.div>
           
