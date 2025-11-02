@@ -8,7 +8,7 @@ import { Separator } from "@/components/ui/separator";
 const researchProjects = [
   {
     title: "A Comparative Data Analysis Of Gravitational Wave Signals From Binary Stars Coalescence Of GW170817, GW190521, and GW190814",
-    description: "The study seeks to examine gravitational wave signals collected by observatories such as LIGO and Virgo using modern computer techniques, including Fourier transforms and numerical simulations.",
+    description: "The study done for undergraduate thesis seeks to examine gravitational wave signals collected by observatories such as LIGO and Virgo using modern computer techniques, including Fourier transforms and numerical simulations.",
     status: "Completed",
     year: "2024",
     area: "Astronomy",
