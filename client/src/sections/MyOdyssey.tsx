@@ -32,7 +32,7 @@ const MyOdyssey = () => {
 
   const openEcaItem = (eca: any) => {
     // navigate to separate page for ECA item
-    navigate(`/eca/${eca.id}`);
+    return (<Link to={`/blogpost/${post.id}`} className="w-full"> </Link> )
   };
 
   return (
