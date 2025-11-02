@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
@@ -11,12 +12,13 @@ import { videoData } from '@/data/odysseyVideos';
 import { writingData } from '@/data/odysseyWritings';
 import { ecaData } from '@/data/ecaData';
 
-const categories = ['All', 'Nature', 'Adventure'];
+const categories = ['All', 'Nature', 'Adventure', 'Culture', 'Academic', 'Community'];
 
 
 const MyOdyssey = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
+  const navigate = useNavigate();
 
   const filterItems = (items: any[]) =>
     items.filter((item) => {
@@ -27,6 +29,11 @@ const MyOdyssey = () => {
       const matchesCategory = activeCategory === 'All' || item.category === activeCategory;
       return matchesSearch && matchesCategory;
     });
+
+  const openEcaItem = (eca: any) => {
+    // navigate to separate page for ECA item
+    navigate(`/eca/${eca.id}`);
+  };
 
   return (
     <section id = "myodyssey" className="py-20 relative z-10">
@@ -75,113 +82,37 @@ const MyOdyssey = () => {
               </TabsList>
             </Tabs>
           </motion.div>
-          <p>Updating soon ......</p>
+          {/* <p>Updating soon ......</p> */}
 
-          {/*
-          <Tabs defaultValue="photos">
+          <Tabs defaultValue="eca">
             <TabsList className="justify-center mb-8 flex flex-wrap gap-2">
-              <TabsTrigger value="photos">📸 Photos</TabsTrigger>
-              <TabsTrigger value="videos">🎥 Videos</TabsTrigger>
-              <TabsTrigger value="writings">✍️ Writings</TabsTrigger>
-              <TabsTrigger value="eca">🏅 ECA</TabsTrigger>
+              <TabsTrigger value="eca">🏅 Extracurricular</TabsTrigger>
             </TabsList>
 
-            
-            <TabsContent value="photos">
-              <motion.div
-                variants={fadeIn('up')}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
-                {filterItems(imageData).map((img) => (
-                  <Card key={img.id} className="bg-[#141B34] border border-[#5D3E7C] hover:border-[#FF65A3]">
-                    <img src={img.src} alt={img.title} className="w-full h-48 object-cover rounded-t" />
-                    <CardHeader>
-                      <div className="flex justify-between items-center mb-2">
-                        <Badge className="bg-[#5D3E7C] text-white">{img.category}</Badge>
-                        <span className="text-sm text-gray-400">{img.date}</span>
-                      </div>
-                      <CardTitle className="text-white">{img.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-gray-300">{img.description}</CardContent>
-                    <CardFooter className="flex gap-2 flex-wrap">
-                      {img.tags.map((tag: string, i: number) => (
-                        <span key={i} className="text-xs text-[#FF65A3]">#{tag}</span>
-                      ))}
-                    </CardFooter>
-                  </Card>
-                ))}
-              </motion.div>
-            </TabsContent>
-
-            <TabsContent value="videos">
-              <motion.div
-                variants={fadeIn('up')}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
-                {filterItems(videoData).map((video) => (
-                  <Card key={video.id} className="bg-[#141B34] border border-[#5D3E7C] hover:border-[#FF65A3]">
-                    <video controls className="w-full h-48 object-cover rounded-t">
-                      <source src={video.src} type="video/mp4" />
-                    </video>
-                    <CardHeader>
-                      <div className="flex justify-between items-center mb-2">
-                        <Badge className="bg-[#5D3E7C] text-white">{video.category}</Badge>
-                        <span className="text-sm text-gray-400">{video.date}</span>
-                      </div>
-                      <CardTitle className="text-white">{video.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-gray-300">{video.description}</CardContent>
-                    <CardFooter className="flex gap-2 flex-wrap">
-                      {video.tags.map((tag: string, i: number) => (
-                        <span key={i} className="text-xs text-[#FF65A3]">#{tag}</span>
-                      ))}
-                    </CardFooter>
-                  </Card>
-                ))}
-              </motion.div>
-            </TabsContent>
-
-            <TabsContent value="writings">
-              <motion.div
-                variants={fadeIn('up')}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
-                {writingData.map((item) => (
-                  <Card key={item.id} className="bg-[#141B34] border border-[#5D3E7C] hover:border-[#FF65A3]">
-                    <CardHeader>
-                      <div className="flex justify-between items-center mb-2">
-                        <Badge className="bg-[#5D3E7C] text-white">{item.type}</Badge>
-                        <span className="text-sm text-gray-400">{item.date}</span>
-                      </div>
-                      <CardTitle className="text-white">{item.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-gray-300 whitespace-pre-wrap">{item.content.slice(0, 200)}...</CardContent>
-                    <CardFooter className="flex gap-2 flex-wrap">
-                      {item.tags.map((tag: string, i: number) => (
-                        <span key={i} className="text-xs text-[#FF65A3]">#{tag}</span>
-                      ))}
-                    </CardFooter>
-                  </Card>
-                ))}
-              </motion.div>
-            </TabsContent>
-
+            {/* ECA (Extracurricular) content only */}
             <TabsContent value="eca">
               <motion.div
                 variants={fadeIn('up')}
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
               >
-                {filterItems(ecaData).map((eca) => (
-                  eca.type === 'blog' && eca.link ? (
-                    <a
-                      href={eca.link}
+                {(() => {
+                  const items = filterItems(ecaData);
+                  if (items.length === 0) return <div className="col-span-full text-center text-gray-400">No Extracurricular items found.</div>;
+                  return items.map((eca) => (
+                    <button
+                      type="button"
                       key={eca.id}
-                      className="block transition hover:scale-[1.02]"
+                      onClick={() => openEcaItem(eca)}
+                      className="block transition hover:scale-[1.02] text-left"
                     >
                       <Card className="bg-[#141B34] border border-[#5D3E7C] hover:border-[#FF65A3]">
+                        {eca.cover && (
+                          /* cover thumbnail */
+                          <img src={eca.cover} alt={`${eca.title} cover`} className="w-full h-40 object-cover rounded-t" />
+                        )}
                         <CardHeader>
                           <div className="flex justify-between items-center mb-2">
-                            <Badge className="bg-[#5D3E7C] text-white">{eca.type}</Badge>
+                            <Badge className="bg-[#5D3E7C] text-white">{eca.kind}</Badge>
                             <span className="text-sm text-gray-400">{eca.date}</span>
                           </div>
                           <CardTitle className="text-white">{eca.title}</CardTitle>
@@ -195,16 +126,15 @@ const MyOdyssey = () => {
                           ))}
                         </CardFooter>
                       </Card>
-                    </a>
-                  ) : null
-                ))}
+                    </button>
+                  ));
+                })()}
               </motion.div>
-            </TabsContent> 
-            */}
-
-          {/* </Tabs> */}
+            </TabsContent>
+          </Tabs>
         </motion.div>
       </div>
+      {/* modal removed — ECA items navigate to their own page */}
     </section>
   );
 };

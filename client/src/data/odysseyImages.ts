@@ -17,5 +17,26 @@ export const imageData = [
     tags: ['cityscape', 'japan', 'lights'],
     date: '2025-03-22',
   },
+  {
+    id: 'img-3',
+    title: 'Live Physics Demonstration — SXPC Nepal',
+    src: '/blog_images/physics_demo.jpg',
+    description: 'Students interacting with the Chladni plate and other live demonstrations at St. Xavier\'s College.',
+    category: 'Academic',
+    tags: ['physics', 'exhibition', 'sxpc'],
+    date: '2024-02-02',
+  },
+  /*
+  (moved to ECA)
+  {
+    id: 'img-3',
+    title: 'Live Physics Demonstration — SXPC Nepal',
+    src: '/blog_images/physics_demo.jpg',
+    description: 'Students interacting with the Chladni plate and other live demonstrations at St. Xavier\'s College.',
+    category: 'Academic',
+    tags: ['physics', 'exhibition', 'sxpc'],
+    date: '2024-02-02',
+  },
+  */
 ];
 

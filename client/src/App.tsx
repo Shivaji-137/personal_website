@@ -13,6 +13,7 @@ import BlogPostPage from "@/pages/BlogPostPage";
 import CVPage from "@/pages/CVPage";
 import NotesPage from "@/pages/NotesPage"; 
 import MyOdysseyPage from "@/pages/MyOdysseyPage"; 
+import EcaItemPage from '@/pages/EcaItemPage';
 import ContactPage from "@/pages/ContactPage";
 import NotFound from "@/pages/not-found";
 
