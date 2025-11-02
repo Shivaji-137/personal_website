@@ -14,37 +14,17 @@ const researchProjects = [
     area: "Astronomy",
     supervisor: "Dr. Shreeram Nagarkoti"
   }
-  // {
-  //   title: "Statistical Analysis of CMB Anisotropies",
-  //   description: "Statistical methods for analyzing temperature fluctuations in the cosmic microwave background radiation.",
-  //   status: "Completed",
-  //   year: "2023",
-  //   area: "Cosmology & Statistical Physics",
-  //   supervisor: "Dr. Michael Chen"
-  // },
-  // {
-  //   title: "Quantum Information in Black Hole Physics",
-  //   description: "Investigating the relationships between quantum information theory and black hole thermodynamics.",
-  //   status: "In Progress",
-  //   year: "2023-Present",
-  //   area: "Quantum Physics & General Relativity",
-  //   supervisor: "Prof. Elizabeth Taylor"
-  // }
 ];
 
 const publications = [
   {
-    title: "",
-    authors: "",
-    journal: "",
-    year: "",
-    link: ""
-  },
-  {
-    title: "",
-    authors: "",
-    journal: "",
-    year: "",
+    title: "Comparative Study of Soft and Hard Boundary Constraints in Physics-Informed Neural Networks",
+    authors: "Anish Dhamala*, Sarthak Bhattarai, Basanta Gurung, Chhuldim Hyolmo, Mahesh Kumar Neupane, Rupak Raj Lamichhane, " +
+             "<strong>Shivaji Chaulagain</strong>, and Bijay Sijapati Magar",
+    journal: "Heliyon (Elsevier), Submitted",
+    year: "September 2025",
+    description: "This research investigates efficient and accurate neural-network-based methods for solving the Schrödinger equation by embedding physical and mathematical constraints into unsupervised learning frameworks.",
+    contribution: "Implemented the PINN architecture using PyTorch, designed comparative experiments for soft vs. hard boundary conditions, and analyzed convergence behavior and eigenvalue accuracy",
     link: ""
   }
 ];
@@ -59,6 +39,7 @@ const ResearchSection = () => {
           animate="show"
           className="space-y-16"
         >
+          {/* Section Header */}
           <motion.div 
             variants={fadeIn('up')}
             className="text-center max-w-3xl mx-auto mb-16"
@@ -109,10 +90,11 @@ const ResearchSection = () => {
                       </CardDescription>
                       <p className="text-sm text-gray-400">
                         <span className="font-semibold">Supervisor:</span> {project.supervisor}
-                         
                       </p>
                       <Button variant="link" className="text-[#FF65A3] p-0 h-auto">
-                        <a href = "/research_file/finalfourthyearproject_shivaji.pdf">Read paper <i className="ri-external-link-line ml-1"></i></a>
+                        <a href="/research_file/finalfourthyearproject_shivaji.pdf" target="_blank" rel="noopener noreferrer">
+                          Read paper <i className="ri-external-link-line ml-1"></i>
+                        </a>
                       </Button>
                     </CardContent>
                   </Card>
@@ -124,7 +106,7 @@ const ResearchSection = () => {
           <Separator className="bg-[#5D3E7C]" />
           
           {/* Publications */}
-          {/* <motion.div variants={fadeIn('up')}>
+          <motion.div variants={fadeIn('up')}>
             <h3 className="text-2xl md:text-3xl font-bold mb-8 text-white">
               Publications
             </h3>
@@ -139,21 +121,35 @@ const ResearchSection = () => {
                   <h4 className="text-xl font-semibold text-white mb-2">
                     {pub.title}
                   </h4>
-                  <p className="text-gray-300 mb-1">{pub.authors}</p>
+                  <p className="text-gray-300 mb-1" dangerouslySetInnerHTML={{ __html: pub.authors }} />
                   <p className="text-gray-400 mb-4">
                     <span>{pub.journal}</span>
                     <span> </span>
                     <span>{pub.year}</span>
                   </p>
-                  <Button variant="link" className="text-[#FF65A3] p-0 h-auto">
-                    {/* Read paper  */}
-                    {/* <i className="ri-external-link-line ml-1"></i> */}
-                  {/* </Button>
+                  {pub.description && (
+                    <p className="text-gray-300 mb-3 text-sm">
+                      <span className="font-semibold text-white">Description:</span> {pub.description}
+                    </p>
+                  )}
+                  {pub.contribution && (
+                    <p className="text-gray-300 mb-3 text-sm">
+                      <span className="font-semibold text-white">My Contribution:</span> {pub.contribution}
+                    </p>
+                  )}
+                  {pub.link && (
+                    <Button variant="link" className="text-[#FF65A3] p-0 h-auto">
+                      <a href={pub.link} target="_blank" rel="noopener noreferrer">
+                        Read paper <i className="ri-external-link-line ml-1"></i>
+                      </a>
+                    </Button>
+                  )}
                 </motion.div>
               ))}
             </div>
-          </motion.div> */} 
+          </motion.div>
           
+          {/* Contact */}
           <motion.div 
             variants={fadeIn('up')}
             className="text-center"
