@@ -32,6 +32,7 @@ function App() {
             <Route path="/cv" element={<CVPage />} />
             <Route path="/notes" element={<NotesPage />} />
             <Route path="/Myodyssey" element={<MyOdysseyPage />} />
+            <Route path="/eca" element={<EcaItemPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
