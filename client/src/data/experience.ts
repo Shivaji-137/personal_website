@@ -26,7 +26,7 @@ export interface Experience {
       location: "Narephant, Kathmandu, Nepal",
       period: "2024-2025",
       responsibilities: [
-        "Taught BE (Engineering) Physics I, Math I",
+        "Taught BE civil Engineering Physics I, Math I, Math II",
         "Taught class 10 Science and Math",
         "Taught class 11-12 Physics and Math.",
       ],
