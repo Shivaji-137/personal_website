@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { fadeIn, staggerContainer } from '@/lib/animations';
@@ -19,12 +19,11 @@ const researchProjects = [
 const publications = [
   {
     title: "Comparative Study of Soft and Hard Boundary Constraints in Physics-Informed Neural Networks",
-    authors: "Anish Dhamala*, Sarthak Bhattarai, Basanta Gurung, Chhuldim Hyolmo, Mahesh Kumar Neupane, Rupak Raj Lamichhane, " +
-             "<strong>Shivaji Chaulagain</strong>, and Bijay Sijapati Magar",
+    authors: "Anish Dhamala*, Sarthak Bhattarai, Basanta Gurung, Chhuldim Hyolmo, Mahesh Kumar Neupane, Rupak Raj Lamichhane, Shivaji Chaulagain, and Bijay Sijapati Magar",
     journal: "Heliyon (Elsevier), Submitted",
     year: "September 2025",
     description: "This research investigates efficient and accurate neural-network-based methods for solving the Schrödinger equation by embedding physical and mathematical constraints into unsupervised learning frameworks.",
-    contribution: "Implemented the PINN architecture using PyTorch, designed comparative experiments for soft vs. hard boundary conditions, and analyzed convergence behavior and eigenvalue accuracy",
+    contribution: "I contributed to developing and benchmarking the physics-informed neural network models, focusing on the formulation and testing of hard-constrained ansatz structures for improved convergence.",
     link: ""
   }
 ];
@@ -51,7 +50,7 @@ const ResearchSection = () => {
               My research focuses on quantum mechanics, cosmology, and incorporating machine learning & deep learning into physics.
             </p>
           </motion.div>
-          
+
           {/* Research Projects */}
           <motion.div variants={fadeIn('up')}>
             <h3 className="text-2xl md:text-3xl font-bold mb-8 text-white">
@@ -102,54 +101,69 @@ const ResearchSection = () => {
               ))}
             </div>
           </motion.div>
-          
+
           <Separator className="bg-[#5D3E7C]" />
-          
+
           {/* Publications */}
           <motion.div variants={fadeIn('up')}>
             <h3 className="text-2xl md:text-3xl font-bold mb-8 text-white">
               Publications
             </h3>
-            
-            <div className="space-y-6">
-              {publications.map((pub, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeIn('up', index * 0.1)}
-                  className="bg-[#080a0a] border-[#5D3E7C] border rounded-lg p-6 hover:border-[#FF65A3] transition-colors"
-                >
-                  <h4 className="text-xl font-semibold text-white mb-2">
-                    {pub.title}
-                  </h4>
-                  <p className="text-gray-300 mb-1" dangerouslySetInnerHTML={{ __html: pub.authors }} />
-                  <p className="text-gray-400 mb-4">
-                    <span>{pub.journal}</span>
-                    <span> </span>
-                    <span>{pub.year}</span>
-                  </p>
-                  {pub.description && (
-                    <p className="text-gray-300 mb-3 text-sm">
-                      <span className="font-semibold text-white">Description:</span> {pub.description}
-                    </p>
-                  )}
-                  {pub.contribution && (
-                    <p className="text-gray-300 mb-3 text-sm">
-                      <span className="font-semibold text-white">My Contribution:</span> {pub.contribution}
-                    </p>
-                  )}
-                  {pub.link && (
-                    <Button variant="link" className="text-[#FF65A3] p-0 h-auto">
-                      <a href={pub.link} target="_blank" rel="noopener noreferrer">
-                        Read paper <i className="ri-external-link-line ml-1"></i>
-                      </a>
-                    </Button>
-                  )}
-                </motion.div>
-              ))}
+
+            <div className="space-y-8">
+              {publications.map((pub, index) => {
+                const highlightedAuthors = pub.authors.replace(
+                  /Shivaji Chaulagain/gi,
+                  "<strong>Shivaji Chaulagain</strong>"
+                );
+                
+                return (
+                  <motion.div
+                    key={index}
+                    variants={fadeIn('up', index * 0.1)}
+                  >
+                    <Card className="bg-[#141B34] border-[#5D3E7C] border hover:border-[#FF65A3] transition-colors">
+                      <CardHeader>
+                        <CardTitle className="text-xl md:text-2xl text-white mb-2">
+                          {pub.title}
+                        </CardTitle>
+                        <p
+                          className="text-gray-300 mb-2"
+                          dangerouslySetInnerHTML={{ __html: highlightedAuthors }}
+                        />
+                        <div className="flex flex-wrap gap-2 text-sm text-gray-400">
+                          <span>{pub.journal}</span>
+                          <span>•</span>
+                          <span>{pub.year}</span>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        {pub.description && (
+                          <CardDescription className="text-gray-300 text-base mb-3">
+                            <span className="font-semibold text-white">Description:</span> {pub.description}
+                          </CardDescription>
+                        )}
+                        {pub.contribution && (
+                          <p className="text-gray-300 text-sm mb-4">
+                            <span className="font-semibold text-white">My Contribution:</span> {pub.contribution}
+                          </p>
+                        )}
+                        {pub.link && (
+                          <Button variant="link" className="text-[#FF65A3] p-0 h-auto">
+                            <a href={pub.link} target="_blank" rel="noopener noreferrer">
+                              Read paper <i className="ri-external-link-line ml-1"></i>
+                            </a>
+                          </Button>
+                        )}
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
-          
-          {/* Contact */}
+
+          {/* Contact Section */}
           <motion.div 
             variants={fadeIn('up')}
             className="text-center"
