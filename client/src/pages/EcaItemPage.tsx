@@ -50,23 +50,11 @@ const EcaItemPage = () => {
         <p className="text-sm text-gray-400 mb-4">{item.date}</p>
 
         <div className="mb-8">
-          {item.cover && (
-            <div className="mb-6">
-              <img src={item.cover} alt={`${item.title} cover`} className="w-full h-64 object-cover rounded" />
-            </div>
-          )}
-
-          {item.kind === 'video' ? (
-            <video controls className="w-full max-h-[60vh]">
-              <source src={item.link} type="video/mp4" />
-            </video>
-          ) : item.kind === 'image' ? (
-            <img src={item.link} alt={item.title} className="w-full object-contain" />
-          ) : (
-            <article className="prose prose-invert max-w-none">
+          
+           <article className="prose prose-invert max-w-none">
               <ReactMarkdown rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
-            </article>
-          )}
+           </article>
+      
         </div>
       </main>
       <Footer />
