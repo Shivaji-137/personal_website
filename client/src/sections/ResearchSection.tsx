@@ -21,9 +21,9 @@ const publications = [
   {
     title: "Comparative Study of Soft and Hard Boundary Constraints in Physics-Informed Neural Networks",
     authors:
-      "Anish Dhamala*, Sarthak Bhattarai, Basanta Gurung, Chhuldim Hyolmo, Mahesh Kumar Neupane, Rupak Raj Lamichhane, **Shivaji Chaulagain**, and Bijay Sijapati Magar",
+      "Anish Dhamala*, Sarthak Bhattarai, Basanta Gurung, Chhuldim Hyolmo, Mahesh Kumar Neupane, Rupak Raj Lamichhane, <strong> Shivaji Chaulagain </strong>, and Bijay Sijapati Magar",
     journal: "Heliyon (Elsevier)",
-    year: "Submitted, September 2025",
+    year: "September 2025",
     status: "Submitted",
     description:
       "This paper introduces a comparative framework for solving the Schrödinger equation using Physics-Informed Neural Networks (PINNs) with both soft and hard boundary constraints. It investigates the role of embedded physical and mathematical constraints in unsupervised neural network training, assessing performance across harmonic oscillator, Coulomb, and screened Coulomb potentials. The results demonstrate that while soft-constrained models effectively capture excited states, hard-constrained models converge faster when guided by physically informed ansatz structures. Adaptive learning rate scheduling further enhances both computational efficiency and predictive accuracy.",
