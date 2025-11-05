@@ -97,7 +97,7 @@ const ResearchSection = () => {
                       {pub.link && (
                         <Button variant="link" className="text-[#FF65A3] p-0 h-auto">
                           <a href={pub.link} target="_blank" rel="noopener noreferrer">
-                            View Paper <i className="ri-external-link-line ml-1"></i>
+                            View Preprint <i className="ri-external-link-line ml-1"></i>
                           </a>
                         </Button>
                       )}
