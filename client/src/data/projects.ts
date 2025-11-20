@@ -10,6 +10,17 @@ export interface Project {
     information: { [key: string]: string }[];
   }
 export const projects: Project[] = [
+{
+    title: "GAAH Research Dashboard",
+    description: "This dashboard is part of my active independent research project titled “Machine Learning Framework for Time-Resolved Mobility Edges in 1D Quasiperiodic Systems.”",
+    image: "project_image/energyplot.png",
+    tags: ["Python", "Condensed Matter Physics", "Streamlit", "Data Visualization", "Quantum Mechanics", "GAAH model", "Quasiperiodic crystal", "Mobility Edge"],
+    category: "General Physics",
+    link: "https://gaahmodelml-researchproject.streamlit.app/",
+    github: "https://github.com/shivaji-137/gaah-dashboard/",
+    certificate: "",
+    information:[]
+  },
 
 {
     title: "CNN Visualization Educational App",
