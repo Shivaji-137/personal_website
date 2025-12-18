@@ -5,7 +5,7 @@ import { useState } from 'react';
 const NoticeBanner = () => {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const messages = [
-    '🚀 New Independent Research Project!!: GAAH Research Dashboard - Streamlit python Based Web apps'
+    '🚀 New Astronomical Research Project- Visuaization!!:Galaxies & AGN Multi-Survey Explorer - Streamlit python Based Web apps'
   ];
 
   const bannerRef = useRef<HTMLDivElement>(null);

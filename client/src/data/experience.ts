@@ -10,13 +10,24 @@ export interface Experience {
   
   export const experiences: Experience[] = [
   {
-      title: "Parttime Lecturer in Mathematics",
-      organization: "KU city Secondary School/College",
+      title: "Part-time Lecturer in Mathematics",
+      organization: "KU City Secondary School/College",
       location: "Chabahil, Kathmandu, Nepal",
       period: "2025-",
       responsibilities: [
-        "Teaching business math to class 12(management faculty)",
-        "Teaching class 10 Compulsory and Optional Math",
+        "Teaching physics to high school students (class 11 & 12)",
+        "Teaching business math to high school students (class 12)",
+        "Teaching secondary level students C.Math and Optional Math",
+      ],
+      certificate:""
+    },
+    {
+      title: "Part-time Teacher in Mathematics",
+      organization: "Miniland Secondary School",
+      location: "Chalkhu, Kathmandu, Nepal",
+      period: "2025-",
+      responsibilities: [
+        "Teaching secondary level students C.Math",
       ],
       certificate:""
     },
@@ -26,9 +37,9 @@ export interface Experience {
       location: "Narephant, Kathmandu, Nepal",
       period: "2024-2025",
       responsibilities: [
-        "Taught BE civil Engineering Physics I, Math I, Math II",
-        "Taught class 10 Science and Math",
-        "Taught class 11-12 Physics and Math.",
+        "Taught BE civil Engineering Physics I, Math I, Math II, Math III",
+        "Taught secondary level students Science and Math",
+        "Taught high school students Physics and Math.",
       ],
       certificate:""
     },
