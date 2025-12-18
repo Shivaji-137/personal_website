@@ -2,7 +2,7 @@ import { useInView } from '@/hooks/use-intersection-observer';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import profileImage from '../assets/photo_2025-04-21_21-23-59.jpg';
+import profileImage from '../assets/shivaji.jpeg';
 
 const AboutSection = () => {
   const navigate = useNavigate();
