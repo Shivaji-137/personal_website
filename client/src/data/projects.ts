@@ -11,6 +11,28 @@ export interface Project {
   }
 export const projects: Project[] = [
 {
+    title: "Galaxies & AGN Multi-Survey Explorer",
+    description: "This dashboard is a comprehensive Streamlit web application integrates data from multiple surveys to provide a unified platform for galaxy and AGN analysis",
+    image: "project_image/galaxy_app.png",
+    tags: ["Python", "Astronomy", "Gaia", "SDSS", "Data Visualization", "Research", "Spectral Analysis", "AGN", "Image Analysis"],
+    category: "General Physics",
+    link: "https://galaxy-visualization-analysis.streamlit.app",
+    github: "https://github.com/Shivaji-137/galaxy_visualizationapp",
+    certificate: "",
+    information:[]
+  },
+  {
+    title: "Cosmic Microwave Background Explorer using CAMB",
+    description: "This dashboard is an interactive web application for exploring Cosmic Microwave Background (CMB) power spectra using CAMB with adjustable cosmological parameters",
+    image: "project_image/camb_app.png",
+    tags: ["Python", "Astronomy", "CMB", "CAMB", "Data Visualization", "Research", "Spectral Analysis", "Cosmological parameters"],
+    category: "General Physics",
+    link: "https://cmb-explorer-camb.streamlit.app/",
+    github: "https://github.com/Shivaji-137/CMB_Explorer",
+    certificate: "",
+    information:[]
+  },
+{
     title: "GAAH Research Dashboard",
     description: "This dashboard is part of my active independent research project titled “Machine Learning Framework for Time-Resolved Mobility Edges in 1D Quasiperiodic Systems.”",
     image: "project_image/energyplot.png",
