@@ -10,7 +10,7 @@ export interface Experience {
   
   export const experiences: Experience[] = [
   {
-      title: "Part-time Lecturer in Mathematics",
+      title: "Part-time Lecturer in Physics/Mathematics",
       organization: "KU City Secondary School/College",
       location: "Chabahil, Kathmandu, Nepal",
       period: "2025-",
