@@ -32,6 +32,17 @@ export const projects: Project[] = [
     certificate: "",
     information:[]
   },
+  {
+    title: "Novascope",
+    description: "This dashboard is a Streamlit web app that I use to turn raw scientific datasets into clean, interactive plots within a couple of clicks. Drop in CSV, TXT, DAT, NPZ, FITS, or HDF5 files, pick a plot style, and the visuals update immediately. I work with a lot of data from different sources—simulations, telescope observations, and lab equipment. Every time I got a new file, I had to write custom code just to see a basic chart. This wasted time and slowed down my actual work. NovaScope fixes that problem: just drop in your file, look at your data, and pick the chart you want. No coding required unless you want to customize something." ,
+    image: "project_image/novascope.png",
+    tags: ["Python", "FITS", "HDF5", "CSV", "Data Visualization", "Research", "Data Analysis", "3D Plot", "Data Insights"],
+    category: "Data Science",
+    link: "https://novascope-datavisualization.streamlit.app/",
+    github: "https://github.com/Shivaji-137/galaxy_visualizationapp",
+    certificate: "",
+    information:[]
+  },
 {
     title: "GAAH Research Dashboard",
     description: "This dashboard is part of my active independent research project titled “Machine Learning Framework for Time-Resolved Mobility Edges in 1D Quasiperiodic Systems.”",
@@ -39,7 +50,7 @@ export const projects: Project[] = [
     tags: ["Python", "Condensed Matter Physics", "Streamlit", "Data Visualization", "Quantum Mechanics", "GAAH model", "Quasiperiodic crystal", "Mobility Edge"],
     category: "General Physics",
     link: "https://gaahmodelml-researchproject.streamlit.app/",
-    github: "https://github.com/shivaji-137/gaah-dashboard/",
+    github: "https://github.com/Shivaji-137/NovaScope/",
     certificate: "",
     information:[]
   },
