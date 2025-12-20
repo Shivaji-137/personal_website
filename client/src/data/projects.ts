@@ -39,7 +39,7 @@ export const projects: Project[] = [
     tags: ["Python", "FITS", "HDF5", "CSV", "Data Visualization", "Research", "Data Analysis", "3D Plot", "Data Insights"],
     category: "Data Science",
     link: "https://novascope-datavisualization.streamlit.app/",
-    github: "https://github.com/Shivaji-137/galaxy_visualizationapp",
+    github: "https://github.com/Shivaji-137/NovaScope/",
     certificate: "",
     information:[]
   },
@@ -50,7 +50,7 @@ export const projects: Project[] = [
     tags: ["Python", "Condensed Matter Physics", "Streamlit", "Data Visualization", "Quantum Mechanics", "GAAH model", "Quasiperiodic crystal", "Mobility Edge"],
     category: "General Physics",
     link: "https://gaahmodelml-researchproject.streamlit.app/",
-    github: "https://github.com/Shivaji-137/NovaScope/",
+    github: "https://github.com/Shivaji-137/gaah-dashboard/",
     certificate: "",
     information:[]
   },
