@@ -10,14 +10,26 @@ export interface Experience {
   
   export const experiences: Experience[] = [
   {
+      title: "Physics Lab Instructor+Assistant",
+      organization: "Bridgewater International College",
+      location: "Sinamangal, Kathmandu, Nepal",
+      period: "June 2026-Present",
+      responsibilities: [
+        "Run high school physics lab classes, guiding students through each experiment",
+        "Teach them how to set up and use every instrument correctly, run the procedures safely, and figure out how to handle errors in their data.",
+        "Handle all the day to day tracking for the lab, take attendance, and grade the weekly lab reports.",
+      ],
+      certificate:""
+    },
+  {
       title: "Part-time Lecturer in Physics/Mathematics",
       organization: "KU City Secondary School/College",
       location: "Chabahil, Kathmandu, Nepal",
-      period: "2025-",
+      period: "June 2025-Apr 2026",
       responsibilities: [
-        "Teaching physics to high school students (class 11 & 12)",
-        "Teaching business math to high school students (class 12)",
-        "Teaching secondary level students C.Math and Optional Math",
+        "Taught physics to high school students (class 11 & 12)",
+        "Taught business math to high school students (class 12)",
+        "Taught secondary level students C.Math and Optional Math",
       ],
       certificate:""
     },
