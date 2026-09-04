@@ -79,13 +79,22 @@ const AboutSection = () => {
               className="text-lg mb-6 text-gray-300"
               variants={itemVariants}
             >
-              I'm a graduate student, doing Phd in Physics(specialization in astronomy) at University of Kentucky, USA, driven by curiosity and a passion for understanding the universe through data. I combine physics, programming, and visualization to explore phenomena.
+              I'm a graduate student (
+                <a
+                  href="https://pa.as.uky.edu/users/sch515"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#FF65A3] hover:underline"
+                >
+                  Profile
+                </a>
+                ), doing Phd in Physics (specialization in Astronomy) at the University of Kentucky, USA, driven by curiosity and a passion for understanding the universe through data. I am also a graduate teaching assistant at the University of Kentucky, where I instruct and mentor students in physics laboratories, helping them develop a strong foundation in experimental techniques and scientific inquiry. 
             </motion.p>
             <motion.p 
               className="text-lg mb-4 text-gray-300"
               variants={itemVariants}
             >
-              My undergraduate thesis focuses on gravitational wave signals from binary star coalescences. With interests spanning astronomy, quantum mechanics, and computational modeling, I aim to create intuitive tools that make complex physics accessible and inspire deeper engagement with science.
+              My research interest focuses on computational astronomy as well as observational astronomy, where I analyze data from telescopes and simulations to uncover the mysteries of the cosmos. I am particularly interested in studying overall structure of the universe, galaxy formation and evolution, and the behavior of celestial objects. I also have a strong interest in data analysis, machine learning, and visualization techniques to extract meaningful insights from complex datasets. I am passionate about sharing my knowledge and experiences with others, and I enjoy mentoring and teaching students in the field of physics and astronomy. I can also dwelve into the world of quantum mechanics, classical mechanics, and other areas of physics to explore the fundamental principles that govern the universe.
             </motion.p>
 
             <motion.div 
