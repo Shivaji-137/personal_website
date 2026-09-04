@@ -79,7 +79,7 @@ const AboutSection = () => {
               className="text-lg mb-6 text-gray-300"
               variants={itemVariants}
             >
-              I'm an undergraduate physics student driven by curiosity and a passion for understanding the universe through data. I combine physics, programming, and visualization to explore phenomena, from Anderson localization in quasi-periodic 1D crystals and numerical simulations of physics equations to developing a CNN-based visualization learning app and a Nepal foreign trade analytics dashboard.
+              I'm a graduate student, doing Phd in Physics(specialization in astronomy) at University of Kentucky, USA, driven by curiosity and a passion for understanding the universe through data. I combine physics, programming, and visualization to explore phenomena.
             </motion.p>
             <motion.p 
               className="text-lg mb-4 text-gray-300"
