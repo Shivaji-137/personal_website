@@ -117,10 +117,18 @@ const ContactSection = () => {
                     <i className="ri-map-pin-line text-xl text-[#FF65A3] mr-3 mt-1"></i>
                     <div>
                       <p className="text-gray-400 text-sm">Location</p>
-                      <p className="text-white">Kathmandu, Nepal</p>
+                      <p className="text-white">Lexington, Kentucky, USA</p>
                     </div>
                   </div>
                   
+                  <div className="flex items-start">
+                    <i className="ri-map-pin-line text-xl text-[#FF65A3] mr-3 mt-1"></i>
+                    <div>
+                      <p className="text-gray-400 text-sm">TA Office Hour</p>
+                      <p className="text-white">Thursday, 3:00 PM - 5:00 PM <br /> CP 171, Chemistry-Physics Building, University of Kentucky</p>
+                    </div>
+                  </div>
+
                   <div className="flex items-start">
                     <i className="ri-time-line text-xl text-[#FF65A3] mr-3 mt-1"></i>
                     <div>
@@ -128,6 +136,8 @@ const ContactSection = () => {
                       <p className="text-white">Usually within 24 hours</p>
                     </div>
                   </div>
+
+
                 </CardContent>
               </Card>
               
