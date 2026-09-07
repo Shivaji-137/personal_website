@@ -96,11 +96,12 @@ const AboutSection = () => {
             >
               I am also a graduate teaching assistant at the University of Kentucky, where I instruct and mentor students in physics laboratories, helping them develop a strong foundation in experimental techniques and scientific inquiry. 
             </motion.p>
-            <motion.p 
+            <motion.p
               className="text-lg mb-4 text-gray-300"
               variants={itemVariants}
             >
               My research interest focuses on computational astronomy as well as observational astronomy, where I analyze data from telescopes and simulations to uncover the mysteries of the cosmos. I am particularly interested in studying overall structure of the universe, galaxy formation and evolution, and the behavior of celestial objects. I also have a strong interest in data analysis, machine learning, and visualization techniques to extract meaningful insights from complex datasets. 
+            </motion.p>
             <motion.p 
               className="text-lg mb-4 text-gray-300"
               variants={itemVariants}
