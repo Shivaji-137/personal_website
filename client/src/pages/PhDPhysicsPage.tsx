@@ -205,6 +205,7 @@ const PRESETS: Array<{
 const PhDPhysicsPage = () => {
   const { pathname } = useLocation();
   const isAnimationPage = pathname === '/phd-physics/eclipsing-binary';
+  const [selectedSection, setSelectedSection] = useState<string | null>(null);
   const [phase, setPhase] = useState(0); // Mean anomaly [0, 2*PI]
   const [isPlaying, setIsPlaying] = useState(true);
   const [speed, setSpeed] = useState(1);
@@ -364,17 +365,19 @@ const PhDPhysicsPage = () => {
               ['Electricity & Magnetism', '#electricity-magnetism'],
               ['Astrophysics', '#astrophysics'],
             ].map(([label, href]) => (
-              <a
+              <button
+                type="button"
                 key={href}
-                href={href}
+                onClick={() => setSelectedSection(href.slice(1))}
+                aria-pressed={selectedSection === href.slice(1)}
                 className="rounded-full border border-[#3a2d48] bg-[#120d1d]/80 px-4 py-2 text-xs uppercase tracking-[0.16em] text-gray-300 transition hover:border-[#FF65A3] hover:text-white"
               >
                 {label}
-              </a>
+              </button>
             ))}
           </nav>}
 
-          {!isAnimationPage && <section id="classical-mechanics" className="mb-10 scroll-mt-24">
+          {!isAnimationPage && (selectedSection === null || selectedSection === 'classical-mechanics') && <section id="classical-mechanics" className="mb-10 scroll-mt-24">
             <div className="mb-4 flex items-center gap-3">
               <span className="h-px flex-1 bg-[#3a2d48]" />
               <h2 className="font-space text-xl font-semibold text-white">Classical Mechanics</h2>
@@ -395,7 +398,7 @@ const PhDPhysicsPage = () => {
             </div>
           </section>}
 
-          {!isAnimationPage && <section id="electricity-magnetism" className="mb-12 scroll-mt-24">
+          {!isAnimationPage && (selectedSection === null || selectedSection === 'electricity-magnetism') && <section id="electricity-magnetism" className="mb-12 scroll-mt-24">
             <div className="mb-4 flex items-center gap-3">
               <span className="h-px flex-1 bg-[#3a2d48]" />
               <h2 className="font-space text-xl font-semibold text-white">Electricity &amp; Magnetism</h2>
@@ -416,7 +419,7 @@ const PhDPhysicsPage = () => {
             </div>
           </section>}
 
-          <section id="astrophysics" className="scroll-mt-24">
+          {(isAnimationPage || selectedSection === null || selectedSection === 'astrophysics') && <section id="astrophysics" className="scroll-mt-24">
             {!isAnimationPage && <div className="mb-6 flex items-center gap-3">
               <span className="h-px flex-1 bg-[#3a2d48]" />
               <h2 className="font-space text-xl font-semibold text-white">Astrophysics</h2>
@@ -997,7 +1000,7 @@ const PhDPhysicsPage = () => {
             </motion.div>
           </div>
             </>}
-          </section>
+          </section>}
         </div>
       </main>
 
