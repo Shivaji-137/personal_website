@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 
 import HomePage from "@/pages/HomePage";
+import PhDPhysicsPage from "@/pages/PhDPhysicsPage";
 import ProjectsPage from "@/pages/ProjectsPage";
 import ResearchPage from "@/pages/ResearchPage";
 import BlogPage from "@/pages/BlogPage";
@@ -25,6 +26,8 @@ function App() {
           <Toaster />
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/phd-physics/eclipsing-binary" element={<PhDPhysicsPage />} />
+            <Route path="/phd-physics" element={<PhDPhysicsPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/research" element={<ResearchPage />} />
             <Route path="/blog" element={<BlogPage />} />
