@@ -64,7 +64,7 @@ export default function RocketFlyby() {
       const positionX = centerX + Math.cos(angle) * orbitRadius;
       craftX.set(positionX);
       const craftWidth = viewport.width < 640 ? 52 : 66;
-      const labelWidth = 88;
+      const labelWidth = 64;
       const labelLeft = deployed ? positionX + craftWidth / 2 + 20 : positionX - craftWidth / 2 - 12 - labelWidth;
       labelOffset.set(Math.max(12, Math.min(viewport.width - labelWidth - 12, labelLeft)) - positionX + craftWidth / 2);
       const surfaceLaunchY = centerY - earthRadius * 0.94 - 35 * craftWidth / 96;
@@ -109,19 +109,19 @@ export default function RocketFlyby() {
         {arrived && (!separated || deployed) && (
           <motion.div
             aria-hidden="true"
-            className="absolute left-0 top-1/3 flex w-[88px] flex-col gap-0.5 rounded-lg border border-cyan-200/20 bg-slate-950/75 px-1.5 py-1 text-center shadow-[0_2px_10px_rgba(0,0,0,0.25)] backdrop-blur-md"
+            className="absolute left-0 top-1/3 flex w-16 flex-col gap-0.5 rounded-md border border-cyan-200/20 bg-slate-950/75 px-1 py-0.5 text-center shadow-[0_2px_8px_rgba(0,0,0,0.2)] backdrop-blur-md"
             style={{ x: labelOffset }}
             initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 0.9, y: 0 }}
             transition={{ duration: reducedMotion ? 0 : 0.7 }}
           >
-            <span className="text-[8px] italic leading-tight text-slate-300">
+            <span className="text-[7px] italic leading-tight text-slate-300">
               {deployed ? 'Let’s change perspective' : 'Hi, I’m Shivaji'}
             </span>
-            <span className="text-[9px] font-medium leading-tight text-cyan-100">
+            <span className="text-[8px] font-medium leading-tight text-cyan-100">
               {deployed ? 'Click me to explore cosmos' : 'Click me'}
             </span>
-            <span aria-hidden="true" className="text-[8px] leading-none text-cyan-200/70">{deployed ? '←' : '→'}</span>
+            <span aria-hidden="true" className="text-[7px] leading-none text-cyan-200/70">{deployed ? '←' : '→'}</span>
           </motion.div>
         )}
         <button
