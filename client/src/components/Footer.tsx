@@ -1,6 +1,8 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Footer = () => {
+  const location = useLocation();
   const smoothScrollTo = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -10,21 +12,25 @@ const Footer = () => {
     }
   };
 
+  useEffect(() => {
+    if (location.pathname === '/' && location.state?.scrollTo) {
+      const frame = window.requestAnimationFrame(() => smoothScrollTo(location.state.scrollTo));
+      return () => window.cancelAnimationFrame(frame);
+    }
+  }, [location]);
+
   return (
     <footer className="bg-[#08080a] z-50 py-10 border-t border-[#1E2A45]">
       <div className="container mx-auto px-1">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
-            <a 
-              href="#home" 
-              onClick={(e) => {
-                e.preventDefault();
-                smoothScrollTo('home');
-              }}
+            <Link
+              to="/"
+              state={{ scrollTo: 'home' }}
               className="text-[#FFD15C] font-space font-bold text-2xl tracking-wider"
             >
               SHIVAJI<span className="text-[#FF65A3]">.</span>
-            </a>
+            </Link>
             <div className="flex gap-4 mt-2">
               {[
                 { href: "https://github.com/Shivaji-137", icon: "ri-github-fill" },
@@ -45,18 +51,15 @@ const Footer = () => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-6">
-            {['about', 'projects', 'research', 'blog', 'cv', 'contact'].map((section, index) => (
-              <a 
+            {['about', 'projects', 'research', 'blog', 'cv', 'contact'].map((section) => (
+              <Link
                 key={section}
-                href={`#${section}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  smoothScrollTo(section);
-                }}
+                to={section === 'about' ? '/' : `/${section}`}
+                state={section === 'about' ? { scrollTo: 'about' } : undefined}
                 className="text-gray-300 hover:text-[#FF65A3] transition-all text-lg md:text-xl font-semibold hover:scale-105"
               >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
-              </a>
+                {section === 'cv' ? 'CV' : section.charAt(0).toUpperCase() + section.slice(1)}
+              </Link>
             ))}
           </div>
         </div>
