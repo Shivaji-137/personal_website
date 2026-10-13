@@ -48,12 +48,15 @@ const CVSection = () => {
           </motion.div>
           
           <Tabs defaultValue="education" className="w-full">
-            <TabsList className="bg-[#141B34] border border-[#5D3E7C] p-1 w-full flex justify-center mb-8 overflow-x-auto">
+            <TabsList className="bg-[#141B34] border border-[#5D3E7C] p-1 w-full h-auto flex flex-wrap justify-center gap-1 mb-8">
               <TabsTrigger value="education" className="data-[state=active]:bg-[#5D3E7C] data-[state=active]:text-white px-4">
                 Education
               </TabsTrigger>
               <TabsTrigger value="experience" className="data-[state=active]:bg-[#5D3E7C] data-[state=active]:text-white px-4">
                 Experience
+              </TabsTrigger>
+              <TabsTrigger value="honors-awards" className="data-[state=active]:bg-[#5D3E7C] data-[state=active]:text-white px-4">
+                Honors &amp; Awards
               </TabsTrigger>
               {/* <TabsTrigger value="experience" className="data-[state=active]:bg-[#5D3E7C] data-[state=active]:text-white px-4">
                 Research
@@ -75,6 +78,29 @@ const CVSection = () => {
               </TabsTrigger>
             </TabsList>
             
+            <TabsContent value="honors-awards" className="mt-0">
+              <motion.div variants={fadeIn('up')} className="max-w-4xl mx-auto">
+                <h3 className="text-2xl font-space font-semibold text-white mb-6">Honors &amp; Awards</h3>
+                <article className="rounded-xl border border-[#d4db9c] bg-[#080a0a] p-5 md:p-8">
+                  <div className="grid gap-6 md:grid-cols-[1fr_240px] items-start">
+                    <div>
+                      <i className="ri-award-line text-3xl text-[#FFD15C] mb-3 block" aria-hidden="true"></i>
+                      <h4 className="text-xl font-semibold text-white mb-2">Max Steckler Fellowship</h4>
+                      <p className="text-gray-300">University of Kentucky · The Graduate School</p>
+                      <p className="text-sm text-[#FF65A3] mt-2"><time dateTime="2026-09-03">September 3, 2026</time></p>
+                      <p className="text-gray-300 mt-4 leading-relaxed">Selected by the Director of Graduate Studies in the Department of Physics as a recipient of the Steckler Fellowship.</p>
+                      <a href="/awards/max_steckler_fellowship.png" target="_blank" rel="noopener noreferrer" className="text-[#FF65A3] hover:text-white mt-5 inline-flex items-center gap-2">
+                        <i className="ri-external-link-line" aria-hidden="true"></i> View fellowship award letter
+                      </a>
+                    </div>
+                    <a href="/awards/max_steckler_fellowship.png" target="_blank" rel="noopener noreferrer" aria-label="Open Max Steckler Fellowship award letter">
+                      <img src="/awards/max_steckler_fellowship.png" alt="University of Kentucky Steckler Fellowship award letter for Shivaji Chaulagain, dated September 3, 2026" loading="lazy" width="1336" height="1674" className="w-full h-auto rounded-lg border border-[#2b2b3a]" />
+                    </a>
+                  </div>
+                </article>
+              </motion.div>
+            </TabsContent>
+
             {/* Education */}
             <TabsContent value="education" className="mt-0">
               <motion.div 
