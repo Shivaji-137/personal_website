@@ -148,7 +148,9 @@ const HeroSection = () => {
 
   return (
     <>
-      <NoticeBanner />
+      <div hidden>
+        <NoticeBanner />
+      </div>
 
       <section
         id="home"
