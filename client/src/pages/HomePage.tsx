@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { InView } from 'react-intersection-observer';
 
 import StarBackground from '@/components/StarBackground';
@@ -9,17 +8,6 @@ import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
 import HeroSection from '@/sections/HeroSection';
 import AboutSection from '@/sections/AboutSection';
-import ProjectsSection from '@/sections/ProjectsSection';
-import ResearchSection from '@/sections/ResearchSection';
-import BlogSection from '@/sections/BlogSection';
-import CVSection from '@/sections/CVSection';
-import MyOdyssey from '@/sections/MyOdyssey';
-import ContactSection from '@/sections/ContactSection';
-
-const fadeInVariant = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
 
 const HomePage = () => {
   const [isHeroInView, setIsHeroInView] = useState(true);
@@ -47,24 +35,9 @@ const HomePage = () => {
           <AboutSection />
         </InView>
 
-        {[ProjectsSection, ResearchSection, BlogSection, CVSection, MyOdyssey, ContactSection].map((Section, i) => (
-          <InView key={i} triggerOnce>
-            {({ inView, ref }) => (
-              <motion.div
-                ref={ref}
-                variants={fadeInVariant}
-                initial="hidden"
-                animate={inView ? 'visible' : 'hidden'}
-              >
-                <Section />
-              </motion.div>
-            )}
-          </InView>
-        ))}
         <Footer />
       </main>
 
-      {/* <Footer /> */}
       <ScrollToTop />
     </div>
   );
