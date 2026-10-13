@@ -63,10 +63,13 @@ export default function RocketFlyby() {
       const angle = -Math.PI / 2 + elapsed * Math.PI * 2 / 90;
       const positionX = centerX + Math.cos(angle) * orbitRadius;
       craftX.set(positionX);
-      labelOffset.set(Math.max(82, Math.min(viewport.width - 82, positionX)) - positionX);
       const craftWidth = viewport.width < 640 ? 52 : 66;
+      const labelWidth = 176;
+      const labelLeft = deployed ? positionX + craftWidth / 2 + 20 : positionX - craftWidth / 2 - 12 - labelWidth;
+      labelOffset.set(Math.max(12, Math.min(viewport.width - labelWidth - 12, labelLeft)) - positionX + craftWidth / 2);
       const surfaceLaunchY = centerY - earthRadius * 0.94 - 35 * craftWidth / 96;
-      craftY.set(surfaceLaunchY * (1 - eased) + (centerY + Math.sin(angle) * orbitHeight) * eased);
+      const positionY = surfaceLaunchY * (1 - eased) + (centerY + Math.sin(angle) * orbitHeight) * eased;
+      craftY.set(Math.max(145, Math.min(viewport.height - 145, positionY)));
       frame = requestAnimationFrame(draw);
     };
     frame = requestAnimationFrame(draw);
@@ -106,22 +109,19 @@ export default function RocketFlyby() {
         {arrived && (!separated || deployed) && (
           <motion.div
             aria-hidden="true"
-            className="absolute bottom-[calc(100%-4px)] left-1/2 mb-3 flex w-36 flex-col items-center gap-1 text-center [text-shadow:0_1px_6px_rgba(0,0,0,0.95)]"
-            style={{ x: labelOffset, translateX: '-50%' }}
+            className="absolute left-0 top-1/3 flex w-44 flex-col gap-1 rounded-lg border border-cyan-200/30 bg-slate-950/85 px-3 py-2 text-center shadow-lg [text-shadow:0_1px_6px_rgba(0,0,0,0.95)]"
+            style={{ x: labelOffset }}
             initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 0.9, y: 0 }}
             transition={{ duration: reducedMotion ? 0 : 0.7 }}
           >
-            <span className="text-[9px] font-light italic tracking-wide text-slate-300 sm:text-[10px]">
+            <span className="text-xs italic tracking-wide text-slate-100 sm:text-sm">
               {deployed ? 'Let’s change perspective' : 'Hi, I’m Shivaji'}
             </span>
-            <span className="text-[10px] font-medium tracking-wide text-cyan-100/90 sm:text-[11px]">
+            <span className="text-xs font-medium tracking-wide text-cyan-100 sm:text-sm">
               {deployed ? 'Click me to explore cosmos' : 'Click me'}
             </span>
-            <span className="mt-1 flex flex-col items-center text-cyan-200/50">
-              <span className="h-3 w-px bg-gradient-to-b from-cyan-200/0 to-cyan-200/50" />
-              <svg width="8" height="5" viewBox="0 0 8 5" fill="none"><path d="M1 1 L4 4 L7 1" stroke="currentColor" strokeWidth="0.8" /></svg>
-            </span>
+            <span aria-hidden="true" className="text-cyan-200">{deployed ? '←' : '→'}</span>
           </motion.div>
         )}
         <button
