@@ -161,7 +161,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <h1 className="font-space font-bold text-4xl md:text-6xl leading-tight mb-6 min-h-[4rem]">
+            <h1 data-hero-title className="font-space font-bold text-4xl md:text-6xl leading-tight mb-6 min-h-[4rem] [text-shadow:0_2px_18px_rgba(0,0,0,0.95)]">
               {text.split(' ').map((word, index) => {
                 if (index === 2) {
                   return (
