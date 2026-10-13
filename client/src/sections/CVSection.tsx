@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { fadeIn, staggerContainer } from '@/lib/animations';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { education } from "@/data/education";
 import { skills } from "@/data/skills";
 import { certifications } from "@/data/certification";
@@ -38,7 +39,7 @@ const CVSection = () => {
             <p className="text-lg text-gray-300 mb-8">
               My academic and professional journey in physics and computation
             </p>
-            <div className="flex justify-center">
+            <div hidden>
               <a href="/shivajiCV.pdf" download>
                 <Button className="bg-[#5D3E7C] text-white hover:bg-[#FF65A3] px-8 mr-4">
                   <i className="ri-download-line mr-2"></i> Download CV
@@ -513,8 +514,8 @@ const CVSection = () => {
             <p className="text-gray-300 mb-6">
               Want to discuss potential collaborations or have questions about my experience?
             </p>
-            <Button variant="link" className="bg-[#5D3E7C] text-white hover:bg-[#FF65A3] px-8">
-              <a href='\contact'>Contact Me</a>
+            <Button asChild variant="link" className="bg-[#5D3E7C] text-white hover:bg-[#FF65A3] px-8">
+              <Link to="/contact">Contact Me</Link>
             </Button>
           </motion.div>
         </motion.div>
