@@ -1,0 +1,52 @@
+import PhysicsReferences from '@/components/PhysicsReferences';
+import { useEffect, useMemo, useState } from 'react';
+import Header from '@/components/Header';
+import StarBackground from '@/components/StarBackground';
+import { deg, equant, orbit, wrap } from '@/lib/physics/astronomy';
+
+type Model = 'ptolemaic' | 'copernican' | 'keplerian';
+const presets = { Mars: 1.524, Jupiter: 5.203, Saturn: 9.537 };
+const panel = 'rounded-2xl border border-slate-700 bg-[#0d1523]/95 p-5';
+export default function PtolemaicCopernicanPage() {
+  const [model, setModel] = useState<Model>('copernican');
+  const [a, setA] = useState(1.524), [e, setE] = useState(0.0934), [offset, setOffset] = useState(0);
+  const [t, setT] = useState(0), [playing, setPlaying] = useState(false), [speed, setSpeed] = useState(0.15);
+  useEffect(() => { document.title = 'Ptolemaic & Copernican Laboratory | Shivaji.dev'; }, []);
+  useEffect(() => { if (!playing) return; let id: number, last: number | undefined; const tick = (now: number) => { if (last !== undefined) setT(v => v + Math.min((now-last!)/1000, 0.1)*speed); last=now; id=requestAnimationFrame(tick); }; id=requestAnimationFrame(tick); return () => cancelAnimationFrame(id); }, [playing, speed]);
+  const period = a ** 1.5, synodic = 1 / (1 - 1 / period);
+  const state = (time: number) => {
+    const earth = orbit(time, 1), planet = orbit(time, a, model === 'keplerian' ? e : 0), p = equant(time, a, offset);
+    const r = model === 'ptolemaic' ? { x: p.x-p.earthX, y: p.y } : { x: planet.x-earth.x, y: planet.y-earth.y };
+    return { earth, planet, p, r };
+  };
+  const current = state(t);
+  const angularRate = (time: number) => { const r = state(time).r, ahead=state(time+0.00001).r; return deg((r.x*(ahead.y-r.y)-r.y*(ahead.x-r.x))/(r.x*r.x+r.y*r.y)/0.00001)/365.25; };
+  const rate = angularRate(t);
+  const history = useMemo(() => Array.from({length:361}, (_,i) => { const time=t-synodic/2+i*synodic/360; return { time, ...state(time), rate:angularRate(time) }; }), [t, a, e, offset, model]);
+  const scale = 155 / (a+1+2*offset*a+(model==='keplerian'?a*e:0));
+  const xy = (p: {x:number;y:number}) => `${210+p.x*scale},${210-p.y*scale}`;
+  const dot = (p: {x:number;y:number}, color:string, label:string) => <g><circle cx={210+p.x*scale} cy={210-p.y*scale} r="5" fill={color}/><text x={219+p.x*scale} y={205-p.y*scale} fill={color} fontSize="11">{label}</text></g>;
+  const rateExtent = Math.max(0.1, ...history.map(s => Math.abs(s.rate)));
+  const plotPoints = history.map((s,i) => `${40+i*520/360},${100-s.rate*75/rateExtent}`).join(' ');
+  return <div className="min-h-screen bg-[#08080a] text-white"><StarBackground/><Header/><main className="relative z-10 mx-auto max-w-7xl px-4 pb-16 pt-24">
+    <p className="text-xs uppercase tracking-[0.3em] text-amber-300">Physics Lab • History & dynamics</p><h1 className="my-3 text-3xl font-bold md:text-5xl">One sky. Three geometries.</h1><p className="mb-7 max-w-3xl text-slate-300">Explore how deferents and epicycles reproduce planetary motion, how Earth’s motion creates retrograde drift, and how Kepler’s ellipses improve the circular approximation.</p>
+    <div className="mb-5 flex flex-wrap gap-2">{(['ptolemaic','copernican','keplerian'] as Model[]).map(m=><button key={m} aria-pressed={model===m} onClick={()=>setModel(m)} className={`rounded-full px-5 py-2 capitalize ${model===m?'bg-cyan-300 text-black':'bg-slate-800'}`}>{m}</button>)}<button className="rounded-full bg-slate-800 px-5 py-2" onClick={()=>setPlaying(v=>!v)}>{playing?'Pause':'Play'}</button><button className="rounded-full bg-slate-800 px-5 py-2" onClick={()=>{setT(0);setPlaying(false);}}>Reset to opposition</button></div>
+    <div className="grid gap-5 lg:grid-cols-[1fr_1fr_300px]">
+      <section className={panel}><h2 className="text-lg font-semibold">{model==='ptolemaic'?'Deferent & epicycle':'Heliocentric geometry'}</h2><p className="text-xs text-slate-400">Orbital plane • counterclockwise motion • AU</p><svg viewBox="0 0 420 420" role="img" aria-label="Planetary orbital geometry" className="w-full"><circle cx="210" cy="210" r="175" fill="none" stroke="#233448"/>
+        {model==='ptolemaic'?<><circle cx="210" cy="210" r={a*scale} fill="none" stroke="#67e8f9"/><circle cx={210+current.p.cx*scale} cy={210-current.p.cy*scale} r={scale} fill="none" stroke="#fcd34d"/><line x1={210+offset*a*scale} y1="210" x2={210+current.p.cx*scale} y2={210-current.p.cy*scale} stroke="#f472b6" strokeDasharray="4 4"/>{dot({x:current.p.earthX,y:0},'#60a5fa','Earth')}{offset>0&&dot({x:current.p.equantX,y:0},'#f472b6','Equant')}{dot(current.p,'#fcd34d','Planet')}</>:<><circle cx="210" cy="210" r={scale} fill="none" stroke="#60a5fa"/><polyline points={Array.from({length:241},(_,i)=>xy(orbit(i*period/240,a,model==='keplerian'?e:0))).join(' ')} fill="none" stroke="#f472b6"/>{dot({x:0,y:0},'#fcd34d','Sun')}{dot(current.earth,'#60a5fa','Earth')}{dot(current.planet,'#f472b6','Planet')}<line x1={210+current.earth.x*scale} y1={210-current.earth.y*scale} x2={210+current.planet.x*scale} y2={210-current.planet.y*scale} stroke="white" strokeDasharray="4 4"/></>}
+      </svg><p className="text-xs text-slate-400">Bodies enlarged for visibility. The view automatically fits the selected orbit.</p></section>
+      <section className={panel}><h2 className="text-lg font-semibold">Earth-centered view</h2><p className="text-xs text-slate-400">Same instant • fixed ecliptic directions</p><svg viewBox="0 0 420 420" role="img" aria-label="Earth-centered apparent planetary path" className="w-full"><circle cx="210" cy="210" r="175" fill="none" stroke="#233448"/>{Array.from({length:12},(_,i)=><text key={i} x={210+185*Math.cos(i*Math.PI/6)} y={214-185*Math.sin(i*Math.PI/6)} textAnchor="middle" fontSize="9" fill="#94a3b8">{i*30}°</text>)}<polyline points={history.filter(s=>s.time<=t).map(s=>xy(s.r)).join(' ')} fill="none" stroke="#67e8f9" strokeWidth="1.5"/>{dot({x:0,y:0},'#60a5fa','Earth')}{dot(current.r,rate<0?'#fb7185':'#fcd34d','Planet')}<line x1="210" y1="210" x2={210+175*current.r.x/Math.hypot(current.r.x,current.r.y)} y2={210-175*current.r.y/Math.hypot(current.r.x,current.r.y)} stroke="#fcd34d" strokeDasharray="3 5"/></svg><p className="text-xs text-slate-400">Trail: preceding half synodic period. A planar model produces longitude reversals; inclined real orbits also change latitude.</p></section>
+      <aside className={`${panel} space-y-5`}><label className="block text-sm">Superior planet<select aria-label="Planet preset" className="mt-2 w-full rounded bg-slate-800 p-2" value={a} onChange={ev=>{setA(Number(ev.target.value));setT(0);}}>{!Object.values(presets).some(value=>value===a)&&<option value={a}>Custom orbit</option>}{Object.entries(presets).map(([name,value])=><option key={name} value={value}>{name}</option>)}</select></label>
+        <label className="block text-sm">Semimajor axis / deferent: {a.toFixed(3)} AU<input className="w-full accent-cyan-300" type="range" min="1.1" max="10" step="0.001" value={a} onChange={ev=>setA(+ev.target.value)}/></label>
+        {model==='ptolemaic'&&<label className="block text-sm">Earth / equant offset: {offset.toFixed(2)} R<input className="w-full" type="range" min="0" max="0.3" step="0.01" value={offset} onChange={ev=>setOffset(+ev.target.value)}/></label>}
+        {model==='keplerian'&&<label className="block text-sm">Planet eccentricity: {e.toFixed(3)}<input className="w-full" type="range" min="0" max="0.5" step="0.001" value={e} onChange={ev=>setE(+ev.target.value)}/></label>}
+        <label className="block text-sm">Playback: {speed.toFixed(2)} yr/s<input className="w-full" type="range" min="0.02" max="1" step="0.01" value={speed} onChange={ev=>setSpeed(+ev.target.value)}/></label>
+        <label className="block text-sm">Time: {t.toFixed(2)} years<input className="w-full" type="range" min="0" max={synodic*3} step="0.001" value={wrap(t,synodic*3)} onChange={ev=>{setPlaying(false);setT(+ev.target.value);}}/></label>
+        <div className="border-t border-slate-700 pt-4 text-sm leading-7"><p className={rate<0?'text-rose-300':'text-cyan-300'}>{rate<0?'Retrograde • westward':'Prograde • eastward'}</p><p>Longitude {wrap(deg(Math.atan2(current.r.y,current.r.x)),360).toFixed(2)}°</p><p>Drift {rate.toFixed(3)}°/day</p><p>Distance {Math.hypot(current.r.x,current.r.y).toFixed(3)} AU</p><p>Period {period.toFixed(3)} yr</p><p>Mean synodic period {synodic.toFixed(3)} yr</p></div>
+      </aside>
+    </div>
+    <section className={`${panel} mt-5`}><h2 className="font-semibold">Apparent longitude rate</h2><p className="text-xs text-slate-400">One mean synodic period centered on now. Below zero = retrograde. Vertical range: ±{rateExtent.toFixed(2)}°/day.</p><svg viewBox="0 0 600 205" className="max-h-56 w-full" role="img" aria-label="Apparent longitude rate versus time"><line x1="40" y1="100" x2="560" y2="100" stroke="#94a3b8" strokeDasharray="4 4"/><text x="8" y="104" fill="#94a3b8" fontSize="12">0</text><polyline points={plotPoints} fill="none" stroke="#67e8f9" strokeWidth="2"/><line x1="300" y1="20" x2="300" y2="180" stroke="#fcd34d"/><text x="305" y="24" fill="#fcd34d" fontSize="12">Now</text><text x="40" y="198" fill="#94a3b8" fontSize="11">{(t-synodic/2).toFixed(2)} yr</text><text x="520" y="198" fill="#94a3b8" fontSize="11">{(t+synodic/2).toFixed(2)} yr</text></svg></section>
+    <section className={`${panel} mt-5 text-sm leading-7 text-slate-300`}><h2 className="font-semibold text-white">What the model assumes</h2><p>Copernican mode is a circular, coplanar teaching model, not a reconstruction of Copernicus’s complete historical system, which retained epicycles. Periods use the modern relation P² = a³ in years and AU. Keplerian mode solves M = E − e sin E with the Sun at a focus; Earth remains circular. These are illustrative trajectories, not dated planetary ephemerides.</p><p>Ptolemaic mode uses a circular deferent, uniform angular motion about an equant, and a 1 AU epicycle aligned with the mean Sun. With zero offset it exactly matches the circular heliocentric model’s Earth-centered vector r = rₚ − rₑ. Nonzero offset demonstrates the equant construction; it is not a calibrated historical fit. Retrograde motion is a change of viewing direction caused by relative orbital motion.</p><a className="text-cyan-300 underline" href="https://galileo.library.rice.edu/sci/theories/ptolemaic_system.html">Historical reference: Rice University’s Galileo Project</a></section>
+    <PhysicsReferences project="planetary" />
+  </main></div>;
+}
