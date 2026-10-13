@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { InView } from 'react-intersection-observer';
 
 import StarBackground from '@/components/StarBackground';
+import RocketFlyby from '@/components/RocketFlyby';
 import CosmicBackground from '@/components/CosmicBackground'; // black holes, lensing, etc
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -19,9 +20,12 @@ const HomePage = () => {
 
       {/* Only show cosmic animation in HeroSection */}
       {isHeroInView && (
-        <div className="fixed top-0 left-0 w-full h-full z-0">
-          <CosmicBackground />
-        </div>
+        <>
+          <div className="pointer-events-none fixed top-0 left-0 w-full h-full z-0">
+            <CosmicBackground />
+          </div>
+          <RocketFlyby />
+        </>
       )}
 
       <Header />
