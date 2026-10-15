@@ -97,12 +97,10 @@ Thus $\theta=0^\circ$ is the north pole, $90^\circ$ the equator, and $180^\circ$
 For radius one,
 
 $$
-x=\sin\theta\sin\psi,\qquad
-y=\sin\theta\cos\psi,\qquad
+x=\sin\theta\cos\psi,\qquad
+y=\sin\theta\sin\psi,\qquad
 z=\cos\theta.
 $$
-
-Here ψ (also written ϕ) increases eastward: London 0°, Kathmandu approximately +85°, and Lexington approximately −84°. The exchanged axes place Greenwich on +y and 90° east on +x.
 
 Why? The vertical projection has length $\cos\theta$. The horizontal projection has length $\sin\theta$. Resolving that horizontal projection along $x$ and $y$ introduces $\cos\psi$ and $\sin\psi$.
 

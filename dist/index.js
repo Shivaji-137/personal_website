@@ -7,10 +7,14 @@ import { createServer } from "http";
 // server/storage.ts
 var MemStorage = class {
   users;
+  contactMessages;
   currentId;
+  currentContactMessageId;
   constructor() {
     this.users = /* @__PURE__ */ new Map();
+    this.contactMessages = /* @__PURE__ */ new Map();
     this.currentId = 1;
+    this.currentContactMessageId = 1;
   }
   async getUser(id) {
     return this.users.get(id);
@@ -25,6 +29,16 @@ var MemStorage = class {
     const user = { ...insertUser, id };
     this.users.set(id, user);
     return user;
+  }
+  async createContactMessage(insertContactMessage) {
+    const id = this.currentContactMessageId++;
+    const contactMessage = {
+      ...insertContactMessage,
+      id,
+      createdAt: /* @__PURE__ */ new Date()
+    };
+    this.contactMessages.set(id, contactMessage);
+    return contactMessage;
   }
 };
 var storage = new MemStorage();
@@ -93,30 +107,24 @@ import { createServer as createViteServer, createLogger } from "vite";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
-var vite_config_default = defineConfig(async () => {
-  const plugins = [
-    react()
-  ];
-  return {
-    base: "/",
-    plugins,
-    resolve: {
-      alias: {
-        "@": path.resolve(import.meta.dirname, "client", "src"),
-        "@shared": path.resolve(import.meta.dirname, "shared"),
-        "@assets": path.resolve(import.meta.dirname, "attached_assets")
-      }
-    },
-    root: path.resolve(import.meta.dirname, "client"),
-    build: {
-      outDir: path.resolve(import.meta.dirname, "dist"),
-      emptyOutDir: true
+var vite_config_default = defineConfig({
+  base: "/",
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(import.meta.dirname, "client", "src"),
+      "@shared": path.resolve(import.meta.dirname, "shared"),
+      "@assets": path.resolve(import.meta.dirname, "attached_assets")
     }
-  };
+  },
+  root: path.resolve(import.meta.dirname, "client"),
+  build: {
+    outDir: path.resolve(import.meta.dirname, "dist"),
+    emptyOutDir: true
+  }
 });
 
 // server/vite.ts
-import { nanoid } from "nanoid";
 var viteLogger = createLogger();
 function log(message, source = "express") {
   const formattedTime = (/* @__PURE__ */ new Date()).toLocaleTimeString("en-US", {
@@ -157,10 +165,6 @@ async function setupVite(app2, server) {
         "index.html"
       );
       let template = await fs.promises.readFile(clientTemplate, "utf-8");
-      template = template.replace(
-        `src="/src/main.tsx"`,
-        `src="/src/main.tsx?v=${nanoid()}"`
-      );
       const page = await vite.transformIndexHtml(url, template);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
@@ -170,7 +174,7 @@ async function setupVite(app2, server) {
   });
 }
 function serveStatic(app2) {
-  const distPath = path2.resolve(import.meta.dirname, "public");
+  const distPath = path2.resolve(import.meta.dirname);
   if (!fs.existsSync(distPath)) {
     throw new Error(
       `Could not find the build directory: ${distPath}, make sure to build the client first`
@@ -223,11 +227,10 @@ app.use((req, res, next) => {
   } else {
     serveStatic(app);
   }
-  const port = 5e3;
+  const port = Number(process.env.PORT ?? 5173);
   server.listen({
     port,
-    host: "0.0.0.0",
-    reusePort: true
+    host: "0.0.0.0"
   }, () => {
     log(`serving on port ${port}`);
   });

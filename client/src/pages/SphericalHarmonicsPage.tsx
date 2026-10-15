@@ -117,8 +117,7 @@ export default function SphericalHarmonicsPage() {
       <MathFormula tex={String.raw`\operatorname{Re}\widetilde Y_5^3(\theta,\psi)=\frac{\sqrt{385/\pi}}{32}\sin^3\theta\,(9\cos^2\theta-1)\cos(3\psi)`} block/>
       <p>Latitude nodes: 70.53°, 109.47°. Longitude nodes: −150°, −90°, −30°, 30°, 90°, 150°. The rectangle has 3 × 7 = 21 boxes, while the sphere has 18 connected sign regions. The top-left region is negative.</p>
       <p className="mt-2 text-amber-200">Signs describe function sign or phase, not electric charge or probability. Probability density is <MathFormula tex={String.raw`|Y|^2`}/>. These angular basis functions are used in multipole expansions; no physical charge distribution is inferred.</p>
-      <p>Azimuth ψ (ϕ) increases eastward from the Greenwich meridian. London: 0°; Kathmandu: approximately +85°; Lexington: approximately −84°. The x and y axes are exchanged: +y is Greenwich and +x is 90° east.</p>
-      <MathFormula tex={String.raw`x=\sin\theta\sin\psi,\qquad y=\sin\theta\cos\psi,\qquad z=\cos\theta`} block/>
+      <MathFormula tex={String.raw`x=\sin\theta\cos\psi,\qquad y=\sin\theta\sin\psi,\qquad z=\cos\theta`} block/>
       <p className="text-slate-400">The sphere and map share a sampled field; mathematical readouts and nodal roots use the recurrence directly. Dense sign labels are thinned or hidden for readability.</p>
     </div></details>
     <section className={`${panel} mt-4`} aria-label="Detailed learning guide">

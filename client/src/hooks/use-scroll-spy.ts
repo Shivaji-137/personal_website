@@ -17,7 +17,7 @@ export const useScrollSpy = (
       const elements = itemIds.map(id => document.getElementById(id));
       
       // Find the section closest to the top of the viewport
-      let currentSection: Element | null = null;
+      let currentSectionId: string | null = null;
       let minDistance = Infinity;
       
       elements.forEach(element => {
@@ -28,11 +28,11 @@ export const useScrollSpy = (
         
         if (distance < minDistance) {
           minDistance = distance;
-          currentSection = element;
+          currentSectionId = element.id;
         }
       });
       
-      setActiveId(currentSection?.id || null);
+      setActiveId(currentSectionId);
     };
     
     handler(); // Call once to set initial active section

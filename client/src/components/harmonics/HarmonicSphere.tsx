@@ -18,7 +18,7 @@ export default function HarmonicSphere(props: Props) {
       vs = shader(gl.VERTEX_SHADER, `#version 300 es
       precision highp float;
       in vec2 uv; uniform mat3 rotation; uniform float zoom; uniform float aspect; uniform bool lobe; uniform sampler2D field; out vec2 coords;
-      void main(){float t=uv.y*3.141592653589793,p=(uv.x*2.-1.)*3.141592653589793;vec3 v=vec3(sin(t)*sin(p),sin(t)*cos(p),cos(t));float r=lobe?abs(texture(field,uv).r):1.;vec3 q=rotation*(v*r);gl_Position=vec4(q.x*zoom/aspect,q.y*zoom,-q.z*.45,1.);coords=uv;}`);
+      void main(){float t=uv.y*3.141592653589793,p=(uv.x*2.-1.)*3.141592653589793;vec3 v=vec3(sin(t)*cos(p),sin(t)*sin(p),cos(t));float r=lobe?abs(texture(field,uv).r):1.;vec3 q=rotation*(v*r);gl_Position=vec4(q.x*zoom/aspect,q.y*zoom,-q.z*.45,1.);coords=uv;}`);
       fs = shader(gl.FRAGMENT_SHADER, `#version 300 es
       precision highp float;
       uniform sampler2D field; uniform bool continuous; in vec2 coords; out vec4 color;
@@ -73,7 +73,7 @@ export default function HarmonicSphere(props: Props) {
       if (p.labels && !p.analysis.zero && p.analysis.boxes <= 100) {
         const ts = [0, ...p.analysis.latitudes, Math.PI], ps = [-Math.PI, ...p.analysis.longitudes, Math.PI], occupied: { x: number; y: number }[] = [];
         for (let j = 0; j < ts.length - 1; j++) for (let i = 0; i < ps.length - 1; i++) {
-          const t = (ts[j] + ts[j + 1]) / 2, a = p.harmonic.m === 0 ? Math.atan2(r[6], r[7]) : (ps[i] + ps[i + 1]) / 2, value = evaluate(p.harmonic, t, a), v = xyz(t, a), radius = p.lobe && p.analysis.scale ? Math.abs(value) / p.analysis.scale : 1;
+          const t = (ts[j] + ts[j + 1]) / 2, a = p.harmonic.m === 0 ? Math.atan2(r[7], r[6]) : (ps[i] + ps[i + 1]) / 2, value = evaluate(p.harmonic, t, a), v = xyz(t, a), radius = p.lobe && p.analysis.scale ? Math.abs(value) / p.analysis.scale : 1;
           const q = projected(v.map(x => x * radius));
           if (q.depth < .12 || occupied.some(b => Math.hypot(b.x - q.x, b.y - q.y) < 25)) continue;
           occupied.push(q); ctx.font = 'bold 15px system-ui'; ctx.lineWidth = 3; ctx.strokeStyle = '#020617'; ctx.strokeText(value > 0 ? '+' : '−', q.x, q.y); ctx.fillStyle = 'white'; ctx.fillText(value > 0 ? '+' : '−', q.x, q.y);

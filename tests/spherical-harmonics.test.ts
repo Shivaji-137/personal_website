@@ -44,10 +44,3 @@ for(const component of ['real','imaginary'] as const)for(const m of [-3,3])for(c
 }
 for(let q=0;q<=64;q++)assert.equal(latitudeNodes(64,q).length,64-q);
 console.log('All degree-64 orders and neighboring-region sign alternation passed.');
-
-// Exchanged x/y basis: Greenwich is +y and east-positive longitude points toward +x.
-for (const [longitude, expectedX, expectedY] of [[0, 0, 1], [85, 0.9961946980917455, 0.08715574274765814], [-84, -0.9945218953682733, 0.10452846326765346]]) {
- const [x,y,z]=xyz(Math.PI/2,longitude*Math.PI/180);
- near(x,expectedX); near(y,expectedY); near(z,0);
- near(anglesFromXYZ(x,y,z,0).psi*180/Math.PI,longitude);
-}
