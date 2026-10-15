@@ -15,7 +15,7 @@ function IntegerControl({ name, label, value, min, max, change }: { name: string
   const [draft, setDraft] = useState(String(value));
   useEffect(() => setDraft(String(value)), [value]);
   const commit = () => { const n = Number(draft); if (draft.trim() && Number.isFinite(n)) { const bounded = Math.max(min, Math.min(max, Math.round(n))); setDraft(String(bounded)); change(bounded); } else setDraft(String(value)); };
-  return <label className="text-xs text-slate-300">{label}<input aria-label={name} type="number" min={min} max={max} step="1" value={draft} onChange={e => setDraft(e.target.value)} onBlur={commit} onKeyDown={e => { if(e.key === 'Enter') { commit(); e.currentTarget.blur(); } }} className="mt-1 w-full rounded border border-slate-600 bg-slate-950 p-2"/></label>;
+  return <label className="text-xs text-slate-300">{label}<input aria-label={name} type="number" min={min} max={max} step="1" value={draft} onChange={e => setDraft(e.target.value)} onBlur={commit} onKeyDown={e => { if(e.key === 'Enter') { commit(); e.currentTarget.blur(); } }} className="mt-1 w-full rounded border border-slate-600 bg-slate-950 p-2 text-base"/></label>;
 }
 function AngleControl({ name, label, value, min, max, change }: { name: string; label: string; value: number; min: number; max: number; change: (x: number) => void }) {
   const [draft, setDraft] = useState(String(value));
@@ -49,6 +49,10 @@ export default function SphericalHarmonicsPage() {
     <p className="mb-4 max-w-4xl text-sm leading-6 text-slate-300">One function, two linked views: see how latitude and longitude factors divide a sphere into positive and negative regions. ψ is azimuth, commonly written φ; θ is colatitude measured from the north pole.</p>
     <div className="grid items-start gap-4 xl:grid-cols-[minmax(0,1fr)_290px]">
       <div className="min-w-0 space-y-4"><section className={panel}>
+        <div className="sticky top-16 z-20 -mx-1 mb-3 grid grid-cols-2 gap-3 rounded-xl border border-slate-600 bg-[#0d1523] p-3 shadow-lg xl:hidden" aria-label="Quick harmonic selection">
+          <IntegerControl name="Mobile degree ell" label="Degree ℓ" value={l} min={0} max={64} change={changeL}/>
+          <IntegerControl name="Mobile order m" label="Order m" value={m} min={-l} max={l} change={setM}/>
+        </div>
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2"><h2 className="font-semibold">{component === 'real' ? 'Re' : 'Im'} Y<sub>{l}</sub><sup>{m}</sup>(θ, ψ)</h2><button onClick={() => setReset(v => v + 1)} className="rounded border border-slate-600 px-3 py-1 text-xs hover:border-cyan-300">Reset cameras</button></div>
         <div className="grid min-w-0 gap-4 md:grid-cols-2"><div className="min-w-0"><h3 className="mb-2 text-xs text-slate-300">3D unit sphere • fixed radius r = 1</h3><HarmonicSphere {...shared}/></div><div className="min-w-0"><h3 className="mb-2 text-xs text-slate-300">Angular map • θ increases downward</h3><HarmonicMap {...shared}/></div></div>
         <div className="mt-4 min-w-0 rounded-xl border border-cyan-300/20 bg-cyan-950/15 px-3 py-2" aria-label="Symbolic harmonic formula">
@@ -65,8 +69,8 @@ export default function SphericalHarmonicsPage() {
       </div>
       <aside className={`${panel} space-y-4`}>
         <h2 className="font-semibold">Harmonic &amp; selection</h2>
-        <div className="grid grid-cols-2 gap-3"><IntegerControl name="Degree ell" label="Degree ℓ" value={l} min={0} max={64} change={changeL}/><IntegerControl name="Order m" label="Order m" value={m} min={-l} max={l} change={setM}/></div>
-        <p className="text-[10px] text-slate-400">Press Enter or leave a number field to apply. Order is constrained to −ℓ…ℓ.</p>
+        <div className="hidden grid-cols-2 gap-3 xl:grid"><IntegerControl name="Degree ell" label="Degree ℓ" value={l} min={0} max={64} change={changeL}/><IntegerControl name="Order m" label="Order m" value={m} min={-l} max={l} change={setM}/></div>
+        <p className="hidden text-[10px] text-slate-400 xl:block">Press Enter or leave a number field to apply. Order is constrained to −ℓ…ℓ.</p>
         <label className="block text-xs text-slate-300">Component<select aria-label="Harmonic component" value={component} onChange={e => setComponent(e.target.value as Harmonic['component'])} className="mt-1 w-full rounded border border-slate-600 bg-slate-950 p-2"><option value="real">Real part • cosine</option><option value="imaginary">Imaginary part • sine</option></select></label>
         <label className="block text-xs text-slate-300">Phase convention<select aria-label="Phase convention" value={phase} onChange={e => setPhase(e.target.value as Harmonic['phase'])} className="mt-1 w-full rounded border border-slate-600 bg-slate-950 p-2"><option value="standard">Standard Condon–Shortley</option><option value="notes">Notes • without Condon–Shortley</option></select></label>
         <AngleControl name="Theta" label="Colatitude θ" value={theta} min={0} max={180} change={setTheta}/><AngleControl name="Psi" label="Azimuth ψ" value={psi} min={-180} max={180} change={setPsi}/>
@@ -116,6 +120,16 @@ export default function SphericalHarmonicsPage() {
       <MathFormula tex={String.raw`x=\sin\theta\cos\psi,\qquad y=\sin\theta\sin\psi,\qquad z=\cos\theta`} block/>
       <p className="text-slate-400">The sphere and map share a sampled field; mathematical readouts and nodal roots use the recurrence directly. Dense sign labels are thinned or hidden for readability.</p>
     </div></details>
+    <section className={`${panel} mt-4`} aria-label="Detailed learning guide">
+      <p className="text-[10px] uppercase tracking-[.2em] text-cyan-300">Learn from the beginning</p>
+      <h2 className="mt-2 text-lg font-semibold">How do we get these formulas?</h2>
+      <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300">Follow the derivations, expanded Legendre polynomials, normalization, phase conventions, nodal patterns and worked examples—with figures and exercises.</p>
+      <div className="mt-4 flex flex-wrap gap-3 text-xs">
+        <a href="/#/phd-physics/spherical-harmonics/guide" className="rounded-full bg-cyan-300 px-4 py-2 font-semibold text-slate-950 hover:bg-cyan-200">Read the illustrated guide →</a>
+        <a href="/guides/spherical-harmonics/README.md" download="spherical-harmonics-guide.md" className="rounded-full border border-slate-600 px-4 py-2 text-cyan-100 hover:border-cyan-300">Download guide (.md)</a>
+        <a href="/guides/spherical-harmonics/all-degree-order-pairs.md" download className="rounded-full border border-slate-600 px-4 py-2 text-cyan-100 hover:border-cyan-300">Download all 4,225 ℓ, m pairs (.md)</a>
+      </div>
+    </section>
     <PhysicsReferences project="harmonics"/>
   </main></div>;
 }

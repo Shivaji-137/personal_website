@@ -1,3 +1,4 @@
+import SphericalHarmonicsGuidePage from '@/pages/SphericalHarmonicsGuidePage';
 import HydrostaticEquilibriumPage from '@/pages/HydrostaticEquilibriumPage';
 import SphericalHarmonicsPage from '@/pages/SphericalHarmonicsPage';
 import DynamicalPhasePage from '@/pages/DynamicalPhasePage';
@@ -60,6 +61,7 @@ function App() {
             <Route path="/phd-physics/binary-virial" element={<BinaryVirialPage />} />
             <Route path="/phd-physics/telescope-diffraction" element={<TelescopeDiffractionPage />} />
             <Route path="/phd-physics/ubv-photometry" element={<UBVPhotometryPage />} />
+            <Route path="/phd-physics/spherical-harmonics/guide" element={<SphericalHarmonicsGuidePage />} />
             <Route path="/phd-physics/spherical-harmonics" element={<SphericalHarmonicsPage />} />
             <Route path="/phd-physics/hydrostatic-equilibrium" element={<HydrostaticEquilibriumPage />} />
             <Route path="/phd-physics" element={<PhDPhysicsPage />} />
