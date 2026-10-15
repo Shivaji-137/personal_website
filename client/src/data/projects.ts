@@ -8,6 +8,10 @@ export interface Project {
     github: string;
     certificate:string;
     information: { [key: string]: string }[];
+    achievements?: Array<{
+      title: string;
+      details: string[];
+    }>;
   }
 export const projects: Project[] = [
 {

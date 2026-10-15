@@ -1,3 +1,4 @@
+import MathFormula from '@/components/MathFormula';
 import PhysicsReferences from '@/components/PhysicsReferences';
 import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
@@ -96,7 +97,7 @@ const EclipsingBinaryPage = () => {
 
   return (
     <div className="min-h-screen bg-[#08080a] text-white overflow-x-hidden"><StarBackground /><Header /><main className="pt-20 pb-16 relative z-10"><div className="container mx-auto px-4 max-w-7xl">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-5"><p className="text-[#FF65A3] uppercase tracking-[0.28em] text-xs font-medium mb-3">Physics Lab • Observational Astrophysics</p><h1 className="font-space font-bold text-3xl md:text-4xl text-white mb-4">Keplerian Binary Star &amp; Eclipse Model</h1><p className="max-w-3xl mx-auto text-sm text-gray-300">A two-body Keplerian simulation solving <span className="text-[#FFD15C] font-mono">M = E - e sin(E)</span> with numerically integrated limb-darkened eclipses, barycentric dynamics, and simultaneous photometric &amp; radial-velocity synthesis.</p></motion.div>
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-5"><p className="text-[#FF65A3] uppercase tracking-[0.28em] text-xs font-medium mb-3">Physics Lab • Observational Astrophysics</p><h1 className="font-space font-bold text-3xl md:text-4xl text-white mb-4">Keplerian Binary Star &amp; Eclipse Model</h1><p className="max-w-3xl mx-auto text-sm text-gray-300">A two-body Keplerian simulation solving <span className="text-[#FFD15C] font-mono"><MathFormula tex={String.raw`M=E-e\sin E`}/></span> with numerically integrated limb-darkened eclipses, barycentric dynamics, and simultaneous photometric &amp; radial-velocity synthesis.</p></motion.div>
             {/* Astrophysical Presets Bar */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -489,13 +490,13 @@ const EclipsingBinaryPage = () => {
       <section className="mt-6 rounded-2xl border border-slate-700 bg-[#0d1523]/95 p-5 md:p-7">
         <p className="text-xs uppercase tracking-[0.2em] text-cyan-300">Model foundations</p><h2 className="mt-2 text-2xl font-semibold">Binary-star equations</h2>
         <div className="mt-5 grid gap-4 md:grid-cols-2">{[
-          ['M = 2πt/P = E − e sin E; r = a(1 − e cos E)', 'Uniform mean anomaly gives uniform elapsed time; eccentric anomaly determines separation. Phase ϕ = M/2π starts at periastron.'],
-          ['P² = 4π²a³ / G(M₁ + M₂)', 'The relative semimajor axis is in solar radii, masses in solar units, and the displayed period is in days. Computation uses nominal solar radius and GM.'],
-          ['q = M₂/M₁; a₁ = aq/(1+q); a₂ = a/(1+q)', 'The two stars orbit the common barycenter with opposite positions and mass-weighted velocities.'],
-          ['Kⱼ = 2πaⱼ sin i / [P√(1−e²)]', 'RV₁ = −K₁[cos(ν+ω)+e cos ω]; RV₂ = +K₂[cos(ν+ω)+e cos ω]. Here ω describes star 1’s periastron, +z points toward the observer, and positive RV means receding; systemic velocity is zero.'],
-          ['I(μ) = I(1)[1−u(1−μ)]; μ = √(1−ρ²/R²)', 'Both stars use the same linear limb-darkening coefficient u. The quadrature integrates blocked intensity over annuli, with an exact uniform-disk limit.'],
-          ['F/F₀ = 1 − F_blocked/(L₁+L₂); Lⱼ = πRⱼ²Iⱼ(1)(1−u/3)', 'Flux is normalized to the uneclipsed system; J₂/J₁ = (T₂/T₁)⁴ approximates bolometric surface brightness. Δm = −2.5 log₁₀(F/F₀).']
-        ].map(([equation,note])=><div key={equation} className="rounded-xl border border-slate-700 bg-black/20 p-4"><p className="break-words font-mono text-sm leading-7 text-amber-200">{equation}</p><p className="mt-2 text-sm leading-relaxed text-slate-300">{note}</p></div>)}</div>
+          [String.raw`M=2\pi t/P=E-e\sin E;\quad r=a(1-e\cos E)`, 'Uniform mean anomaly gives uniform elapsed time; eccentric anomaly determines separation. Phase ϕ = M/2π starts at periastron.'],
+          [String.raw`P^2=\frac{4\pi^2a^3}{G(M_1+M_2)}`, 'The relative semimajor axis is in solar radii, masses in solar units, and the displayed period is in days. Computation uses nominal solar radius and GM.'],
+          [String.raw`q=M_2/M_1;\quad a_1=\frac{aq}{1+q};\quad a_2=\frac a{1+q}`, 'The two stars orbit the common barycenter with opposite positions and mass-weighted velocities.'],
+          [String.raw`K_j=\frac{2\pi a_j\sin i}{P\sqrt{1-e^2}}`, 'RV₁ = −K₁[cos(ν+ω)+e cos ω]; RV₂ = +K₂[cos(ν+ω)+e cos ω]. Here ω describes star 1’s periastron, +z points toward the observer, and positive RV means receding; systemic velocity is zero.'],
+          [String.raw`I(\mu)=I(1)[1-u(1-\mu)];\quad\mu=\sqrt{1-\rho^2/R^2}`, 'Both stars use the same linear limb-darkening coefficient u. The quadrature integrates blocked intensity over annuli, with an exact uniform-disk limit.'],
+          [String.raw`F/F_0=1-\frac{F_{\rm blocked}}{L_1+L_2};\quad L_j=\pi R_j^2I_j(1)(1-u/3)`, 'Flux is normalized to the uneclipsed system; J₂/J₁ = (T₂/T₁)⁴ approximates bolometric surface brightness. Δm = −2.5 log₁₀(F/F₀).']
+        ].map(([equation,note])=><div key={equation} className="rounded-xl border border-slate-700 bg-black/20 p-4"><p className="break-words font-mono text-sm leading-7 text-amber-200"><MathFormula tex={equation} block/></p><p className="mt-2 text-sm leading-relaxed text-slate-300">{note}</p></div>)}</div>
       </section>
       <PhysicsReferences project="binary" />
       </div></main></div>

@@ -48,6 +48,7 @@ const PhDPhysicsPage = () => {
 
           {(!selectedSection || selectedSection === 'electricity-magnetism') && <section id="electricity-magnetism" className="mb-12 scroll-mt-24">
             <SectionHeading title="Electricity & Magnetism" />
+            <div className="mb-4 grid gap-4 md:grid-cols-3"><ProjectCard href="/#/phd-physics/spherical-harmonics" title="Spherical Harmonics Explorer" description="Rotate a signed 3D sphere, link angular maps and lobe models, and explore nodal geometry, phase conventions, and multipole angular structure through degree 64." icon="ri-global-line" color="cyan" /></div>
             <TopicGrid items={[
               ['Fields & Potentials', 'Visualizing electric fields, potentials, and charge distributions.', 'ri-bubble-chart-line', 'text-[#8be9fd]'],
               ['Maxwell Systems', 'A unified view of electric and magnetic fields in space and time.', 'ri-signal-tower-line', 'text-[#8be9fd]'],
@@ -65,6 +66,7 @@ const PhDPhysicsPage = () => {
               <ProjectCard href="/#/phd-physics/ubv-photometry" title="UBV Photometry Filters" description="Overlay adjustable ultraviolet, blue and visual response curves, integrate stellar flux, and explore distance-independent color indices." icon="ri-filter-3-line" color="pink" />
               <ProjectCard href="/#/phd-physics/telescope-diffraction" title="Telescope Resolving Power &amp; Diffraction Limits" description="Adjust aperture and wavelength, inspect Airy patterns, and compare two stars at the Rayleigh criterion." icon="ri-telescope-line" color="cyan" />
               <ProjectCard href="/#/phd-physics/binary-virial" title="Binary System &amp; Virial Theorem" description="Explore a 3D barycentric orbit, calculate reduced mass, and verify the time-averaged relationship between kinetic and potential energy." icon="ri-planet-line" color="pink" />
+              <ProjectCard href="/#/phd-physics/hydrostatic-equilibrium" title="Hydrostatic Equilibrium" description="Probe a stellar interior, solve Lane–Emden polytropes, and compare pressure support, gravity, and mass-continuity profiles." icon="ri-sun-line" color="cyan" />
               <ProjectCard href="/#/phd-physics/blackbody-radiation" title="Blackbody Radiation Curve" description="Adjust stellar temperature, follow Wien’s peak wavelength, and compare spectra and visible colors from Betelgeuse to Rigel." icon="ri-spectrum-line" color="yellow" />
               <ProjectCard href="/#/phd-physics/stellar-parallax" title="Stellar Parallax Model" description="Orbit the Sun, compare January and July sky positions, and drag a nearby star to explore the inverse distance–parallax relationship." icon="ri-telescope-line" color="pink" />
               <ProjectCard href="/#/phd-physics/kepler-laws" title="Kepler’s Laws Demonstrator" description="Shape elliptical orbits, compare equal-time swept areas, and plot planetary periods on an interactive log-log graph." icon="ri-planet-line" color="cyan" />

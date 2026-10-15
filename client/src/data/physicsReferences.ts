@@ -1,6 +1,40 @@
-export type PhysicsProject = 'planetary' | 'coordinates' | 'binary' | 'kepler' | 'parallax' | 'blackbody' | 'virial' | 'diffraction' | 'photometry' | 'planck' | 'distancePhotometry' | 'lorentz' | 'simultaneity' | 'oscillator' | 'duffing' | 'dynamicalMap';
+export type PhysicsProject = 'planetary' | 'coordinates' | 'binary' | 'kepler' | 'parallax' | 'blackbody' | 'virial' | 'diffraction' | 'photometry' | 'planck' | 'distancePhotometry' | 'lorentz' | 'simultaneity' | 'oscillator' | 'duffing' | 'dynamicalMap' | 'hydrostatic' | 'harmonics';
 type Source = { title: string; url: string };
 export const physicsReferences: Record<PhysicsProject, { sources: Source[] }> = {
+  harmonics: { sources: [
+    { title: "Spherical harmonics: definitions, conjugation and orthogonality \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.30" },
+    { title: "Associated-Legendre recurrence relations \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.10" },
+    { title: "Integer-degree Legendre functions \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.7" },
+    { title: "Zeros of Legendre functions \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.16" },
+    { title: "Stable methods of computation \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.32" },
+    { title: "Normalized Legendre functions \u2014 GNU Scientific Library", url: "https://www.gnu.org/software/gsl/doc/html/specfunc.html" },
+    { title: "Efficient computation of associated Legendre functions \u2014 GSL technical report (PDF)", url: "https://www.gnu.org/software/gsl/tr/tr001.pdf" },
+    { title: "Complex spherical harmonics and low-degree examples \u2014 SciPy", url: "https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.sph_harm_y.html" },
+    { title: "Real harmonics, normalization and phase conventions \u2014 SHTOOLS", url: "https://shtools.github.io/SHTOOLS/fortran-real-spherical-harmonics.html" },
+    { title: "Conversion of normalization and Condon\u2013Shortley conventions \u2014 SHTOOLS", url: "https://shtools.github.io/SHTOOLS/convert.html" },
+    { title: "Complex-to-real harmonic conversion \u2014 SHTOOLS", url: "https://shtools.github.io/SHTOOLS/pyshctor.html" },
+    { title: "Angular momentum and spherical harmonics \u2014 MIT lecture notes (PDF)", url: "https://ocw.mit.edu/courses/5-61-physical-chemistry-fall-2007/50aa3822fda81d32245a6d1ea631ee1a_lecture19.pdf" },
+    { title: "Spherical coordinates and angular momentum \u2014 MIT OpenCourseWare", url: "https://ocw.mit.edu/courses/5-73-introductory-quantum-mechanics-i-fall-2005/resources/sec7/" },
+    { title: "Electromagnetic multipole expansion \u2014 MIT lecture notes (PDF)", url: "https://ocw.mit.edu/courses/8-07-electromagnetism-ii-fall-2012/6a67040c6a90f70c8164cdea63473a30_MIT8_07F12_ln8.pdf" },
+    { title: "SHTools: Tools for Working with Spherical Harmonics \u2014 original research paper", url: "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018GC007529" },
+  ] },
+  hydrostatic: { sources: [
+    { title: "Hydrostatic equilibrium and stellar structure \u2014 University of Maryland (PDF)", url: "https://www.astro.umd.edu/~jph/A320_Stellar_Structure.pdf" },
+    { title: "The Solar Interior: Theory \u2014 OpenStax", url: "https://openstax.org/books/astronomy-2e/pages/16-3-the-solar-interior-theory" },
+    { title: "The Structure and Composition of the Sun \u2014 OpenStax", url: "https://openstax.org/books/astronomy-2e/pages/15-1-the-structure-and-composition-of-the-sun" },
+    { title: "Hydrostatic equilibrium and central temperature \u2014 JILA", url: "https://jila.colorado.edu/~ajsh/courses/astr1120_03/text/chapter5/Hydrostatic.htm" },
+    { title: "Pressure support in main-sequence stars \u2014 JILA", url: "https://jila.colorado.edu/~ajsh/courses/astr1120_03/text/chapter5/l5S1.htm" },
+    { title: "Stellar structure lecture notes \u2014 Yale (PDF)", url: "https://www.astro.yale.edu/vdbosch/astro320_summary16.pdf" },
+    { title: "Stellar structure modeling \u2014 UMass Amherst (PDF)", url: "https://people.umass.edu/wqd/astro643/B_model.pdf" },
+    { title: "Stellar structure and polytropes \u2014 University of Tokyo (PDF)", url: "https://www-utap.phys.s.u-tokyo.ac.jp/naoki.yoshida/ISYA25/Lec1.pdf" },
+    { title: "Stellar structure \u2014 James Lattimer, Stony Brook (PDF)", url: "https://www.astro.sunysb.edu/lattimer/PHY688/struc.pdf" },
+    { title: "Undergraduate stellar structure notes \u2014 Princeton", url: "https://www.astro.princeton.edu/~burrows/classes/403/notes.html" },
+    { title: "Graduate stellar structure notes \u2014 Princeton", url: "https://www.astro.princeton.edu/~burrows/classes/514/notes.html" },
+    { title: "Lane\u2019s original 1870 paper on the theoretical temperature of the Sun", url: "https://ajsonline.org/article/62347-on-the-theoretical-temperature-of-the-sun-under-the-hypothesis-of-a-gaseous-mass-maintaining-its-volume-by-its-internal-heat-and-depending-on-the-la" },
+    { title: "A well-balanced numerical scheme for stellar structure \u2014 Astronomy & Astrophysics", url: "https://doi.org/10.1051/0004-6361/201834180" },
+    { title: "Generalized Lane\u2013Emden equations as boundary-value problems \u2014 MNRAS", url: "https://academic.oup.com/mnras/article/523/2/2059/7170050" },
+    { title: "Newtonian and relativistic polytropes \u2014 research paper", url: "https://arxiv.org/abs/1102.2393" },
+  ] },
   dynamicalMap: { sources: [
     { title: "Duffing oscillator — Scholarpedia", url: "https://www.scholarpedia.org/article/Duffing_oscillator" },
     { title: "Nonlinear dynamics lecture notes — UC San Diego (PDF)", url: "https://courses.physics.ucsd.edu/2009/Spring/physics221a/LECTURES/221_COURSE.pdf" },

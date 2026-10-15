@@ -26,12 +26,15 @@ const originalScenes=[
  {title:'Every observation is a conversation with the past.',caption:'Light carries a history. Looking outward changes how we see home.',scale:'A moment to reflect',duration:4},
  {title:'Welcome back, explorer.',caption:'The universe returns to your window.',scale:'Back to your observatory',duration:2},
  {title:'Two messengers sail beyond the planets.',caption:'Voyager 1 and 2 cruise through interstellar space beyond the heliopause. The dish, instrument boom and RTG boom follow NASA’s spacecraft design. They coast without rocket exhaust; the distant Oort Cloud still lies ahead.',scale:'Voyager 1 & 2 • recognizable models, compressed distances and travel time',duration:7},
- {title:'Stars emerge inside cosmic pillars.',caption:'Webb’s near-infrared view of the Pillars of Creation reveals young stars among dense gas and dust. Infrared filters are mapped to visible colors. The gentle camera move explores a real observation; it does not animate the stars forming.',scale:'Stellar birth • JWST NIRCam • Eagle Nebula',duration:8},
+ {title:'Stars emerge inside cosmic pillars.',caption:'Webb’s 2022 near-infrared view of the Pillars of Creation reveals young stars among dense gas and dust. Infrared filters are mapped to visible colors. The gentle camera move explores a real observation; it does not animate the stars forming.',scale:'Stellar birth • JWST NIRCam • Eagle Nebula',duration:8},
  {title:'An exploded star leaves a tapestry of debris.',caption:'Webb resolves the tangled knots and filaments of supernova remnant Cassiopeia A. Ejected material collides with surrounding gas. This is a real infrared composite; the slow zoom is a camera effect, not a time-lapse of the expansion.',scale:'Stellar death • JWST NIRCam • Cassiopeia A',duration:8},
  {title:'Gravity turns a distant galaxy into a horseshoe.',caption:'First discovered in Sloan survey data, the Cosmic Horseshoe appears in sharp detail through Hubble. A massive foreground galaxy bends the light of a more distant galaxy into an almost complete Einstein ring. The blue arc is lensed galaxy light, not a physical ring around the foreground galaxy.',scale:'Relativity observed • Hubble WFC3 • Cosmic Horseshoe',duration:8},
  {title:'We map matter that emits no light.',caption:'In Abell 2744, optical telescopes reveal galaxies and Chandra records hot gas, shown in pink. Blue shows a mass distribution reconstructed from gravitational lensing, dominated by dark matter. This is a data composite, not a direct photograph of dark matter.',scale:'Invisible mass inferred • Hubble + VLT + Chandra • Abell 2744',duration:9},
+ {title:'Before cameras, the telescope became a sketchbook.',caption:'Galileo recorded the Moon through his telescope in these original 1609 watercolors. The archive page reveals how careful drawings preserved observations before astronomical photography.',scale:'Visual history • 1609 • Galileo’s telescopic Moon drawings',duration:8},
+ {title:'The Moon leaves its light on a photographic plate.',caption:'Whipple and the Bonds photographed the Moon through Harvard’s Great Refractor in March 1851. This surviving 1853 print reproduces that early observation, turning a fleeting telescope view into a permanent image.',scale:'Visual history • 1851 observation / 1853 print • Harvard Great Refractor',duration:8},
+ {title:'Hubble reveals the original Pillars of Creation.',caption:'This is the original 1995 WFPC2 image, assembled from sulfur, hydrogen and oxygen emission. Its stepped outline comes from the camera’s mosaic. Next, Webb revisits the region in infrared: a different wavelength view, not a movie of the nebula changing.',scale:'Visual history • 1995 • Hubble WFPC2 • original observed image',duration:8},
 ];
-const sceneOrder=[0,1,2,20,21,22,3,4,5,23,24,6,7,8,9,13,14,15,16,17,10,11,12,18,19];
+const sceneOrder=[0,1,2,20,25,26,27,21,22,3,4,5,23,24,6,7,8,9,13,14,15,16,17,10,11,12,18,19];
 const scenes=sceneOrder.map(index=>originalScenes[index]);
 const futureSources:Partial<Record<number,{title:string;url:string}>>={
  9:{title:'NASA: Webb and the Big Bang',url:'https://science.nasa.gov/mission/webb/big-bang-q-and-a/'},
@@ -43,7 +46,7 @@ const futureSources:Partial<Record<number,{title:string;url:string}>>={
 };
 const starts=scenes.map((_,i)=>scenes.slice(0,i).reduce((sum,s)=>sum+s.duration,0));
 const total=scenes.reduce((sum,s)=>sum+s.duration,0);
-const renderImageKey=(stage:number):JourneyImage|null=>({1:'earth',3:'galaxy',4:'web',6:'blackhole',7:'distant',8:'cmb',11:'lisa',12:'earth',13:'exoplanets',14:'pulsar',15:'quasar',16:'deepfield',17:'waves',18:'galaxy',21:'pillars',22:'cassiopeia',23:'horseshoe',24:'darkmatter'} as Partial<Record<number,JourneyImage>>)[stage]??null;
+const renderImageKey=(stage:number):JourneyImage|null=>({1:'earth',3:'galaxy',4:'web',6:'blackhole',7:'distant',8:'cmb',11:'lisa',12:'earth',13:'exoplanets',14:'pulsar',15:'quasar',16:'deepfield',17:'waves',18:'galaxy',21:'pillars',22:'cassiopeia',23:'horseshoe',24:'darkmatter',25:'galileo',26:'earlymoon',27:'hubble1995'} as Partial<Record<number,JourneyImage>>)[stage]??null;
 const sceneImageKey=(stage:number)=>renderImageKey(sceneOrder[stage]);
 const rand=(i:number)=>{const v=Math.sin(i*127.1+311.7)*43758.5453;return v-Math.floor(v);};
 export default function CosmicJourney({origin,onClose}:{origin:{x:number;y:number};onClose:()=>void}){
@@ -136,6 +139,20 @@ export default function CosmicJourney({origin,onClose}:{origin:{x:number;y:numbe
 
    if(which===12){const image=images.current.earth;const glow=ctx.createRadialGradient(-size*.45,0,0,-size*.45,0,size*.4);glow.addColorStop(0,'rgba(255,240,200,.7)');glow.addColorStop(1,'rgba(255,240,200,0)');ctx.fillStyle=glow;ctx.fillRect(-size,-size*.5,size,size);ctx.fillStyle='#02040b';ctx.beginPath();ctx.arc(-size*.45,0,size*.11,0,2*Math.PI);ctx.fill();ctx.strokeStyle='#94a3b8';ctx.stroke();const radius=size*.12,px=size*.55,py=-size*.1;if(image?.complete&&image.naturalWidth){ctx.save();ctx.beginPath();ctx.arc(px,py,radius,0,2*Math.PI);ctx.clip();ctx.drawImage(image,px-radius,py-radius,2*radius,2*radius);ctx.restore();}ctx.strokeStyle='#67e8f9';ctx.beginPath();ctx.moveTo(px,size*.35);for(let i=0;i<90;i++)ctx.lineTo(px-size*.35+i*size*.009,size*.65-(.1+.12*Math.sin(i*.4)**2)*size);ctx.stroke();}
    if([6,7,11,13,14,15,16].includes(which)){const key=renderImageKey(which),image=key?images.current[key]:undefined;if(image?.complete&&image.naturalWidth){const aspect=image.naturalWidth/image.naturalHeight,w=Math.min(width*.92,height*.54*aspect)*(1-local*.04),h=w/aspect;blendImage(image,w,h,[7,11,13].includes(which),false);}}
+   if(which>=25&&which<=27){
+    const key=renderImageKey(which),image=key?images.current[key]:undefined;
+    if(image?.complete&&image.naturalWidth){
+     const aspect=image.naturalWidth/image.naturalHeight;
+     const camera=reduced?0:local;
+     const h=Math.min(height*.6,width*.87/aspect)*(1+camera*.035),w=h*aspect;
+     ctx.save();
+     ctx.translate(0,-height*.025);
+     // A soft reveal preserves the original document and its photographic details.
+     ctx.globalAlpha*=reduced?1:Math.min(1,.35+local*3);
+     blendImage(image,w,h,true);
+     ctx.restore();
+    }
+   }
    if(which>=21&&which<=24){
     const key=renderImageKey(which),image=key?images.current[key]:undefined;
     if(image?.complete&&image.naturalWidth){

@@ -1,4 +1,19 @@
 export const cosmicJourneyImages = {
+ galileo: {
+  src: 'https://vitruvio.imss.fi.it/foto/galileopalazzostrozzi/41529_1000.jpg',
+  credit: 'Galileo Galilei, Moon watercolors, November–December 1609 • Biblioteca Nazionale Centrale di Firenze, Ms. Gal. 48, c. 28r; archival image presented by Museo Galileo',
+  source: 'https://brunelleschi.imss.fi.it/galileopalazzostrozzi/oggetto/GalileoGalileiDisegniLuna.html',
+ },
+ earlymoon: {
+  src: 'https://blogs.loc.gov/picturethis/files/2021/07/Moon-22196r.jpg',
+  credit: 'John Adams Whipple, Moon photographed March 1851, printed 1853 • Library of Congress, Prints & Photographs Division, ppmsca.22196',
+  source: 'https://blogs.loc.gov/picturethis/2021/07/a-step-out-of-and-beyond-nature-picturing-the-moon/',
+ },
+ hubble1995: {
+  src: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/1995/11/STScI-01EVVG1MZH7Z68H34YMACHEHZE.tif?w=1518',
+  credit: 'Pillars of Creation, 1995: NASA, ESA, STScI, J. Hester and P. Scowen (Arizona State University) • Hubble WFPC2 emission-line composite',
+  source: 'https://science.nasa.gov/asset/hubble/gas-pillars-in-the-eagle-nebula-m16-pillars-of-creation-in-a-star-forming-region/',
+ },
  pillars: {
   src: 'https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2022/10/STScI-01GGF8H15VZ09MET9HFBRQX4S3.png?fit=clip&h=1600&w=924',
   credit: 'Pillars of Creation: NASA, ESA, CSA, STScI; Image Processing: Joseph DePasquale (STScI), Anton Koekemoer (STScI), Alyssa Pagan (STScI) • NIRCam infrared composite, colors assigned to filters',
