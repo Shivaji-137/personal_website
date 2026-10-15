@@ -80,10 +80,10 @@ export function analyze(h: Harmonic) {
   return { latitudes, longitudes, rows, columns, boxes: rows * columns, sphereRegions, zero, scale, tolerance, sampleTheta, samplePsi };
 }
 export function sign(value: number, tolerance: number): -1 | 0 | 1 { return Math.abs(value) <= tolerance ? 0 : value > 0 ? 1 : -1; }
-export function xyz(theta: number, psi: number) { return [Math.sin(theta) * Math.cos(psi), Math.sin(theta) * Math.sin(psi), Math.cos(theta)] as [number, number, number]; }
+export function xyz(theta: number, psi: number) { return [Math.sin(theta) * Math.sin(psi), Math.sin(theta) * Math.cos(psi), Math.cos(theta)] as [number, number, number]; }
 export function anglesFromXYZ(x: number, y: number, z: number, previousPsi: number) {
   const length = Math.hypot(x, y, z), theta = Math.acos(Math.max(-1, Math.min(1, z / length)));
-  return { theta, psi: Math.hypot(x, y) / length < 1e-10 ? previousPsi : Math.atan2(y, x) };
+  return { theta, psi: Math.hypot(x, y) / length < 1e-10 ? previousPsi : Math.atan2(x, y) };
 }
 export function signedColor(value: number, scale: number, continuous: boolean) {
   if (!scale || Math.abs(value) <= scale * 1e-9) return [...NEUTRAL];
