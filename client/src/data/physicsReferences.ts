@@ -1,6 +1,23 @@
-export type PhysicsProject = 'planetary' | 'coordinates' | 'binary' | 'kepler' | 'parallax' | 'blackbody' | 'virial' | 'diffraction' | 'photometry' | 'planck' | 'distancePhotometry' | 'lorentz' | 'simultaneity' | 'oscillator' | 'duffing' | 'dynamicalMap' | 'hydrostatic' | 'harmonics';
+export type PhysicsProject = 'planetary' | 'coordinates' | 'binary' | 'kepler' | 'parallax' | 'blackbody' | 'virial' | 'diffraction' | 'photometry' | 'planck' | 'distancePhotometry' | 'lorentz' | 'simultaneity' | 'oscillator' | 'duffing' | 'dynamicalMap' | 'hydrostatic' | 'harmonics' | 'legendre';
 type Source = { title: string; url: string };
 export const physicsReferences: Record<PhysicsProject, { sources: Source[] }> = {
+  legendre: { sources: [
+    { title: "Differential equations and endpoint singularities \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.2" },
+    { title: "Ferrers functions on the real interval \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.3" },
+    { title: "Integer degree, Rodrigues formulas and generating functions \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.7" },
+    { title: "Behavior at the endpoints \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.8" },
+    { title: "Connection formulas and negative orders \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.9" },
+    { title: "Recurrences and derivatives \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.10" },
+    { title: "Zeros and interlacing \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.16" },
+    { title: "Integrals and orthogonality \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.17" },
+    { title: "Addition theorems and sums \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.18" },
+    { title: "Spherical harmonics and normalization \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.30" },
+    { title: "Numerical methods of computation \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.32" },
+    { title: "Classical orthogonal polynomials \u2014 NIST DLMF", url: "https://dlmf.nist.gov/18.3" },
+    { title: "Legendre functions and normalization \u2014 GNU Scientific Library", url: "https://www.gnu.org/software/gsl/doc/html/specfunc.html" },
+    { title: "Associated Legendre functions and the Condon\u2013Shortley phase \u2014 SciPy", url: "https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.lpmv.html" },
+    { title: "Electromagnetic multipole expansion \u2014 MIT lecture notes (PDF)", url: "https://ocw.mit.edu/courses/8-07-electromagnetism-ii-fall-2012/6a67040c6a90f70c8164cdea63473a30_MIT8_07F12_ln8.pdf" },
+  ] },
   harmonics: { sources: [
     { title: "Spherical harmonics: definitions, conjugation and orthogonality \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.30" },
     { title: "Associated-Legendre recurrence relations \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.10" },

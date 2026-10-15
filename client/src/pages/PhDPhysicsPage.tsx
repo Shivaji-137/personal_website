@@ -39,21 +39,11 @@ const PhDPhysicsPage = () => {
           {(!selectedSection || selectedSection === 'classical-mechanics') && <section id="classical-mechanics" className="mb-10 scroll-mt-24">
             <SectionHeading title="Classical Mechanics" />
             <div className="mb-4 grid gap-4 md:grid-cols-3"><ProjectCard href="/#/phd-physics/dynamical-phase-diagrams" title="Dynamical Phase Diagrams" description="Compute frequency–force heatmaps, detect periods one through nine, inspect Poincaré sections, and estimate Lyapunov exponents in a driven Duffing system." icon="ri-grid-line" color="yellow" /><ProjectCard href="/#/phd-physics/duffing-oscillator" title="Duffing Oscillator &amp; Hysteresis" description="Bend nonlinear resonance curves, inspect coexisting response branches, and animate history-dependent frequency sweeps and jumps." icon="ri-line-chart-line" color="yellow" /><ProjectCard href="/#/phd-physics/driven-oscillator" title="The Linear Damped, Driven Oscillator" description="Explore amplitude resonance, the exact damping-dependent peak shift, and the phase lag of a sinusoidally driven linear oscillator." icon="ri-pulse-line" color="yellow" /></div>
-            <TopicGrid items={[
-              ['Dynamics', 'Forces, momentum, and the equations that govern motion.', 'ri-focus-3-line', 'text-[#FFD15C]'],
-              ['Conservation Laws', 'Energy, angular momentum, and symmetry in physical systems.', 'ri-refresh-line', 'text-[#FFD15C]'],
-              ['Oscillations', 'Periodic motion, coupled systems, and resonant behavior.', 'ri-pulse-line', 'text-[#FFD15C]'],
-            ]} />
           </section>}
 
           {(!selectedSection || selectedSection === 'electricity-magnetism') && <section id="electricity-magnetism" className="mb-12 scroll-mt-24">
             <SectionHeading title="Electricity & Magnetism" />
-            <div className="mb-4 grid gap-4 md:grid-cols-3"><ProjectCard href="/#/phd-physics/spherical-harmonics" title="Spherical Harmonics Explorer" description="Rotate a signed 3D sphere, link angular maps and lobe models, and explore nodal geometry, phase conventions, and multipole angular structure through degree 64." icon="ri-global-line" color="cyan" /></div>
-            <TopicGrid items={[
-              ['Fields & Potentials', 'Visualizing electric fields, potentials, and charge distributions.', 'ri-bubble-chart-line', 'text-[#8be9fd]'],
-              ['Maxwell Systems', 'A unified view of electric and magnetic fields in space and time.', 'ri-signal-tower-line', 'text-[#8be9fd]'],
-              ['Waves & Circuits', 'Propagation, resonance, and the flow of energy through systems.', 'ri-radar-line', 'text-[#8be9fd]'],
-            ]} />
+            <div className="mb-4 grid gap-4 md:grid-cols-3"><ProjectCard href="/#/phd-physics/spherical-harmonics" title="Spherical Harmonics Explorer" description="Rotate a signed 3D sphere, link angular maps and lobe models, and explore nodal geometry, phase conventions, and multipole angular structure through degree 64." icon="ri-global-line" color="cyan" /><ProjectCard href="/#/phd-physics/legendre-polynomials" title="Legendre Polynomial Explorer" description="Compare ordinary and associated Legendre functions with linked plots, exact polynomial expansions, roots, derivative construction, phase conventions and normalization through degree 64." icon="ri-line-chart-line" color="cyan" /></div>
           </section>}
 
           {(!selectedSection || selectedSection === 'astrophysics') && <section id="astrophysics" className="scroll-mt-24">
@@ -85,10 +75,6 @@ const PhDPhysicsPage = () => {
 
 const SectionHeading = ({ title }: { title: string }) => (
   <div className="mb-4 flex items-center gap-3"><span className="h-px flex-1 bg-[#3a2d48]" /><h2 className="font-space text-xl font-semibold text-white">{title}</h2><span className="h-px flex-1 bg-[#3a2d48]" /></div>
-);
-
-const TopicGrid = ({ items }: { items: Array<[string, string, string, string]> }) => (
-  <div className="grid gap-4 md:grid-cols-3">{items.map(([title, description, icon, color]) => <article key={title} className="rounded-2xl border border-[#2b2b3a] bg-[#0d1118]/80 p-5"><i className={`${icon} mb-3 block text-2xl ${color}`} /><h3 className="mb-2 font-space text-lg text-white">{title}</h3><p className="text-sm leading-relaxed text-gray-400">{description}</p></article>)}</div>
 );
 
 const ProjectCard = ({ href, title, description, icon, color }: { href: string; title: string; description: string; icon: string; color: 'yellow' | 'cyan' | 'pink' }) => (

@@ -1,3 +1,4 @@
+import LegendreExplorerPage from '@/pages/LegendreExplorerPage';
 import SphericalHarmonicsGuidePage from '@/pages/SphericalHarmonicsGuidePage';
 import HydrostaticEquilibriumPage from '@/pages/HydrostaticEquilibriumPage';
 import SphericalHarmonicsPage from '@/pages/SphericalHarmonicsPage';
@@ -64,6 +65,7 @@ function App() {
             <Route path="/phd-physics/spherical-harmonics/guide" element={<SphericalHarmonicsGuidePage />} />
             <Route path="/phd-physics/spherical-harmonics" element={<SphericalHarmonicsPage />} />
             <Route path="/phd-physics/hydrostatic-equilibrium" element={<HydrostaticEquilibriumPage />} />
+            <Route path="/phd-physics/legendre-polynomials" element={<LegendreExplorerPage />} />
             <Route path="/phd-physics" element={<PhDPhysicsPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/research" element={<ResearchPage />} />
