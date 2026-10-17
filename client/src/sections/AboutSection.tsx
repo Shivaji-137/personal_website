@@ -1,185 +1,114 @@
 import { useInView } from '@/hooks/use-intersection-observer';
 import { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { motion, useReducedMotion } from 'framer-motion';
 import profileImage from '../assets/shivaji.jpg';
 
-const AboutSection = () => {
-  const navigate = useNavigate();
+const tools = ['Python', 'MATLAB', 'JavaScript', 'C++', 'HTML/CSS', 'LaTeX', 'SQL'];
+const interests = [
+  { name: 'Physics', icon: 'ri-planet-line' },
+  { name: 'Programming', icon: 'ri-code-s-slash-line' },
+  { name: 'Data Analysis', icon: 'ri-bar-chart-line' },
+  { name: 'Teaching', icon: 'ri-presentation-line' },
+];
+
+export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, threshold: 0.1 });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6 }
-    }
+  const isInView = useInView(sectionRef, { once: true, threshold: 0.05 });
+  const reduceMotion = useReducedMotion();
+  const reveal = {
+    initial: reduceMotion ? false as const : { opacity: 0, y: 16 },
+    animate: isInView ? { opacity: 1, y: 0 } : undefined,
+    transition: { duration: 0.5 },
   };
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 relative section-transition">
-      <div className="container mx-auto px-4">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="font-space font-bold text-3xl md:text-4xl text-white mb-4">About Me</h2>
-          <div className="w-20 h-1 bg-[#FF65A3] mx-auto"></div>
+    <section id="about" ref={sectionRef} aria-labelledby="about-heading" className="relative scroll-mt-24 py-20 md:py-28 section-transition">
+      <div className="container mx-auto px-4 sm:px-6">
+        <motion.div {...reveal} className="mx-auto mb-12 max-w-6xl md:mb-16">
+          <div className="mb-4 flex items-center gap-3" aria-hidden="true">
+            <span className="h-px w-10 bg-[#FF65A3]" />
+            <span className="font-space text-[11px] uppercase tracking-[.24em] text-[#FF9BC2]">A little about me</span>
+          </div>
+          <h2 id="about-heading" className="font-space text-3xl font-bold tracking-tight text-white md:text-5xl">About Me</h2>
         </motion.div>
-        
-        <div className="flex flex-col md:flex-row items-center gap-12 max-w-6xl mx-auto">
-          <motion.div 
-            className="w-full md:w-1/3"
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className="relative">
-              <div className="w-full h-100 bg-[#1E2A45] rounded-lg overflow-hidden relative">
-                <img 
-                  src={profileImage} 
-                  alt="Shivaji Chaulagain" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1026] to-transparent opacity-60"></div>
+
+        <div className="mx-auto grid max-w-6xl items-start gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.6fr)] lg:gap-14">
+          <motion.div {...reveal} className="mx-auto w-full max-w-sm lg:sticky lg:top-28">
+            <div className="flex overflow-hidden rounded-2xl border border-white/10 bg-[#101626] lg:block">
+              <div className="relative w-28 shrink-0 self-stretch sm:w-36 lg:aspect-[4/5] lg:w-full">
+                <img src={profileImage} alt="Shivaji Chaulagain" loading="lazy" width="960" height="1280" className="absolute inset-0 h-full w-full object-cover object-[50%_40%]" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b1026]/70 via-transparent to-transparent" />
               </div>
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-[#5D3E7C] rounded-md transform rotate-6 -z-10"></div>
-              <div className="absolute -top-4 -left-4 w-20 h-20 bg-[#FF65A3] rounded-md transform -rotate-12 -z-10"></div>
+              <div className="p-5 sm:p-6">
+                <p className="font-space text-lg font-semibold text-white">Shivaji Chaulagain</p>
+                <p className="mt-1 text-sm leading-6 text-slate-400">Physics &amp; Astronomy</p>
+                <a href="https://pa.as.uky.edu/users/sch515" target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-xs text-[#FFD15C] transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FFD15C]">
+                  University of Kentucky profile <i className="ri-arrow-right-up-line" aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+            <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-white/10 pt-5">
+              {interests.map(({ name, icon }) => (
+                <div key={name} className="flex items-center gap-2.5 text-xs text-slate-300">
+                  <i className={`${icon} text-base text-[#D1B2E8]`} aria-hidden="true" />{name}
+                </div>
+              ))}
             </div>
           </motion.div>
-          
-          <motion.div 
-            className="w-full md:w-2/3"
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-          >
-            <motion.h3 
-              className="font-space font-semibold text-2xl md:text-3xl mb-6 text-[#FFD15C]"
-              variants={itemVariants}
-            >
+
+          <motion.div {...reveal} className="min-w-0">
+            <h3 className="max-w-2xl font-space text-2xl font-semibold leading-tight tracking-tight text-[#FFD15C] sm:text-3xl lg:text-[2.2rem]">
               Exploring the Physics of the Universe
-            </motion.h3>
-            <motion.p 
-              className="text-lg mb-6 text-gray-300"
-              variants={itemVariants}
-            >
-              I'm a graduate student (
-                <a
-                  href="https://pa.as.uky.edu/users/sch515"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#FF65A3] hover:underline"
-                >
-                  Profile
-                </a>
-                ), doing Phd in Physics (specialization in Astronomy) at the University of Kentucky, USA, driven by curiosity and a passion for understanding the universe through data. 
-            </motion.p>
-            <motion.p 
-              className="text-lg mb-4 text-gray-300"
-              variants={itemVariants}
-            >
-              I am also a graduate teaching assistant at the University of Kentucky, where I instruct and mentor students in physics laboratories, helping them develop a strong foundation in experimental techniques and scientific inquiry. 
-            </motion.p>
-            <motion.p
-              className="text-lg mb-4 text-gray-300"
-              variants={itemVariants}
-            >
-              My research interest focuses on computational astronomy as well as observational astronomy, where I analyze data from telescopes and simulations to uncover the mysteries of the cosmos. I am particularly interested in studying overall structure of the universe, galaxy formation and evolution, and the behavior of celestial objects. I also have a strong interest in data analysis, machine learning, and visualization techniques to extract meaningful insights from complex datasets. 
-            </motion.p>
-            <motion.p 
-              className="text-lg mb-4 text-gray-300"
-              variants={itemVariants}
-            >
-              I am passionate about sharing my knowledge and experiences with others, and I enjoy mentoring and teaching students in the field of physics and astronomy. I can also dwelve into the world of quantum mechanics, classical mechanics, and other areas of physics to explore the fundamental principles that govern the universe.
-            </motion.p>
+            </h3>
+            <p className="mt-6 text-lg leading-[1.85] text-slate-200">
+              I'm a graduate student, doing Phd in Physics (specialization in Astronomy) at the University of Kentucky, USA, driven by curiosity and a passion for understanding the universe through data.
+            </p>
 
-            <motion.div 
-              className="mb-6"
-              variants={itemVariants}
-            >
-              <h4 className="font-space font-medium text-xl text-[#FFD15C] mb-3">Education</h4>
-              <div className="bg-[#1E2A45] bg-opacity-40 p-4 rounded-lg mb-4">
-                <h5 className="font-space font-medium text-white">Undergraduate in Physics</h5>
-                <p className="text-gray-300">St. Xavier's College, Tribhuvan University, Nepal | 2019-2024</p>
-              </div>
-            </motion.div>
+            <div className="mt-8 border-l-2 border-[#8be9fd]/50 pl-5 sm:pl-6">
+              <h4 className="mb-3 font-space text-xs font-medium uppercase tracking-[.18em] text-[#8be9fd]">Research interests</h4>
+              <p className="text-[15px] leading-[1.9] text-slate-300">
+                My research interest focuses on computational astronomy as well as observational astronomy. I am particularly interested in studying overall structure of the universe, galaxy formation and evolution, and the behavior of celestial objects. I also have a strong interest in data analysis, machine learning, and visualization techniques to extract meaningful insights from complex datasets. Beyond astronomy, my interests extend to quantum mechanics, classical mechanics, and other areas of physics that illuminate the fundamental principles governing the universe.
+              </p>
+            </div>
 
-            <motion.div 
-              className="mb-6"
-              variants={itemVariants}
-            >
-              <h4 className="font-space font-medium text-xl text-[#FFD15C] mb-3">Programming Skills</h4>
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="bg-[#1E2A45] text-gray-300 px-3 py-1 rounded-md">Python</span>
-                <span className="bg-[#1E2A45] text-gray-300 px-3 py-1 rounded-md">MATLAB</span>
-                <span className="bg-[#1E2A45] text-gray-300 px-3 py-1 rounded-md">JavaScript</span>
-                <span className="bg-[#1E2A45] text-gray-300 px-3 py-1 rounded-md">C++</span>
-                <span className="bg-[#1E2A45] text-gray-300 px-3 py-1 rounded-md">HTML/CSS</span>
-                <span className="bg-[#1E2A45] text-gray-300 px-3 py-1 rounded-md">LaTeX</span>
-                <span className="bg-[#1E2A45] text-gray-300 px-3 py-1 rounded-md">SQL</span>
+            <div className="mt-9 grid gap-7 border-t border-white/10 pt-7 sm:grid-cols-2 sm:gap-8">
+              <div>
+                <h4 className="mb-3 flex items-center gap-2 font-space text-sm font-semibold text-white"><i className="ri-presentation-line text-[#FF9BC2]" aria-hidden="true" />Teaching &amp; mentorship</h4>
+                <p className="text-sm leading-[1.9] text-slate-400">
+                  I am also a graduate teaching assistant at the University of Kentucky, where I instruct and mentor students in physics laboratories, helping them develop a strong foundation in experimental techniques and scientific inquiry.
+                </p>
               </div>
-            </motion.div>
-            
-            <motion.div 
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
-              variants={itemVariants}
-            >
-              <div className="bg-[#1E2A45] bg-opacity-50 p-4 rounded-lg text-center">
-                <i className="ri-planet-line text-3xl text-[#FFD15C] mb-2"></i>
-                <h4 className="font-space font-medium">Physics</h4>
+              <div>
+                <h4 className="mb-3 flex items-center gap-2 font-space text-sm font-semibold text-white"><i className="ri-compass-3-line text-[#D1B2E8]" aria-hidden="true" />Beyond astronomy</h4>
+                <p className="text-sm leading-[1.9] text-slate-400">
+                  I am passionate about sharing my knowledge and experiences with others, and I enjoy mentoring and teaching students in the field of physics and astronomy.
+                </p>
               </div>
-              <div className="bg-[#1E2A45] bg-opacity-50 p-4 rounded-lg text-center">
-                <i className="ri-code-s-slash-line text-3xl text-[#FF65A3] mb-2"></i>
-                <h4 className="font-space font-medium">Programming</h4>
+            </div>
+
+            <div className="mt-9 grid gap-7 rounded-2xl border border-white/[.08] bg-[#101626]/70 p-5 sm:grid-cols-[1.05fr_1fr] sm:p-6">
+              <div className="min-w-0">
+                <h4 className="mb-4 font-space text-[11px] font-medium uppercase tracking-[.18em] text-[#FFD15C]">Education</h4>
+                <p className="font-space text-sm font-semibold text-white">Undergraduate in Physics</p>
+                <p className="mt-2 text-sm leading-6 text-slate-400">St. Xavier's College, Tribhuvan University, Nepal</p>
+                <p className="mt-3 text-xs tabular-nums tracking-wide text-slate-500">2019–2024</p>
               </div>
-              <div className="bg-[#1E2A45] bg-opacity-50 p-4 rounded-lg text-center">
-                <i className="ri-bar-chart-line text-3xl text-[#5D3E7C] mb-2"></i>
-                <h4 className="font-space font-medium">Data Analysis</h4>
+              <div className="min-w-0 border-t border-white/10 pt-5 sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
+                <h4 className="mb-4 font-space text-[11px] font-medium uppercase tracking-[.18em] text-[#FFD15C]">Programming Skills</h4>
+                <ul aria-label="Programming skills" className="flex list-none flex-wrap gap-2">
+                  {tools.map(tool => <li key={tool} className="rounded-md border border-white/10 bg-white/[.03] px-2.5 py-1.5 text-xs text-slate-300">{tool}</li>)}
+                </ul>
               </div>
-              <div className="bg-[#1E2A45] bg-opacity-50 p-4 rounded-lg text-center">
-                <i className="ri-presentation-line text-3xl text-[#FFD15C] mb-2"></i>
-                <h4 className="font-space font-medium">Teaching</h4>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              className="flex flex-wrap gap-4"
-              variants={itemVariants}
-            >
-              <button
-                onClick={() => navigate('/projects')}
-                className="bg-[#5D3E7C] hover:bg-[#FF65A3] text-white font-medium px-6 py-2 rounded-md transition-colors font-space inline-flex items-center"
-              >
-                <i className="ri-article-line mr-2"></i> View Projects
-              </button>
-              <button
-                onClick={() => navigate('/cv')}
-                className="border border-[#FF65A3] text-[#FF65A3] hover:bg-[#FF65A3] hover:text-white font-medium px-6 py-2 rounded-md transition-colors font-space inline-flex items-center"
-              >
-                <i className="ri-file-text-line mr-2"></i> View CV
-              </button>
-            </motion.div>
+            </div>
+
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link to="/projects" className="inline-flex items-center gap-2 rounded-lg bg-[#FFD15C] px-5 py-3 font-space text-sm font-semibold text-[#11131a] transition-colors hover:bg-[#ffe39a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FFD15C]">View Projects <i className="ri-arrow-right-line" aria-hidden="true" /></Link>
+              <Link to="/cv" className="inline-flex items-center gap-2 rounded-lg border border-white/20 px-5 py-3 font-space text-sm text-slate-200 transition-colors hover:border-white/50 hover:bg-white/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FFD15C]"><i className="ri-file-text-line" aria-hidden="true" /> View CV</Link>
+            </div>
           </motion.div>
         </div>
       </div>
     </section>
   );
-};
-
-export default AboutSection;
+}
