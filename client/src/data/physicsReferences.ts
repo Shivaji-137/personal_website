@@ -1,6 +1,254 @@
-export type PhysicsProject = 'planetary' | 'coordinates' | 'binary' | 'kepler' | 'parallax' | 'blackbody' | 'virial' | 'diffraction' | 'photometry' | 'planck' | 'distancePhotometry' | 'lorentz' | 'simultaneity' | 'oscillator' | 'duffing' | 'dynamicalMap' | 'hydrostatic' | 'harmonics' | 'legendre';
+export type PhysicsProject = 'planetary' | 'coordinates' | 'binary' | 'kepler' | 'parallax' | 'blackbody' | 'virial' | 'diffraction' | 'photometry' | 'planck' | 'distancePhotometry' | 'lorentz' | 'simultaneity' | 'oscillator' | 'duffing' | 'dynamicalMap' | 'hydrostatic' | 'harmonics' | 'legendre' | 'imageSphere' | 'greenFunction' | 'sphereBoundary' | 'phy611';
 type Source = { title: string; url: string };
 export const physicsReferences: Record<PhysicsProject, { sources: Source[] }> = {
+  phy611: { sources: [
+  {
+    "title": "PHY611 Fall 2026 \u2014 Assignment 1",
+    "url": "https://www.pa.uky.edu/~straley/PHY611/1Assignment.docx"
+  },
+  {
+    "title": "PHY611 Fall 2026 \u2014 Assignment 2",
+    "url": "https://www.pa.uky.edu/~straley/PHY611/2Assignment.docx"
+  },
+  {
+    "title": "PHY611 Fall 2026 \u2014 Assignment 3",
+    "url": "https://www.pa.uky.edu/~straley/PHY611/3Assignment.pdf"
+  },
+  {
+    "title": "PHY611 Fall 2026 \u2014 Assignment 4",
+    "url": "https://www.pa.uky.edu/~straley/PHY611/4Assnt.pdf"
+  },
+  {
+    "title": "PHY611 Fall 2026 \u2014 Assignment 5",
+    "url": "https://www.pa.uky.edu/~straley/PHY611/5Assnt.pdf"
+  },
+  {
+    "title": "PHY611 Fall 2026 \u2014 Assignment 6",
+    "url": "https://www.pa.uky.edu/~straley/PHY611/6Assnt.pdf"
+  },
+  {
+    "title": "PHY611 Fall 2026 \u2014 Assignment 7",
+    "url": "https://www.pa.uky.edu/~straley/PHY611/7Assnt.pdf"
+  },
+  {
+    "title": "PHY611 Fall 2026 \u2014 Assignment 8",
+    "url": "https://www.pa.uky.edu/~straley/PHY611/8Assnt.pdf"
+  },
+  {
+    "title": "PHY611 Fall 2026 \u2014 Assignment 9",
+    "url": "https://www.pa.uky.edu/~straley/PHY611/9Assnt.pdf"
+  },
+  {
+    "title": "PHY611 Fall 2026 \u2014 Assignment 10",
+    "url": "https://www.pa.uky.edu/~straley/PHY611/10Assnt.pdf"
+  },
+  {
+    "title": "PHY611 Fall 2026 \u2014 Assignment 11",
+    "url": "https://www.pa.uky.edu/~straley/PHY611/11Assnt.pdf"
+  },
+  {
+    "title": "PHY611 Fall 2026 \u2014 Assignment 12",
+    "url": "https://www.pa.uky.edu/~straley/PHY611/12Assnt.pdf"
+  },
+  {
+    "title": "PHY611 Fall 2026 \u2014 Assignment 13",
+    "url": "https://www.pa.uky.edu/~straley/PHY611/13Assnt.pdf"
+  },
+  {
+    "title": "Joseph P. Straley \u2014 PHY611 Fall 2026 course",
+    "url": "https://www.pa.uky.edu/~straley/PHY611/index.htm"
+  },
+  {
+    "title": "Generating functions and orthogonal polynomials \u2014 NIST DLMF",
+    "url": "https://dlmf.nist.gov/18.12"
+  }
+] },
+  sphereBoundary: { sources: [
+  {
+    "title": "Dielectric sphere with exterior charge \u2014 worked harmonic expansion",
+    "url": "https://www.wtamu.edu/~cbaird/all_homework_solutions/Jackson_4_9_Homework_Solution.pdf"
+  },
+  {
+    "title": "Charge inside a conducting shell \u2014 University of Pisa",
+    "url": "https://osiris.df.unipi.it/~macchi/FISICA2/PROBLEMS/shellcharge.pdf"
+  },
+  {
+    "title": "Conductors in electrostatic equilibrium \u2014 OpenStax",
+    "url": "https://openstax.org/books/university-physics-volume-2/pages/6-4-conductors-in-electrostatic-equilibrium"
+  },
+  {
+    "title": "Dielectric interface conditions \u2014 University of Virginia",
+    "url": "https://galileoandeinstein.phys.virginia.edu/Elec_Mag/2022_Lectures/EM_28_Dielectrics_II.html"
+  },
+  {
+    "title": "Dielectric sphere boundary problem \u2014 University of Florida",
+    "url": "https://www.phys.ufl.edu/~thorn/homepage/emsol07.pdf"
+  },
+  {
+    "title": "Electromagnetic theory lectures \u2014 University of Florida",
+    "url": "https://www.phys.ufl.edu/~thorn/homepage/emlectures.pdf"
+  },
+  {
+    "title": "Dielectric sphere surface-charge distribution \u2014 research paper",
+    "url": "https://pubs.rsc.org/en/content/articlehtml/2013/cp/c3cp53522c"
+  },
+  {
+    "title": "Electric field of a conducting shell \u2014 UT Austin",
+    "url": "https://farside.ph.utexas.edu/teaching/302l/lectures/node25.html"
+  },
+  {
+    "title": "Charged sphere potential \u2014 Georgia State University",
+    "url": "https://hyperphysics.gsu.edu/hbase/electric/potsph.html"
+  },
+  {
+    "title": "Grounded sphere image construction \u2014 UT Austin",
+    "url": "https://farside.ph.utexas.edu/teaching/em/lectures/node64.html"
+  },
+  {
+    "title": "Electrostatic uniqueness theorem \u2014 UT Austin",
+    "url": "https://farside.ph.utexas.edu/teaching/em/lectures/node62.html"
+  },
+  {
+    "title": "Isolated neutral sphere \u2014 UT Austin",
+    "url": "https://farside.ph.utexas.edu/teaching/355/Surveyhtml/node85.html"
+  },
+  {
+    "title": "Legendre generating function \u2014 NIST DLMF",
+    "url": "https://dlmf.nist.gov/18.12.E11"
+  },
+  {
+    "title": "Electrodynamics and dielectric boundary problems \u2014 Caltech",
+    "url": "https://sites.astro.caltech.edu/~golwala/ph106bc/ph106bc_notes_2023.pdf"
+  },
+  {
+    "title": "Electrostatic interfaces and potentials \u2014 MIT",
+    "url": "https://ocw.mit.edu/courses/6-013-electromagnetics-and-applications-fall-2005/resources/lec5/"
+  }
+] },
+  greenFunction: { sources: [
+  {
+    "title": "Exterior spherical Dirichlet Green function \u2014 UT Austin",
+    "url": "https://farside.ph.utexas.edu/teaching/jk1/lectures/node24.html"
+  },
+  {
+    "title": "Reciprocity and symmetry \u2014 University of Virginia",
+    "url": "https://galileoandeinstein.phys.virginia.edu/Elec_Mag/2022_Lectures/EM_09_Reciprocation_Theorem.html"
+  },
+  {
+    "title": "Green function worked boundary problem \u2014 UT Austin (PDF)",
+    "url": "https://web2.ph.utexas.edu/~vadim/Classes/2024f-emt/sol02.pdf"
+  },
+  {
+    "title": "Electrostatic uniqueness theorem \u2014 UT Austin",
+    "url": "https://farside.ph.utexas.edu/teaching/em/lectures/node62.html"
+  },
+  {
+    "title": "Image construction \u2014 UT Austin",
+    "url": "https://farside.ph.utexas.edu/teaching/em/lectures/node64.html"
+  },
+  {
+    "title": "Point-source image methods \u2014 MIT lecture 5",
+    "url": "https://www.ocw.mit.edu/courses/6-013-electromagnetics-and-applications-fall-2005/resources/lec5/"
+  },
+  {
+    "title": "Electrodynamics and Green functions \u2014 Caltech (PDF)",
+    "url": "https://sites.astro.caltech.edu/~golwala/ph106bc/ph106bc_notes_2023.pdf"
+  },
+  {
+    "title": "Graduate electrodynamics \u2014 University of Toronto (PDF)",
+    "url": "https://www.physics.utoronto.ca/~phy1510f/p151020_cumullect.pdf"
+  },
+  {
+    "title": "Dirac delta integral representations \u2014 NIST DLMF",
+    "url": "https://dlmf.nist.gov/1.17"
+  },
+  {
+    "title": "Legendre generating function \u2014 NIST DLMF",
+    "url": "https://dlmf.nist.gov/18.12.E11"
+  },
+  {
+    "title": "Plane and parallel-plate image methods \u2014 University of Virginia",
+    "url": "https://galileoandeinstein.phys.virginia.edu/Elec_Mag/2022_Lectures/EM_08_Images.html"
+  },
+  {
+    "title": "Plane and parallel-plate Green-function exercises \u2014 University of Kentucky (PDF)",
+    "url": "https://www.pa.uky.edu/~murthy/courses/PHY611/hw2.pdf"
+  },
+  {
+    "title": "Point charge and dipole near a conducting sphere \u2014 research paper",
+    "url": "https://arxiv.org/abs/physics/0405122"
+  },
+  {
+    "title": "Multiple-sphere potentials \u2014 research paper",
+    "url": "https://arxiv.org/abs/0906.1617"
+  },
+  {
+    "title": "Electrostatics and potentials \u2014 MIT mathematics",
+    "url": "https://ocw.mit.edu/ans7870/18/18.013a/textbook/HTML/chapter28/section04.html"
+  }
+] },
+  imageSphere: { sources: [
+  {
+    "title": "Method of images: grounded sphere \u2014 UT Austin",
+    "url": "https://farside.ph.utexas.edu/teaching/em/lectures/node64.html"
+  },
+  {
+    "title": "Insulated neutral sphere \u2014 UT Austin",
+    "url": "https://farside.ph.utexas.edu/teaching/355/Surveyhtml/node85.html"
+  },
+  {
+    "title": "Electrostatic uniqueness theorem \u2014 UT Austin",
+    "url": "https://farside.ph.utexas.edu/teaching/em/lectures/node62.html"
+  },
+  {
+    "title": "Electric potential and method of images \u2014 MIT lecture 5",
+    "url": "https://www.ocw.mit.edu/courses/6-013-electromagnetics-and-applications-fall-2005/resources/lec5/"
+  },
+  {
+    "title": "Point charges and spheres \u2014 MIT field theory textbook (PDF)",
+    "url": "https://ocw.mit.edu/courses/res-6-002-electromagnetic-field-theory-a-problem-solving-approach-spring-2008/c54b9fc62fd06b36f657dd7f0b08771d_MITRES_6_002S08_Part1.pdf"
+  },
+  {
+    "title": "Image methods \u2014 MIT electromagnetic interactions (PDF)",
+    "url": "https://ocw.mit.edu/courses/22-105-electromagnetic-interactions-fall-2005/0c448dade1727bbb9f182e3c2a048668_lecture2.pdf"
+  },
+  {
+    "title": "Electrodynamics: sphere image solution \u2014 Caltech (PDF)",
+    "url": "https://sites.astro.caltech.edu/~golwala/ph106bc/ph106bc_notes_2023.pdf"
+  },
+  {
+    "title": "Neutral sphere worked problem \u2014 UT Austin (PDF)",
+    "url": "https://web2.ph.utexas.edu/~vadim/Classes/2018f/sol05.pdf"
+  },
+  {
+    "title": "Gauss law and boundary conditions \u2014 MIT (PDF)",
+    "url": "https://ocw.mit.edu/courses/6-007-electromagnetic-energy-from-motors-to-lasers-spring-2011/6454b42bacb9b79c50bebc714e76df6e_MIT6_007S11_lec05.pdf"
+  },
+  {
+    "title": "Electrostatic visualizations \u2014 MIT",
+    "url": "https://ocw.mit.edu/courses/8-02t-electricity-and-magnetism-spring-2005/pages/visualizations/electrostatics1/"
+  },
+  {
+    "title": "Capacitance of an isolated sphere \u2014 UT Austin",
+    "url": "https://farside.ph.utexas.edu/teaching/355/Surveyhtml/node84.html"
+  },
+  {
+    "title": "Mirror-equation analogy for the sphere image \u2014 research paper",
+    "url": "https://arxiv.org/abs/1107.3885"
+  },
+  {
+    "title": "Point charge and dipole near a sphere \u2014 research paper",
+    "url": "https://arxiv.org/abs/physics/0405122"
+  },
+  {
+    "title": "Potential of multiple conducting spheres \u2014 research paper",
+    "url": "https://arxiv.org/abs/0906.1617"
+  },
+  {
+    "title": "Electrostatics and potentials \u2014 MIT mathematics",
+    "url": "https://ocw.mit.edu/ans7870/18/18.013a/textbook/HTML/chapter28/section04.html"
+  }
+] },
   legendre: { sources: [
     { title: "Differential equations and endpoint singularities \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.2" },
     { title: "Ferrers functions on the real interval \u2014 NIST DLMF", url: "https://dlmf.nist.gov/14.3" },

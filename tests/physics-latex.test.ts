@@ -21,5 +21,5 @@ for(const name of fs.readdirSync('client/src/pages').filter(n=>n.endsWith('Page.
   }ts.forEachChild(node,visit);
  }visit(tree);
 }
-assert.equal(projects,19);assert.ok(count>80);
+assert.equal(projects,23);assert.ok(count>80);
 console.log(`Validated ${count} LaTeX expressions across ${projects} Physics Lab projects.`);

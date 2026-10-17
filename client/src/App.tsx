@@ -1,7 +1,10 @@
+import SphereBoundaryPage from '@/pages/SphereBoundaryPage';
+import GreenFunctionPage from '@/pages/GreenFunctionPage';
+import ImageChargeSpherePage from '@/pages/ImageChargeSpherePage';
 import LegendreExplorerPage from '@/pages/LegendreExplorerPage';
 import SphericalHarmonicsGuidePage from '@/pages/SphericalHarmonicsGuidePage';
-import HydrostaticEquilibriumPage from '@/pages/HydrostaticEquilibriumPage';
 import SphericalHarmonicsPage from '@/pages/SphericalHarmonicsPage';
+import HydrostaticEquilibriumPage from '@/pages/HydrostaticEquilibriumPage';
 import DynamicalPhasePage from '@/pages/DynamicalPhasePage';
 import DuffingOscillatorPage from '@/pages/DuffingOscillatorPage';
 import DrivenOscillatorPage from '@/pages/DrivenOscillatorPage';
@@ -9,15 +12,6 @@ import SimultaneityPage from '@/pages/SimultaneityPage';
 import LorentzDashboardPage from '@/pages/LorentzDashboardPage';
 import DistancePhotometryPage from '@/pages/DistancePhotometryPage';
 import PlanckComparisonsPage from '@/pages/PlanckComparisonsPage';
-import UBVPhotometryPage from "@/pages/UBVPhotometryPage";
-import TelescopeDiffractionPage from "@/pages/TelescopeDiffractionPage";
-import BinaryVirialPage from "@/pages/BinaryVirialPage";
-import BlackbodyRadiationPage from "@/pages/BlackbodyRadiationPage";
-import StellarParallaxPage from "@/pages/StellarParallaxPage";
-import KeplerLawsPage from "@/pages/KeplerLawsPage";
-import EclipsingBinaryPage from "@/pages/EclipsingBinaryPage";
-import CelestialCoordinateSpheresPage from "@/pages/CelestialCoordinateSpheresPage";
-import PtolemaicCopernicanPage from "@/pages/PtolemaicCopernicanPage";
 import { Routes, Route } from "react-router-dom";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
@@ -27,6 +21,15 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 
 import HomePage from "@/pages/HomePage";
 import PhDPhysicsPage from "@/pages/PhDPhysicsPage";
+import UBVPhotometryPage from "@/pages/UBVPhotometryPage";
+import TelescopeDiffractionPage from "@/pages/TelescopeDiffractionPage";
+import BinaryVirialPage from "@/pages/BinaryVirialPage";
+import BlackbodyRadiationPage from "@/pages/BlackbodyRadiationPage";
+import StellarParallaxPage from "@/pages/StellarParallaxPage";
+import KeplerLawsPage from "@/pages/KeplerLawsPage";
+import EclipsingBinaryPage from "@/pages/EclipsingBinaryPage";
+import CelestialCoordinateSpheresPage from "@/pages/CelestialCoordinateSpheresPage";
+import PtolemaicCopernicanPage from "@/pages/PtolemaicCopernicanPage";
 import ProjectsPage from "@/pages/ProjectsPage";
 import ResearchPage from "@/pages/ResearchPage";
 import BlogPage from "@/pages/BlogPage";
@@ -58,14 +61,17 @@ function App() {
             <Route path="/phd-physics/lorentz-dashboard" element={<LorentzDashboardPage />} />
             <Route path="/phd-physics/distance-photometry" element={<DistancePhotometryPage />} />
             <Route path="/phd-physics/planck-comparisons" element={<PlanckComparisonsPage />} />
+            <Route path="/phd-physics/sphere-boundary" element={<SphereBoundaryPage />} />
+            <Route path="/phd-physics/green-function" element={<GreenFunctionPage />} />
+            <Route path="/phd-physics/image-charge-sphere" element={<ImageChargeSpherePage />} />
+            <Route path="/phd-physics/legendre-polynomials" element={<LegendreExplorerPage />} />
+            <Route path="/phd-physics/spherical-harmonics/guide" element={<SphericalHarmonicsGuidePage />} />
+            <Route path="/phd-physics/spherical-harmonics" element={<SphericalHarmonicsPage />} />
+            <Route path="/phd-physics/hydrostatic-equilibrium" element={<HydrostaticEquilibriumPage />} />
             <Route path="/phd-physics/blackbody-radiation" element={<BlackbodyRadiationPage />} />
             <Route path="/phd-physics/binary-virial" element={<BinaryVirialPage />} />
             <Route path="/phd-physics/telescope-diffraction" element={<TelescopeDiffractionPage />} />
             <Route path="/phd-physics/ubv-photometry" element={<UBVPhotometryPage />} />
-            <Route path="/phd-physics/spherical-harmonics/guide" element={<SphericalHarmonicsGuidePage />} />
-            <Route path="/phd-physics/spherical-harmonics" element={<SphericalHarmonicsPage />} />
-            <Route path="/phd-physics/hydrostatic-equilibrium" element={<HydrostaticEquilibriumPage />} />
-            <Route path="/phd-physics/legendre-polynomials" element={<LegendreExplorerPage />} />
             <Route path="/phd-physics" element={<PhDPhysicsPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/research" element={<ResearchPage />} />
