@@ -65,7 +65,7 @@ const Header = () => {
   return (
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
       scrolled 
-        ? 'bg-[#0B1026] bg-opacity-90 backdrop-blur-lg border-b border-[#5D3E7C] border-opacity-30' 
+        ? 'bg-black/25 backdrop-blur-lg border-b border-[#d7c6a6]/10' 
         : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-4 py-4">
@@ -76,20 +76,20 @@ const Header = () => {
               e.preventDefault();
               handleNavClick('#home');
             }}
-            className="text-[#FFD15C] font-space font-bold text-2xl tracking-wider"
+            className="text-[#FFE2A0] font-space font-bold text-2xl tracking-wider"
           >
-            SHIVAJI<span className="text-[#FF65A3]">.</span>
+            SHIVAJI<span className="text-[#8be9fd]">.</span>
           </a>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center gap-1 rounded-full border border-[#d7c6a6]/10 bg-black/25 p-1">
             {links.map((link, index) => (
               <button
                 key={index}
                 onClick={() => handleNavClick(link.href)}
-                className={`nav-link font-space text-white hover:text-[#FF65A3] transition-colors relative ${
+                className={`nav-link rounded-full px-3 py-2.5 font-space text-slate-300 hover:bg-white/[.06] hover:text-white transition-colors relative ${
                   (link.href.startsWith('#') && activeSection === link.href.substring(1)) || 
-                  (location.pathname === link.href) ? 'text-[#FF65A3]' : ''
+                  (location.pathname === link.href) ? 'bg-[#FFD15C]/10 text-[#FFE2A0]' : ''
                 }`}
               >
                 {link.text}
@@ -125,7 +125,7 @@ const Header = () => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="md:hidden fixed top-0 right-0 w-64 h-full bg-[#0B1026] border-l border-[#5D3E7C] z-50"
+            className="md:hidden fixed top-0 right-0 w-64 h-full bg-[radial-gradient(ellipse_at_top_right,rgba(157,116,77,0.13),transparent_45%),linear-gradient(180deg,#141217,#0b0b0e)] border-l border-[#d7c6a6]/15 z-50"
           >
             <div className="p-6">
               <button
@@ -142,7 +142,7 @@ const Header = () => {
                     onClick={() => handleNavClick(link.href)}
                     className={`nav-link font-space text-left text-white hover:text-[#FF65A3] transition-colors ${
                       (link.href.startsWith('#') && activeSection === link.href.substring(1)) || 
-                      (location.pathname === link.href) ? 'text-[#FF65A3]' : ''
+                      (location.pathname === link.href) ? 'bg-[#FFD15C]/10 text-[#FFE2A0]' : ''
                     }`}
                   >
                     {link.text}

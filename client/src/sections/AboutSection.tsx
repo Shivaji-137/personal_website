@@ -72,17 +72,11 @@ export default function AboutSection() {
               </p>
             </div>
 
-            <div className="mt-9 grid gap-7 border-t border-white/10 pt-7 sm:grid-cols-2 sm:gap-8">
+            <div className="mt-9 border-t border-white/10 pt-7">
               <div>
                 <h4 className="mb-3 flex items-center gap-2 font-space text-sm font-semibold text-white"><i className="ri-presentation-line text-[#FF9BC2]" aria-hidden="true" />Teaching &amp; mentorship</h4>
                 <p className="text-sm leading-[1.9] text-slate-400">
                   I am also a graduate teaching assistant at the University of Kentucky, where I instruct and mentor students in physics laboratories, helping them develop a strong foundation in experimental techniques and scientific inquiry.
-                </p>
-              </div>
-              <div>
-                <h4 className="mb-3 flex items-center gap-2 font-space text-sm font-semibold text-white"><i className="ri-compass-3-line text-[#D1B2E8]" aria-hidden="true" />Beyond astronomy</h4>
-                <p className="text-sm leading-[1.9] text-slate-400">
-                  I am passionate about sharing my knowledge and experiences with others, and I enjoy mentoring and teaching students in the field of physics and astronomy.
                 </p>
               </div>
             </div>
