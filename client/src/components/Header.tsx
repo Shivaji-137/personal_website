@@ -6,6 +6,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 type NavLink = {
   text: string;
   href: string;
+  hidden?: boolean;
 };
 
 const links: NavLink[] = [
@@ -15,7 +16,7 @@ const links: NavLink[] = [
   { text: 'Research', href: '/research' },
   { text: 'Blog', href: '/blog' },
   { text: 'CV', href: '/cv' },
-  { text: 'Notes', href: '/notes' },
+  { text: 'Notes', href: '/notes', hidden: true },
   { text: 'My odyssey', href: '/Myodyssey' },
   { text: 'Contact', href: '/contact' },
 ];
@@ -83,7 +84,7 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1 rounded-full border border-[#d7c6a6]/10 bg-black/25 p-1">
-            {links.map((link, index) => (
+            {links.filter(link => !link.hidden).map((link, index) => (
               <button
                 key={index}
                 onClick={() => handleNavClick(link.href)}
@@ -136,7 +137,7 @@ const Header = () => {
                 <i className="ri-close-line text-2xl"></i>
               </button>
               <div className="flex flex-col space-y-6 mt-12">
-                {links.map((link, index) => (
+                {links.filter(link => !link.hidden).map((link, index) => (
                   <button
                     key={index}
                     onClick={() => handleNavClick(link.href)}
