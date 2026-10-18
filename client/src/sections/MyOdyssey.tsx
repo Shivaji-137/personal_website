@@ -1,23 +1,22 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { fadeIn, staggerContainer } from '@/lib/animations';
-import { imageData } from '@/data/odysseyImages';
-import { videoData } from '@/data/odysseyVideos';
-import { writingData } from '@/data/odysseyWritings';
+import NatureCollections from '@/components/odyssey/NatureCollections';
 import { ecaData } from '@/data/ecaData';
 
 const categories = ['All', 'Nature', 'Adventure', 'Culture', 'Academic', 'Community'];
 
 
 const MyOdyssey = () => {
+  const [params] = useSearchParams();
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState(params.get('category') === 'Nature' ? 'Nature' : 'All');
   const navigate = useNavigate();
 
   const filterItems = (items: any[]) =>
@@ -54,22 +53,23 @@ const MyOdyssey = () => {
           {/* Search + Category */}
           <motion.div
             variants={fadeIn('up')}
-            className="flex flex-col md:flex-row gap-4 items-center justify-between"
+            className="flex flex-col xl:flex-row gap-4 items-start xl:items-center justify-between"
           >
             <Input
               type="text"
+              aria-label="Search My Odyssey"
               placeholder="Search by title, tags, or description..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-[#141B34] border-[#5D3E7C] text-white w-full md:w-1/2"
+              className="bg-[#141B34] border-[#5D3E7C] text-white w-full xl:w-1/2"
             />
             <Tabs
               defaultValue="All"
               value={activeCategory}
               onValueChange={setActiveCategory}
-              className="w-full md:w-auto"
+              className="min-w-0 w-full xl:w-auto"
             >
-              <TabsList className="bg-[#141B34] border border-[#5D3E7C] p-1 flex overflow-x-auto">
+              <TabsList className="h-auto max-w-full justify-start bg-[#141B34] border border-[#5D3E7C] p-1 flex overflow-x-auto">
                 {categories.map((category) => (
                   <TabsTrigger
                     key={category}
@@ -84,7 +84,8 @@ const MyOdyssey = () => {
           </motion.div>
           {/* <p>Updating soon ......</p> */}
 
-          <Tabs defaultValue="eca">
+          {(activeCategory === 'All' || activeCategory === 'Nature') && <NatureCollections search={searchQuery} natureOnly={activeCategory === 'Nature'} />}
+          {activeCategory !== 'Nature' && <Tabs defaultValue="eca">
             <TabsList className="justify-center mb-8 flex flex-wrap gap-2">
               <TabsTrigger value="eca">🏅 Extracurricular</TabsTrigger>
             </TabsList>
@@ -131,7 +132,7 @@ const MyOdyssey = () => {
                 })()}
               </motion.div>
             </TabsContent>
-          </Tabs>
+          </Tabs>}
         </motion.div>
       </div>
       {/* modal removed — ECA items navigate to their own page */}

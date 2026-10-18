@@ -1,5 +1,6 @@
 export interface ECAItem {
   id: string;
+  category: 'Academic' | 'Community';
   // kind can be 'blog' (markdown/article), 'video' or 'image'
   kind: 'blog' | 'video' | 'image';
   title: string;
@@ -16,6 +17,7 @@ export const ecaData: ECAItem[] = [
   // Moved items: Digital Resilience (writing) and Live Physics Demonstration (media)
   {
     id: 'eca-physics-demo',
+    category: 'Academic',
     title: "Live Physics Demonstration — SXPC Nepal",
     description: "Highlights from the live physics demonstration (Chladni plate, optics, mechanics) at St. Xavier's College.",
     tags: ['physics', 'demonstration', 'sxpc'],
@@ -27,6 +29,7 @@ export const ecaData: ECAItem[] = [
   },
   {
     id: 'eca-digital-resilience',
+    category: 'Community',
     kind: 'blog',
     title: 'Digital Resilience Initiative — Strengthening Online Safety in Sindhuli',
     description: 'Community cybersecurity outreach and awareness program (Bhiman, Sindhuli).',

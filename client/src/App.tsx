@@ -1,3 +1,4 @@
+import OdysseyAlbumPage from '@/pages/OdysseyAlbumPage';
 import SphereBoundaryPage from '@/pages/SphereBoundaryPage';
 import GreenFunctionPage from '@/pages/GreenFunctionPage';
 import ImageChargeSpherePage from '@/pages/ImageChargeSpherePage';
@@ -79,6 +80,7 @@ function App() {
             <Route path="/blogpost/:id" element={<BlogPostPage />} />
             <Route path="/cv" element={<CVPage />} />
             <Route path="/notes" element={<NotesPage />} />
+            <Route path="/Myodyssey/:albumId" element={<OdysseyAlbumPage />} />
             <Route path="/Myodyssey" element={<MyOdysseyPage />} />
             <Route path="/eca/:id" element={<EcaItemPage />} />
             <Route path="/contact" element={<ContactPage />} />
