@@ -28,6 +28,7 @@ const publications = [
     journal: "Heliyon (Elsevier)",
     year: "September 2025",
     status: "Submitted",
+    hidden: true,
     description:
       "This paper introduces a comparative framework for solving the Schrödinger equation using Physics-Informed Neural Networks (PINNs) with both soft and hard boundary constraints. It investigates the role of embedded physical and mathematical constraints in unsupervised neural network training, assessing performance across harmonic oscillator, Coulomb, and screened Coulomb potentials. The results demonstrate that while soft-constrained models effectively capture excited states, hard-constrained models converge faster when guided by physically informed ansatz structures. Adaptive learning rate scheduling further enhances both computational efficiency and predictive accuracy.",
     contribution:
@@ -37,6 +38,7 @@ const publications = [
 ];
 
 const ResearchSection = () => {
+  const visiblePublications = publications.filter(pub => !pub.hidden);
   return (
     <section id="research" className="py-20 relative z-10">
       <div className="container mx-auto px-4">
@@ -57,13 +59,13 @@ const ResearchSection = () => {
           </motion.div>
           
           {/* Publications */}
-          <motion.div variants={fadeIn('up')}>
+          {visiblePublications.length > 0 && <motion.div variants={fadeIn('up')}>
             <h3 className="text-2xl md:text-3xl font-bold mb-8 text-white">
               Publications
             </h3>
 
             <div className="space-y-8">
-              {publications.map((pub, index) => (
+              {visiblePublications.map((pub, index) => (
                 <motion.div key={index} variants={fadeIn('up', index * 0.1)}>
                   <Card className="bg-[#141B34] border-[#5D3E7C] border hover:border-[#FF65A3] transition-colors">
                     <CardHeader>
@@ -106,7 +108,7 @@ const ResearchSection = () => {
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+          </motion.div>}
 
           {/* Research Projects */}
           <motion.div variants={fadeIn('up')}>
