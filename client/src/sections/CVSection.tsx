@@ -194,6 +194,7 @@ const CVSection = () => {
                       ></div>
                       <div className="bg-[#080a0a] border-[#d4db9c] border p-2 md:p-6 rounded-xl shadow-md hover:scale-[1.02] transition-all duration-300 hover:border-[#d4db9c] hover:shadow-[0_0_5px_#d4db9c]">
                         <h3 className="text-lg font-bold text-white mb-1">{exp.title}</h3>
+                        {exp.subtitle && <p className="text-sm italic text-gray-300 mb-1">{exp.subtitle}</p>}
                         <p className="text-xs text-gray-300">{exp.organization}</p>
                         <p className="text-xs text-gray-400">{exp.location}</p>
                         <p className="text-xs text-[#FF65A3] mt-1 font-medium">{exp.period}</p>

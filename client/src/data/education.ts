@@ -8,6 +8,13 @@ export interface Education {
   
   export const education: Education[] = [
     {
+      degree: "PhD in Physics and Astronomy",
+      institution: "University of Kentucky",
+      location: "Lexington, Kentucky, USA",
+      year: "August 2026 - Present",
+      details: []
+    },
+    {
       degree: "Undergraduate in Physics",
       institution: "St. Xavier's College (Tribhuvan University)",
       location: "Kathmandu, Nepal",
