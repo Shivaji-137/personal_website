@@ -39,7 +39,10 @@ const CVSection = () => {
             <p className="text-lg text-gray-300 mb-8">
               My academic and professional journey in physics and computation
             </p>
-            <div hidden>
+            <div className="flex flex-wrap justify-center gap-3">
+              <a href="/shivajiCV.pdf" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" className="border-[#5D3E7C] text-white">View CV PDF</Button>
+              </a>
               <a href="/shivajiCV.pdf" download>
                 <Button className="bg-[#5D3E7C] text-white hover:bg-[#FF65A3] px-8 mr-4">
                   <i className="ri-download-line mr-2"></i> Download CV
@@ -48,6 +51,10 @@ const CVSection = () => {
             </div>
           </motion.div>
           
+          <div className="mx-auto max-w-5xl overflow-hidden rounded-xl border border-[#5D3E7C] bg-white">
+            <iframe src="/shivajiCV.pdf" title="Shivaji Chaulagain - Curriculum Vitae" className="h-[75vh] min-h-[500px] w-full" />
+          </div>
+
           <Tabs defaultValue="education" className="w-full">
             <TabsList className="bg-[#141B34] border border-[#5D3E7C] p-1 w-full h-auto flex flex-wrap justify-center gap-1 mb-8">
               <TabsTrigger value="education" className="data-[state=active]:bg-[#5D3E7C] data-[state=active]:text-white px-4">
