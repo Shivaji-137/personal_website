@@ -159,6 +159,15 @@ const ContactSection = () => {
                     >
                       <i className="ri-linkedin-fill text-lg"></i>
                     </a>
+                    <a
+                      href="https://www.instagram.com/shivajichaulagain"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Instagram"
+                      className="w-10 h-10 flex items-center justify-center rounded-full bg-[#5D3E7C] text-white hover:bg-[#FF65A3] transition-colors"
+                    >
+                      <i className="ri-instagram-fill text-lg" aria-hidden="true"></i>
+                    </a>
                     {/* <a 
                       href="#" 
                       className="w-10 h-10 flex items-center justify-center rounded-full bg-[#5D3E7C] text-white hover:bg-[#FF65A3] transition-colors"

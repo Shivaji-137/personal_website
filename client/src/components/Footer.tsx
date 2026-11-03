@@ -35,11 +35,13 @@ const Footer = () => {
               {[
                 { href: "https://github.com/Shivaji-137", icon: "ri-github-fill" },
                 { href: "https://www.linkedin.com/in/shivaji137/", icon: "ri-linkedin-fill" },
+                { href: "https://www.instagram.com/shivajichaulagain", icon: "ri-instagram-fill" },
                 { href: "mailto:shivajichaulagain@gmail.com", icon: "ri-mail-fill" },
               ].map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
+                  aria-label={item.icon === "ri-instagram-fill" ? "Instagram" : item.icon === "ri-github-fill" ? "GitHub" : item.icon === "ri-linkedin-fill" ? "LinkedIn" : "Email"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-[#FF65A3] transition-colors text-3xl"
