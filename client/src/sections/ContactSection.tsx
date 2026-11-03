@@ -144,7 +144,7 @@ const ContactSection = () => {
               <Card className="bg-[#141B34] border-[#5D3E7C] border p-6">
                 <h3 className="text-xl font-bold text-white mb-4">Connect</h3>
                 <CardContent className="p-0">
-                  <div className="flex space-x-4">
+                  <div className="flex flex-wrap gap-4">
                     <a 
                       href="https://github.com/Shivaji-137" 
                       className="w-10 h-10 flex items-center justify-center rounded-full bg-[#5D3E7C] text-white hover:bg-[#FF65A3] transition-colors"
@@ -167,6 +167,15 @@ const ContactSection = () => {
                       className="w-10 h-10 flex items-center justify-center rounded-full bg-[#5D3E7C] text-white hover:bg-[#FF65A3] transition-colors"
                     >
                       <i className="ri-instagram-fill text-lg" aria-hidden="true"></i>
+                    </a>
+                    <a
+                      href="https://www.facebook.com/shivaji.chaulagain.9"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Facebook"
+                      className="w-10 h-10 flex items-center justify-center rounded-full bg-[#5D3E7C] text-white hover:bg-[#FF65A3] transition-colors"
+                    >
+                      <i className="ri-facebook-fill text-lg" aria-hidden="true"></i>
                     </a>
                     {/* <a 
                       href="#" 
