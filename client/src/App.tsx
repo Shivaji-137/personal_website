@@ -1,3 +1,6 @@
+import DielectricChargePage from '@/pages/DielectricChargePage';
+import CentralOrbitsPage from '@/pages/CentralOrbitsPage';
+import ScatteringPage from '@/pages/ScatteringPage';
 import OdysseyAlbumPage from '@/pages/OdysseyAlbumPage';
 import SphereBoundaryPage from '@/pages/SphereBoundaryPage';
 import GreenFunctionPage from '@/pages/GreenFunctionPage';
@@ -73,6 +76,9 @@ function App() {
             <Route path="/phd-physics/binary-virial" element={<BinaryVirialPage />} />
             <Route path="/phd-physics/telescope-diffraction" element={<TelescopeDiffractionPage />} />
             <Route path="/phd-physics/ubv-photometry" element={<UBVPhotometryPage />} />
+            <Route path="/phd-physics/scattering" element={<ScatteringPage />} />
+            <Route path="/phd-physics/central-force-orbits" element={<CentralOrbitsPage />} />
+            <Route path="/phd-physics/dielectric-sphere-charge" element={<DielectricChargePage />} />
             <Route path="/phd-physics" element={<PhDPhysicsPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/research" element={<ResearchPage />} />

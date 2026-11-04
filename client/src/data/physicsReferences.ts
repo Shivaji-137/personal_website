@@ -1,6 +1,69 @@
-export type PhysicsProject = 'planetary' | 'coordinates' | 'binary' | 'kepler' | 'parallax' | 'blackbody' | 'virial' | 'diffraction' | 'photometry' | 'planck' | 'distancePhotometry' | 'lorentz' | 'simultaneity' | 'oscillator' | 'duffing' | 'dynamicalMap' | 'hydrostatic' | 'harmonics' | 'legendre' | 'imageSphere' | 'greenFunction' | 'sphereBoundary' | 'phy611';
+export type PhysicsProject = 'planetary' | 'coordinates' | 'binary' | 'kepler' | 'parallax' | 'blackbody' | 'virial' | 'diffraction' | 'photometry' | 'planck' | 'distancePhotometry' | 'lorentz' | 'simultaneity' | 'oscillator' | 'duffing' | 'dynamicalMap' | 'hydrostatic' | 'harmonics' | 'legendre' | 'imageSphere' | 'greenFunction' | 'sphereBoundary' | 'phy611' | 'scattering';
 type Source = { title: string; url: string };
 export const physicsReferences: Record<PhysicsProject, { sources: Source[] }> = {
+  scattering: { sources: [
+  {
+    "title": "Cambridge · David Tong: classical scattering and the cross section (PDF)",
+    "url": "https://www.damtp.cam.ac.uk/user/tong/aqm/justone.pdf"
+  },
+  {
+    "title": "University of Texas · scattering in the center-of-mass frame",
+    "url": "https://farside.ph.utexas.edu/teaching/336k/Newtonhtml/node51.html"
+  },
+  {
+    "title": "University of Texas · scattering in the laboratory frame",
+    "url": "https://farside.ph.utexas.edu/teaching/336k/Newtonhtml/node52.html"
+  },
+  {
+    "title": "National University of Singapore · impact parameters and cross sections",
+    "url": "https://phyweb.physics.nus.edu.sg/pc3232/restricted/docs/particle-matter-interactions/radiation-matter_01_cross-sections.html"
+  },
+  {
+    "title": "Kawai · classical Yukawa scattering and the turning-point integral",
+    "url": "https://kawaihome.link/jbooks/comp-phys/integral/scattering_angle.html"
+  },
+  {
+    "title": "York University · numerical classical differential scattering",
+    "url": "https://www.yorku.ca/marko/ComPhys/ClassicalScattering/ClassicalScattering.html"
+  },
+  {
+    "title": "NIST DLMF · numerical quadrature and Gauss–Legendre methods",
+    "url": "https://dlmf.nist.gov/3.5"
+  },
+  {
+    "title": "Rutherford (1911) · original scattering paper (MIT-hosted PDF)",
+    "url": "https://web.mit.edu/8.13/8.13c/references-fall/rutherford/rutherford-scattering-of-alpha-and-beta-particles.pdf"
+  },
+  {
+    "title": "Greiner · Classical Mechanics: Systems of Particles and Hamiltonian Dynamics (spherical square-well example)",
+    "url": "https://link.springer.com/book/10.1007/978-3-642-03468-8"
+  },
+  {
+    "title": "University of Maryland · Rutherford scattering laboratory and theory",
+    "url": "https://www.physics.umd.edu/courses/Phys621/gradlab/glhb/rutherford.html"
+  },
+  {
+    "title": "American Institute of Physics · Rutherford and the discovery of the nucleus",
+    "url": "https://history.aip.org/exhibits/rutherford/sections/alpha-particles-atom.html"
+  },
+  {
+    "title": "University of Texas · central-force orbit equation",
+    "url": "https://farside.ph.utexas.edu/teaching/celestial/Celestial/node42.html"
+  },
+  {
+    "title": "David Tong · Lagrangian mechanics and central-force foundations (PDF)",
+    "url": "https://davidtong.org/pdfs/teaching/classical-dynamics/clas2.pdf"
+  },
+  {
+    "title": "Lehman & Shapiro (1960) · classical screened-Coulomb cross sections",
+    "url": "https://doi.org/10.1103/PhysRev.120.32"
+  },
+  {
+    "title": "Khrapak (2014) · classical scattering in strongly attractive potentials",
+    "url": "https://arxiv.org/abs/1403.6000"
+  }
+] },
+
   phy611: { sources: [
   {
     "title": "PHY611 Fall 2026 \u2014 Assignment 1",
