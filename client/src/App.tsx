@@ -17,7 +17,7 @@ import SimultaneityPage from '@/pages/SimultaneityPage';
 import LorentzDashboardPage from '@/pages/LorentzDashboardPage';
 import DistancePhotometryPage from '@/pages/DistancePhotometryPage';
 import PlanckComparisonsPage from '@/pages/PlanckComparisonsPage';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
@@ -84,8 +84,8 @@ function App() {
             <Route path="/movies" element={<MoviesCollectionPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/research" element={<ResearchPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blogpost/:id" element={<BlogPostPage />} />
+            <Route path="/blog" element={<Navigate to="/" replace />} />
+            <Route path="/blogpost/:id" element={<Navigate to="/" replace />} />
             <Route path="/cv" element={<CVPage />} />
             <Route path="/notes" element={<NotesPage />} />
             <Route path="/Myodyssey/:albumId" element={<OdysseyAlbumPage />} />

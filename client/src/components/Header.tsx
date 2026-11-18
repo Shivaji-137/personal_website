@@ -14,7 +14,7 @@ const links: NavLink[] = [
   { text: 'Physics Lab', href: '/phd-physics' },
   { text: 'Projects', href: '/projects' },
   { text: 'Research', href: '/research' },
-  { text: 'Blog', href: '/blog' },
+  { text: 'Blog', href: '/blog', hidden: true },
   { text: 'CV', href: '/cv' },
   { text: 'Notes', href: '/notes', hidden: true },
   { text: 'My odyssey', href: '/Myodyssey' },

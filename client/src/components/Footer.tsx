@@ -54,7 +54,7 @@ const Footer = () => {
           </div>
           
           <div className="flex flex-wrap justify-center gap-6">
-            {['about', 'projects', 'research', 'blog', 'cv', 'contact'].map((section) => (
+            {['about', 'projects', 'research', 'blog', 'cv', 'contact'].filter(section => section !== 'blog').map((section) => (
               <Link
                 key={section}
                 to={section === 'about' ? '/' : `/${section}`}
