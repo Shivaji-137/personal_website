@@ -1,3 +1,4 @@
+import MoviesCollectionPage from '@/pages/MoviesCollectionPage';
 import DielectricChargePage from '@/pages/DielectricChargePage';
 import CentralOrbitsPage from '@/pages/CentralOrbitsPage';
 import ScatteringPage from '@/pages/ScatteringPage';
@@ -80,6 +81,7 @@ function App() {
             <Route path="/phd-physics/central-force-orbits" element={<CentralOrbitsPage />} />
             <Route path="/phd-physics/dielectric-sphere-charge" element={<DielectricChargePage />} />
             <Route path="/phd-physics" element={<PhDPhysicsPage />} />
+            <Route path="/movies" element={<MoviesCollectionPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/research" element={<ResearchPage />} />
             <Route path="/blog" element={<BlogPage />} />

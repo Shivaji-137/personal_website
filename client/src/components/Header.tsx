@@ -18,6 +18,7 @@ const links: NavLink[] = [
   { text: 'CV', href: '/cv' },
   { text: 'Notes', href: '/notes', hidden: true },
   { text: 'My odyssey', href: '/Myodyssey' },
+  { text: 'Movies Collection', href: '/movies' },
   { text: 'Contact', href: '/contact' },
 ];
 
