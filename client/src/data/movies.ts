@@ -2289,6 +2289,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/shambhala.jpg",
     "posterSource": "https://en.wikipedia.org/wiki/Shambhala_%282024_film%29",
     "genres": [
+      "Nepali",
       "Drama"
     ],
     "genreSource": "https://en.wikipedia.org/wiki/Shambhala_%282024_film%29",
