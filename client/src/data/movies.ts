@@ -803,6 +803,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/parasite.png",
     "posterSource": "https://en.wikipedia.org/wiki/Parasite_(2019_film)",
     "genres": [
+      "Korean",
       "Thriller",
       "Comedy"
     ],
@@ -1125,6 +1126,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/all-of-us-are-dead.jpg",
     "posterSource": "https://en.wikipedia.org/wiki/All_of_Us_Are_Dead",
     "genres": [
+      "Korean",
       "Horror",
       "Coming-of-age"
     ],
@@ -2089,6 +2091,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/black.jpg",
     "posterSource": "https://en.wikipedia.org/wiki/Black_%28South_Korean_TV_series%29",
     "genres": [
+      "Korean",
       "Fantasy",
       "Thriller"
     ],
@@ -2110,6 +2113,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/squid-game.png",
     "posterSource": "https://en.wikipedia.org/wiki/Squid_Game_season_1",
     "genres": [
+      "Korean",
       "Thriller",
       "Survival"
     ],
@@ -2363,6 +2367,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/train-to-busan.jpg",
     "posterSource": "https://en.wikipedia.org/wiki/Train_to_Busan",
     "genres": [
+      "Korean",
       "Horror",
       "Action"
     ],
@@ -2844,6 +2849,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/snowpiercer.jpg",
     "posterSource": "https://en.wikipedia.org/wiki/Snowpiercer",
     "genres": [
+      "Korean",
       "Thriller",
       "Action"
     ],
