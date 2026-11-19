@@ -615,6 +615,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/ramayana.jpg",
     "posterSource": "https://en.wikipedia.org/wiki/Ramayana%3A_Part_1",
     "genres": [
+      "Indian",
       "Mythology"
     ],
     "genreSource": "https://en.wikipedia.org/wiki/Ramayana%3A_Part_1",
@@ -844,6 +845,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/12th-fail.jpg",
     "posterSource": "https://en.wikipedia.org/wiki/12th_Fail",
     "genres": [
+      "Indian",
       "Drama",
       "Biography"
     ],
@@ -865,6 +867,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/3-idiots.jpg",
     "posterSource": "https://en.wikipedia.org/wiki/3_Idiots",
     "genres": [
+      "Indian",
       "Comedy",
       "Drama",
       "Coming-of-age"
@@ -1760,6 +1763,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/dangal.jpg",
     "posterSource": "https://en.wikipedia.org/wiki/Dangal_%282016_film%29",
     "genres": [
+      "Indian",
       "Drama",
       "Biography",
       "Sport"
@@ -2127,6 +2131,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/super-30.jpg",
     "posterSource": "https://en.wikipedia.org/wiki/Super_30_%28film%29",
     "genres": [
+      "Indian",
       "Drama",
       "Biography"
     ],
@@ -2148,6 +2153,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/bhaag-milkha-bhaag.jpg",
     "posterSource": "https://en.wikipedia.org/wiki/Bhaag_Milkha_Bhaag",
     "genres": [
+      "Indian",
       "Drama",
       "Biography",
       "Sport"
@@ -2170,6 +2176,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/jai-bhim.jpg",
     "posterSource": "https://en.wikipedia.org/wiki/Jai_Bhim_%28film%29",
     "genres": [
+      "Indian",
       "Drama",
       "Legal"
     ],
@@ -2191,6 +2198,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/soorarai-pottru.jpg",
     "posterSource": "https://en.wikipedia.org/wiki/Soorarai_Pottru",
     "genres": [
+      "Indian",
       "Drama"
     ],
     "genreSource": "https://en.wikipedia.org/wiki/Soorarai_Pottru",
@@ -2211,6 +2219,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/kesari.jpg",
     "posterSource": "https://en.wikipedia.org/wiki/Kesari_(2019_film)",
     "genres": [
+      "Indian",
       "History",
       "War"
     ],
@@ -2232,6 +2241,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/pariyerum-perumal.jpg",
     "posterSource": "https://en.wikipedia.org/wiki/Pariyerum_Perumal",
     "genres": [
+      "Indian",
       "Drama",
       "Romance"
     ],
@@ -2253,6 +2263,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/munna-bhai-m-b-b-s.jpg",
     "posterSource": "https://en.wikipedia.org/wiki/Munna_Bhai_M.B.B.S.",
     "genres": [
+      "Indian",
       "Comedy",
       "Drama"
     ],
@@ -2294,6 +2305,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/lagaan.jpg",
     "posterSource": "https://en.wikipedia.org/wiki/Lagaan",
     "genres": [
+      "Indian",
       "Drama",
       "Sport"
     ],
@@ -2315,6 +2327,7 @@ export const watchedMovies: WatchedMovie[] = [
     "posterSource": "https://en.wikipedia.org/wiki/Baahubali%3A_The_Beginning",
     "note": "All films",
     "genres": [
+      "Indian",
       "Action"
     ],
     "genreSource": "https://en.wikipedia.org/wiki/Baahubali%3A_The_Beginning",
@@ -2329,6 +2342,7 @@ export const watchedMovies: WatchedMovie[] = [
     "poster": "/movies/taare-zameen-par.png",
     "posterSource": "https://en.wikipedia.org/wiki/Taare_Zameen_Par",
     "genres": [
+      "Indian",
       "Drama"
     ],
     "genreSource": "https://en.wikipedia.org/wiki/Taare_Zameen_Par",
